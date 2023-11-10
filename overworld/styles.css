@@ -25,35 +25,35 @@
 
 
 /* Positioning pins using percentages relative to the .map-container */
-.map-container .gnosis-safe { top: 10%; left: 20%; 
+.map-container .gnosis-safe { top: 13%; left: 30%; 
      }
 .map-container .mcdonalds-shop { top: 30%; left: 40%; 
      }
-.map-container .discord { top: 9%; left: 55%; 
+.map-container .discord { top: 45%; left: 80%; 
      } /* Adjusted to percentage */
 .map-container .opensea { top: 70%; left: 75%; 
      } /* Adjusted to percentage */
 .map-container .m3-mart { top: 20%; left: 70%; 
      } /* Adjusted to percentage */
-.map-container .badges-and-pins { top: 80%; left: 30%; 
+.map-container .badges-and-pins { top: 65%; left: 20%; 
      } /* Adjusted to percentage */
-.map-container .twitter { top: 35%; left: 10%; 
+.map-container .twitter { top: 50%; left: 10%; 
      } /* Adjusted to percentage */
 .map-container .sketchfab { top: 70%; left: 60%; 
      } /* Adjusted to percentage */
 .map-container .omi-diner { top: 10%; left: 80%; 
      } /* Adjusted to percentage */
-.map-container .internet-archive { top: 70%; left: 15%; 
+.map-container .internet-archive { top: 30%; left: 60%; 
      } /* Adjusted to percentage */
 .map-container .voxels-makers-district { top: 30%; left: 25%; 
      } /* Adjusted to percentage */
-.map-container .m3tv-soundstage { top: 70%; left: 90%; 
+.map-container .m3tv-soundstage { top: 50%; left: 50%; 
      } /* Adjusted to percentage */
-.map-container .snapshot { top: 10%; left: 36%; 
+.map-container .snapshot { top: 17%; left: 40%; 
      } /* Adjusted to percentage */
 .map-container .metafactory-truck { top: 38%; left: 40%; 
      } /* Adjusted to percentage */
-.map-container .hyperfy-hq { top: 80%; left: 50%; 
+.map-container .hyperfy-hq { top: 75%; left: 45%; 
      } /* Adjusted to percentage */
 
 
