@@ -33,19 +33,19 @@
      } /* Adjusted to percentage */
 .map-container .opensea { top: 70%; left: 75%; 
      } /* Adjusted to percentage */
-.map-container .m3-mart { top: 20%; left: 70%; 
+.map-container .m3-mart { top: 75%; left: 70%; 
      } /* Adjusted to percentage */
 .map-container .badges-and-pins { top: 65%; left: 20%; 
      } /* Adjusted to percentage */
-.map-container .twitter { top: 50%; left: 10%; 
+.map-container .twitter { top: 48%; left: 14%; 
      } /* Adjusted to percentage */
-.map-container .sketchfab { top: 70%; left: 60%; 
+.map-container .sketchfab { top: 75%; left: 50%; 
      } /* Adjusted to percentage */
 .map-container .omi-diner { top: 10%; left: 80%; 
      } /* Adjusted to percentage */
 .map-container .internet-archive { top: 30%; left: 60%; 
      } /* Adjusted to percentage */
-.map-container .voxels-makers-district { top: 30%; left: 25%; 
+.map-container .voxels-makers-district { top: 37%; left: 21%; 
      } /* Adjusted to percentage */
 .map-container .m3tv-soundstage { top: 50%; left: 50%; 
      } /* Adjusted to percentage */
@@ -53,7 +53,7 @@
      } /* Adjusted to percentage */
 .map-container .metafactory-truck { top: 38%; left: 40%; 
      } /* Adjusted to percentage */
-.map-container .hyperfy-hq { top: 75%; left: 45%; 
+.map-container .hyperfy-hq { top: 68%; left: 38%; 
      } /* Adjusted to percentage */
 
 
@@ -62,6 +62,7 @@
     visibility: hidden;
     width: 120px;
     background-color: black;
+    font-size: 2vh;
     color: white;
     text-align: center;
     border-radius: 6px;
@@ -89,3 +90,14 @@
     border-color: transparent transparent black transparent;
 }
 
+.map-container a img {
+     width: 20vh; 
+     height: 20vh;
+     transition: filter 0.3s ease; /* Smooth transition for the glow effect */
+     filter: drop-shadow(0 0 0 transparent); /* Initial state with no glow */
+ }
+ 
+ /* Hover effect */
+ .map-container a:hover img {
+     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); /* Creates a glowing effect */
+ }
