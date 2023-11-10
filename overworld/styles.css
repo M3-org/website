@@ -1,0 +1,250 @@
+body {
+     background-color: hsl(75, 86%, 48%);
+     margin: 0px;
+     width: 100%;
+}
+
+.about{
+     margin: 0px;
+     padding: 100px;
+}
+
+
+.map-container {
+    background: url('images/body.png') no-repeat center center;
+    background-size: contain;
+    background-color: #aee311;
+    position: relative;
+    width: 100%; /* Full width of the viewport */
+    height: 0; /* Set height to 0 */
+    padding-bottom: 56.25%; /* For a 16:9 aspect ratio */
+    margin: 0px;
+}
+
+.map-container a {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Use px instead of vw for consistent scaling */
+    
+}
+
+.map-container img {
+
+    width: 20vh; 
+    height: 20vh;
+}
+
+
+/* Positioning pins using percentages relative to the .map-container */
+.map-container .gnosis-safe { top: 13%; left: 30%; 
+     }
+.map-container .mcdonalds-shop { top: 30%; left: 40%; 
+     }
+.map-container .discord { top: 50%; left: 90%; 
+     } /* Adjusted to percentage */
+.map-container .opensea { top: 70%; left: 75%; 
+     } /* Adjusted to percentage */
+.map-container .m3-mart { top: 75%; left: 70%; 
+     } /* Adjusted to percentage */
+.map-container .badges-and-pins { top: 65%; left: 20%; 
+     } /* Adjusted to percentage */
+.map-container .twitter { top: 48%; left: 14%; 
+     } /* Adjusted to percentage */
+.map-container .sketchfab { top: 75%; left: 50%; 
+     } /* Adjusted to percentage */
+.map-container .omi-diner { top: 15%; left: 70%; 
+     } /* Adjusted to percentage */
+.map-container .internet-archive { top: 30%; left: 60%; 
+     } /* Adjusted to percentage */
+.map-container .voxels-makers-district { top: 37%; left: 21%; 
+     } /* Adjusted to percentage */
+.map-container .m3tv-soundstage { top: 50%; left: 50%; 
+     } /* Adjusted to percentage */
+.map-container .snapshot { top: 17%; left: 40%; 
+     } /* Adjusted to percentage */
+.map-container .metafactory-truck { top: 21%; left: 21%; 
+     } /* Adjusted to percentage */
+.map-container .hyperfy-hq { top: 68%; left: 38%; 
+     } /* Adjusted to percentage */
+
+
+
+.map-container a .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    font-size: 2vh;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 50%; 
+    right: 0%;
+}
+
+.map-container a:hover .tooltip {
+    visibility: visible;
+}
+
+
+
+.map-container a .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.map-container a img {
+     width: 20vh; 
+     height: 20vh;
+     transition: filter 0.3s ease; /* Smooth transition for the glow effect */
+     filter: drop-shadow(0 0 0 transparent); /* Initial state with no glow */
+ }
+ 
+ /* Hover effect */
+ .map-container a:hover img {
+     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); /* Creates a glowing effect */
+ }
+
+
+         /* HUD styles */
+         .hud {
+          position: fixed;
+          bottom: 1vw; /* Distance from the bottom */
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 1em; /* Space between badges */
+      }
+
+      .badge {
+          width: 3vw; /* Adjust size as needed */
+          filter: grayscale(1); /* Desaturate the badge */
+          opacity: 0.8; /* Make it slightly transparent */
+          position: relative; /* To position the tooltip */
+          z-index: 1000;  /* ensure it's above other elements */
+      }
+
+      .badge:hover {
+          filter: grayscale(0); /* Fully colored on hover */
+          opacity: 1; /* Fully opaque on hover */
+      }
+
+      .badge::before {
+          content: attr(data-tooltip); /* Use data attribute for tooltip text */
+          position: absolute;
+          bottom: 100%; /* Place it above the badge */
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);  /* combining the two transforms */
+          background-color: rgba(0, 255, 0, 0.9); /* Green background with slight transparency */
+          padding: 0.2em 0.5em;
+          border-radius: 5px;
+          font-size: 0.8em;
+          white-space: nowrap; /* Prevent the text from wrapping */
+         
+      }
+
+      .badge:hover::before {
+          opacity: 1;
+         
+      }
+
+      .ascii-art {
+          text-align: center;
+        }
+
+        footer {
+          text-align: center;
+          color: pink;
+          padding: 10px 0;
+        }
+
+        .links {
+          display: flex;
+          justify-content: center; /* Center items horizontally */
+          flex-wrap: wrap;
+          gap: 5px; /* Add space between the items */
+          padding-bottom: 100px; /* Adjusted padding for better spacing */
+          list-style: none; /* Remove default list styling if it's a list */
+        }
+        
+        .links a {
+          display: block;
+          width: 30%; /* Adjust width for better spacing */
+          text-align: center;
+          padding: 2px; /* Increased padding for a better touch area */
+          color: rgb(0, 0, 0); /* Default color */
+          border: 2px solid transparent; /* For a subtle hover effect */
+          border-radius: 5px; /* Rounded corners */
+          text-decoration: none; /* Remove underline from links */
+          transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+        
+        .links a:hover {
+          background-color: rgba(14, 104, 14, 0.151); /* Slight background on hover */
+          border-color: #ddd; /* Subtle border color change on hover */
+        }
+        
+        .links a.cyan {
+          background-color: #e0f7fa; /* Light cyan background */
+        }
+        
+        .links a.pink {
+          background-color: #fce4ec; /* Light pink background */
+        }
+        
+
+        .iframe-placeholder {
+          width: 100%;
+          height: 640px;
+          background-color: #00000f;
+          position: relative;
+          top: 100%;
+        }
+
+        .cloud-container {
+          position: relative;
+          width: 100%;
+          height: 100vh; /* Adjust as needed */
+          overflow: hidden; /* Keeps clouds within the bounds of the container */
+          pointer-events: none; /* Disables click events on the cloud */
+
+      }
+      
+      .cloud {
+          position: absolute;
+          width: 150px; /* Adjust based on your image size */
+          animation: floatClouds 100s linear infinite;
+          pointer-events: none; /* Disables click events on the cloud */
+
+          /* Use multiple cloud elements with different delays for a more dynamic effect */
+      }
+
+     
+      
+      @keyframes floatClouds {
+          0% {
+              transform: translateX(0) translateY(0);
+              opacity: 0;
+          }
+          10% {
+              opacity: 1;
+          }
+          90% {
+              opacity: 1;
+          }
+          100% {
+              transform: translateX(100vw) translateY(100vh); /* Moves to the bottom right */
+              opacity: 0;
+          }
+      }
