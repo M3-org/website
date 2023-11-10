@@ -1,0 +1,91 @@
+.map-container {
+    background: url('images/body.png') no-repeat center center;
+    background-size: contain;
+    position: relative;
+    width: 100%; /* Full width of the viewport */
+    height: 0; /* Set height to 0 */
+    padding-bottom: 56.25%; /* For a 16:9 aspect ratio */
+    margin: 0%;
+}
+
+.map-container a {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Use px instead of vw for consistent scaling */
+    
+}
+
+.map-container img {
+
+    width: 20vh; 
+    height: 20vh;
+}
+
+
+/* Positioning pins using percentages relative to the .map-container */
+.map-container .gnosis-safe { top: 10%; left: 20%; 
+     }
+.map-container .mcdonalds-shop { top: 30%; left: 40%; 
+     }
+.map-container .discord { top: 9%; left: 55%; 
+     } /* Adjusted to percentage */
+.map-container .opensea { top: 70%; left: 75%; 
+     } /* Adjusted to percentage */
+.map-container .m3-mart { top: 20%; left: 70%; 
+     } /* Adjusted to percentage */
+.map-container .badges-and-pins { top: 80%; left: 30%; 
+     } /* Adjusted to percentage */
+.map-container .twitter { top: 35%; left: 10%; 
+     } /* Adjusted to percentage */
+.map-container .sketchfab { top: 70%; left: 60%; 
+     } /* Adjusted to percentage */
+.map-container .omi-diner { top: 10%; left: 80%; 
+     } /* Adjusted to percentage */
+.map-container .internet-archive { top: 70%; left: 15%; 
+     } /* Adjusted to percentage */
+.map-container .voxels-makers-district { top: 30%; left: 25%; 
+     } /* Adjusted to percentage */
+.map-container .m3tv-soundstage { top: 70%; left: 90%; 
+     } /* Adjusted to percentage */
+.map-container .snapshot { top: 10%; left: 36%; 
+     } /* Adjusted to percentage */
+.map-container .metafactory-truck { top: 38%; left: 40%; 
+     } /* Adjusted to percentage */
+.map-container .hyperfy-hq { top: 80%; left: 50%; 
+     } /* Adjusted to percentage */
+
+
+
+.map-container a .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 50%; 
+    right: 0%;
+}
+
+.map-container a:hover .tooltip {
+    visibility: visible;
+}
+
+
+
+.map-container a .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
