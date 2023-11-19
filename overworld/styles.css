@@ -11,7 +11,7 @@ body {
 
 
 .map-container {
-    background: url('images/body.png') no-repeat center center;
+    background: url('images/bodybg.png') no-repeat center center;
     background-size: contain;
     background-color: #aee311;
     position: relative;
