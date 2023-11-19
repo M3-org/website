@@ -11,7 +11,7 @@ body {
 
 
 .map-container {
-    background: url('images/body.png') no-repeat center center;
+    background: url('images/bodybg.png') no-repeat center center;
     background-size: contain;
     background-color: #aee311;
     position: relative;
@@ -70,9 +70,8 @@ body {
      } /* Adjusted to percentage */
 
 
-
 .map-container a .tooltip {
-    visibility: hidden;
+    visibility: visible; /* Change to visible to make the tooltip always visible */
     width: 120px;
     background-color: black;
     font-size: 2vh;
@@ -81,9 +80,10 @@ body {
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
-    z-index: 1;
-    top: 50%; 
+    z-index: 10000; /* Set a high z-index value */
+    top: 10%;
     right: 0%;
+    transform: translate(-50%, -50%); /* Center the tooltip */
 }
 
 .map-container a:hover .tooltip {
