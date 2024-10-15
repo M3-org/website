@@ -1,9 +1,25 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M3 Org</title>
+<title>M3 Metaverse Makers</title>
+<meta property="og:title" content="M3 Metaverse Makers">
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Virtual hackerspace / homebrew metaverse club. We host weekly events, make f*cking epic drops, and work on virtual productions.">
+<meta property="og:image" content="https://m3org.com/meta_image.jpg">
+<meta property="og:url" content="https://m3org.com/">
+<meta property="twitter:domain" content="m3org.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://m3org.com/meta_image.jpg"/>
+<meta name="twitter:title" content="M3 Metaverse Makers"/>
+<meta name="twitter:description" content="Virtual hackerspace / homebrew metaverse club. We host weekly events, make f*cking epic drops, and work on virtual productions."/>
+<meta content="@m3org" name="twitter:site"/>
+<link rel="icon" type="image/x-icon" href="https://m3org.com/favicon.ico" />
+
 <style>
   body {
     background-color: black;
@@ -29,13 +45,20 @@
   }
   .links a {
     display: block;
-    width: 50%;
+    width: 33%;
     text-align: center;
     padding: 10px 0;
     color: lime;
   }
+  .links a.cyan {
+  color: cyan;
+  }
+  .links a.pink {
+  color: pink;
+  }
   footer {
     text-align: center;
+    color: pink;
     padding: 10px 0;
   }
   .hidden {
@@ -43,9 +66,9 @@
   }
   .iframe-placeholder {
     width: 100%;
-    height: 720px;
+    height: 640px;
     background-color: #00000f;
-    position: absolute;
+    position: relative;
     top: 100%;
   }
 </style>
@@ -74,16 +97,34 @@
 `-----------------------------'                         
 </pre>
 <div class="links">
-  <a href="https://github.com/m3-org">GitHub</a>
-  <a href="https://discord.gg/m3org">Discord</a>
-  <a href="https://hackmd.io/@xr/book">Research</a>
-  <a href="https://juicebox.money/@openvoxels">OpenVoxels</a>
-  <a href="https://hyperfy.io/onhyper">Onhyper</a>
-  <a href="https://tv.m3org.com/">M3TV</a>
+  <a href="https://github.com/m3-org" class="cyan">GitHub</a>
+  <a href="https://m3org.com/discord" class="cyan">Discord</a>
+  <a href="https://hackmd.io/@xr/book" class="cyan">Research</a>
+  <a href="https://twitter.com/m3org" class="cyan">Twitter</a>
+  <a href="https://github.com/m3-org/avatar-interop#Calendar" class="cyan">Calendar</a>
+  <a href="https://hackmd.io/@xr/vprod" class="cyan">Virtual Production</a>
+  <a href="https://juicebox.money/@openvoxels" class="cyan">OpenVoxels</a>
+  <a href="https://hyperfy.io/m3" class="cyan">M3 HQ</a>
+  <a href="https://tv.m3org.com/" class="cyan">M3TV</a>
+  <a href="https://gm3.github.io/boomboxheads-v2/">Boomboxheads V2</a>
+  <a href="https://m3org.com/mart/">M3 Merch</a>
+  <a href="https://hyperfy.io/">Hyperfy</a>
+  <a href="https://3ov.xyz/">Three Object Viewer</a>
+  <a href="https://emotionull.art/">Phettaverse</a>
+  <a href="https://github.com/jbaicoianu/janusweb">JanusWeb</a>
+  <a href="https://github.com/webaverse">Webaverse</a>
+  <a href="https://cryptoavatars.io/">Cryptoavatars</a>
+  <a href="https://m3org.com/mfshop">MetaFactory</a>
+  <a href="https://www.unavi.xyz/">UNAVI</a>
+  <a href="https://www.zesty.market/">Zesty Market</a>
+  <a href="https://anarchyarcade.com/">Anarchy Arcade</a>
 </div>
-<footer>
-  <a href="#">[Placeholder Banner 1]</a>
-  <a href="#">[Placeholder Banner 2]</a>
+<footer class="pink">
+  Neighborhood:
+  <a href="https://framevr.io/omi" class="ping">OMI group</a>
+  <a href="https://hyperfy.io/msf" class="pink">Metaverse Standards Forum</a>
+  <a href="https://twitter.com/neon_buidl" class="pink">Neon Buidl</a>
+  <a href="https://uncannyalley.io" class="pink">Uncanny Alley</a>
 </footer>
 <div class="iframe-placeholder">
 <pre class="ascii-art">
@@ -133,13 +174,13 @@ PG         P@.    ~##^      #&  .@P   .~~~.    :~~~ :!!!!~~~     ~@~  P@.     .P
                       .!YY?^.                                           :7YY7:                      
                           ^?55J!:                                  :~J55J~.                         
                               .~7JJJ?!~:...               ..:~!?JJJ?~:                              
-             .^!?YY55555555555555555Y?!^:.            
+                                     .^!?YY55555555555555555Y?!^:.            
 </pre>
 </div>
 <script>
   const iframePlaceholder = document.querySelector('.iframe-placeholder');
   iframePlaceholder.addEventListener('click', () => {
-    iframePlaceholder.innerHTML = '<iframe src="https://m3org.com/" frameborder="0" width="100%" height="100%"></iframe>';
+    iframePlaceholder.innerHTML = '<iframe src="https://3d.m3org.com/" frameborder="0" width="100%" height="100%"></iframe>';
   });
 </script>
 </body>
