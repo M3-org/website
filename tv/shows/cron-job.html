@@ -361,12 +361,12 @@
   <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
     <video
       class="hero-video"
-      src="../resources/ai-news-website/media/trailer.mp4"
+      src="../assets/cron-job/trailer.mp4"
       muted
       autoplay
       loop
       playsinline
-      poster="../resources/ai-news-website/media/15.jpg"
+      poster="../assets/cron-job/15.jpg"
     ></video>
     <div class="hero-overlay"></div>
 
@@ -408,10 +408,10 @@
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <img src="../resources/ai-news-website/media/1.jpg" alt="Cron Job" class="rounded-lg">
-          <img src="../resources/ai-news-website/media/5.jpg" alt="Cron Job" class="rounded-lg mt-8">
-          <img src="../resources/ai-news-website/media/10.jpg" alt="Cron Job" class="rounded-lg -mt-8">
-          <img src="../resources/ai-news-website/media/15.jpg" alt="Cron Job" class="rounded-lg">
+          <img src="../assets/cron-job/1.jpg" alt="Cron Job" class="rounded-lg">
+          <img src="../assets/cron-job/5.jpg" alt="Cron Job" class="rounded-lg mt-8">
+          <img src="../assets/cron-job/10.jpg" alt="Cron Job" class="rounded-lg -mt-8">
+          <img src="../assets/cron-job/15.jpg" alt="Cron Job" class="rounded-lg">
         </div>
       </div>
     </div>
@@ -428,7 +428,7 @@
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
+            <img src="../assets/thumbnails/eliza.jpg" alt="Eliza">
           </div>
           <h3 class="font-semibold mb-1">Eliza</h3>
           <p class="text-zinc-500 text-sm">Co-Host</p>
@@ -436,7 +436,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="Marc">
+            <img src="../assets/thumbnails/aixvc.jpg" alt="Marc">
           </div>
           <h3 class="font-semibold mb-1">Marc</h3>
           <p class="text-zinc-500 text-sm">Co-Host</p>
@@ -444,7 +444,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="Shaw">
+            <img src="../assets/thumbnails/shaw.jpg" alt="Shaw">
           </div>
           <h3 class="font-semibold mb-1">Shaw</h3>
           <p class="text-zinc-500 text-sm">Tech Analyst</p>
@@ -452,7 +452,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Sparty">
+            <img src="../assets/thumbnails/spartan.jpg" alt="Sparty">
           </div>
           <h3 class="font-semibold mb-1">Sparty</h3>
           <p class="text-zinc-500 text-sm">Market Watch</p>
@@ -460,7 +460,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="Pepo">
+            <img src="../assets/thumbnails/peepo.jpg" alt="Pepo">
           </div>
           <h3 class="font-semibold mb-1">Pepo</h3>
           <p class="text-zinc-500 text-sm">Market Watch</p>
@@ -590,7 +590,7 @@
 
   <script>
     // Episode data - would be loaded from JSON in production
-    const EPISODES_URL = '../resources/ai-news-website/episodes.json';
+    const EPISODES_URL = 'https://cdn.elizaos.news/cron-job/episodes.json';
     let episodes = {};
     let currentLang = 'en';
 
@@ -617,7 +617,7 @@
 
         return `
           <div class="episode-card aspect-video" onclick="openEpisode('${ep.id}', '${ep.title}', '${date}')">
-            <img src="../resources/ai-news-website/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
+            <img src="https://cdn.elizaos.news/cron-job/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
             <div class="play-overlay">
               <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -638,7 +638,7 @@
       const grid = document.getElementById('episodes-grid');
       grid.innerHTML = `
         <div class="episode-card aspect-video">
-          <img src="../resources/m3tv/M3org/stills/ep08.png" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <img src="../assets/stills/ep08.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
             <p class="text-cyan text-xs font-medium mb-1">Sample Episode</p>
             <h3 class="font-display text-lg font-semibold">Loading episodes...</h3>
