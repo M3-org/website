@@ -41,11 +41,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# Planning/notes (optional - remove if you want to track these)
-# notes.txt
-# shows.txt
-# phase*.md
-
 # Symlinks in resources/ point to external repos
 # Don't track symlinks - the actual files live in their own repos
 resources/ai-news-website
