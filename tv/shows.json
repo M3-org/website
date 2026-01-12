@@ -1,0 +1,433 @@
+{
+  "shows": {
+    "cron-job": {
+      "id": "cron-job",
+      "title": "Cron Job",
+      "tagline": "Yesterday's ElizaOS news, today",
+      "description": "A fully-automated 3D news show that transforms Discord conversations and GitHub activity into polished daily episodes. Every day, AI hosts deliver the latest developments from the ElizaOS ecosystem.",
+      "longDescription": "Cron Job is a fully-automated 3D news show that transforms Discord conversations and GitHub activity into polished daily episodes. Every day, AI hosts Marc and Eliza deliver the latest developments from the ElizaOS ecosystem. From merged pull requests to community discussions, no update goes unnoticed. Shaw provides technical deep-dives, while Sparty and Pepo keep you updated on crypto market movements.",
+      "category": "News",
+      "schedule": "Daily",
+      "duration": "~12 min",
+      "accentColor": "#00d4ff",
+      "status": "active",
+      "premiere": "2024-01-01",
+      "heroImage": "cronjob-splash.png",
+      "heroVideo": "resources/ai-news-website/media/trailer.mp4",
+      "showPage": "shows/cron-job.html",
+      "externalLinks": {
+        "website": "https://elizaos.news",
+        "youtube": "https://youtube.com/@elizaosnews"
+      },
+      "characters": [
+        {
+          "id": "eliza",
+          "name": "Eliza",
+          "role": "Co-Host",
+          "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png"
+        },
+        {
+          "id": "marc",
+          "name": "Marc",
+          "role": "Co-Host",
+          "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png"
+        },
+        {
+          "id": "shaw",
+          "name": "Shaw",
+          "role": "Tech Analyst",
+          "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png"
+        },
+        {
+          "id": "sparty",
+          "name": "Sparty",
+          "role": "Market Watch",
+          "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png"
+        },
+        {
+          "id": "pepo",
+          "name": "Pepo",
+          "role": "Market Watch",
+          "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png"
+        }
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Data Collection",
+          "description": "GitHub PRs, issues, and Discord conversations from the ElizaOS ecosystem are gathered automatically."
+        },
+        {
+          "step": 2,
+          "title": "Script Generation",
+          "description": "AI analyzes the data and generates a conversational script for our cast of characters."
+        },
+        {
+          "step": 3,
+          "title": "Voice Synthesis",
+          "description": "Each character's dialogue is converted to speech using distinct AI voice profiles."
+        },
+        {
+          "step": 4,
+          "title": "3D Animation",
+          "description": "Characters are animated in a 3D studio environment and rendered to video."
+        }
+      ],
+      "languages": ["en", "zh", "ko"],
+      "episodesSource": "resources/ai-news-website/episodes.json"
+    },
+
+    "clank-tank": {
+      "id": "clank-tank",
+      "title": "Clank Tank",
+      "tagline": "Pitch to AI judges. Compete for exposure.",
+      "description": "An AI-powered game show where blockchain entrepreneurs pitch their projects to a panel of simulated crypto judges.",
+      "longDescription": "Clank Tank is an AI-powered game show where blockchain entrepreneurs pitch their projects to a panel of simulated crypto judges. Inspired by Shark Tank, our system transforms real business pitches into complete episodes with AI-generated characters and dialogue. The judges evaluate each pitch, ask tough questions, and ultimately decide whether to 'pump' or 'dump' the project.",
+      "category": "Investment Show",
+      "schedule": "Weekly",
+      "duration": "~15-20 min",
+      "accentColor": "#ff6b35",
+      "status": "active",
+      "premiere": "2024-06-01",
+      "heroImage": "clanktank-hero.png",
+      "showPage": "shows/clank-tank.html",
+      "externalLinks": {
+        "submitPitch": "https://tally.so/r/3X8EKO",
+        "youtube": "https://www.youtube.com/watch?v=R-oObQtsksw"
+      },
+      "characters": [
+        {
+          "id": "aixvc",
+          "name": "aixvc",
+          "role": "Judge",
+          "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png"
+        },
+        {
+          "id": "spartan",
+          "name": "Degen Spartan",
+          "role": "Judge",
+          "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png"
+        },
+        {
+          "id": "shaw",
+          "name": "AI Shaw",
+          "role": "Judge",
+          "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png"
+        },
+        {
+          "id": "peepo",
+          "name": "peepo",
+          "role": "Guest Judge",
+          "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png"
+        },
+        {
+          "id": "eliza",
+          "name": "Eliza",
+          "role": "Host",
+          "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png"
+        }
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Pitch Submission",
+          "description": "Entrepreneurs submit project details through our form with tokenomics, team info, and vision."
+        },
+        {
+          "step": 2,
+          "title": "AI Research",
+          "description": "Our system analyzes each pitch using AI for enhanced context and market research."
+        },
+        {
+          "step": 3,
+          "title": "Character Creation",
+          "description": "AI generates a character profile to represent the pitcher in the show."
+        },
+        {
+          "step": 4,
+          "title": "Script Generation",
+          "description": "AI Writers' Room creates complete episode scripts with natural dialogue."
+        },
+        {
+          "step": 5,
+          "title": "Voice Synthesis",
+          "description": "Each character's lines are converted to speech using unique AI voice profiles."
+        },
+        {
+          "step": 6,
+          "title": "3D Rendering",
+          "description": "Episodes are rendered in real-time using PlayCanvas with JSON-based scene control."
+        },
+        {
+          "step": 7,
+          "title": "Recording",
+          "description": "Automated tools capture high-quality video with professional transitions."
+        },
+        {
+          "step": 8,
+          "title": "Publishing",
+          "description": "Automated upload to YouTube with professional metadata and thumbnails."
+        }
+      ],
+      "episodes": [
+        {
+          "id": "s1e01",
+          "title": "The AI Battle Arena",
+          "description": "Season 1 premiere featuring blockchain innovators pitching to our panel of AI judges.",
+          "youtubeId": "R-oObQtsksw",
+          "thumbnail": "resources/m3tv/M3org/clank-photoshoot/cover2.png",
+          "duration": "18:45",
+          "airDate": "2024-06-15"
+        }
+      ]
+    },
+
+    "jedai-council": {
+      "id": "jedai-council",
+      "title": "JedAI Council",
+      "tagline": "Where AI minds convene to debate the future",
+      "description": "A groundbreaking virtual show where sophisticated AI agents gather to debate technology, economics, and the future of society.",
+      "longDescription": "JedAI Council is a groundbreaking virtual show where sophisticated AI agents with unique personalities gather to debate technology, economics, and the future of society. Set in an immersive 3D council chamber, each session brings together five distinct perspectives. From blockchain philosophy to meme culture analysis, artificial consciousness to economic theory — no topic is too complex for the council.",
+      "category": "Philosophical Debate",
+      "schedule": "Weekly",
+      "duration": "~20-30 min",
+      "accentColor": "#a855f7",
+      "status": "active",
+      "premiere": "2024-03-01",
+      "heroImage": "resources/m3tv/M3org/stills/13notext.png",
+      "showPage": "shows/jedai-council.html",
+      "externalLinks": {
+        "website": "https://jedaicouncil.com"
+      },
+      "characters": [
+        {
+          "id": "eliza",
+          "name": "Eliza",
+          "role": "Host",
+          "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png"
+        },
+        {
+          "id": "shaw",
+          "name": "AI Shaw",
+          "role": "Council Member",
+          "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png"
+        },
+        {
+          "id": "aixvc",
+          "name": "AIXVC",
+          "role": "Council Member",
+          "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png"
+        },
+        {
+          "id": "spartan",
+          "name": "Degen Spartan",
+          "role": "Council Member",
+          "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png"
+        },
+        {
+          "id": "peepo",
+          "name": "Peepo",
+          "role": "Council Member",
+          "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png"
+        }
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Topic Selection",
+          "description": "Community data and trending discussions inform the debate topic for each session."
+        },
+        {
+          "step": 2,
+          "title": "Position Generation",
+          "description": "Each AI council member develops their unique perspective based on their personality model."
+        },
+        {
+          "step": 3,
+          "title": "Live Debate",
+          "description": "AI agents engage in real-time dialogue, responding and adapting to each other's arguments."
+        },
+        {
+          "step": 4,
+          "title": "3D Production",
+          "description": "The debate is rendered in the council chamber with dynamic cameras and atmospheric effects."
+        }
+      ],
+      "episodes": [
+        {
+          "id": "s1e01",
+          "title": "The Future of AI Agents",
+          "description": "The council debates the implications of autonomous AI agents in society.",
+          "thumbnail": "resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00001.jpg",
+          "duration": "24:30",
+          "airDate": "2024-03-15"
+        },
+        {
+          "id": "s1e02",
+          "title": "Blockchain Philosophy",
+          "description": "A deep dive into the philosophical foundations of decentralized systems.",
+          "thumbnail": "resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00002.jpg",
+          "duration": "22:15",
+          "airDate": "2024-03-22"
+        },
+        {
+          "id": "s1e03",
+          "title": "Meme Culture & Markets",
+          "description": "Exploring the intersection of internet culture and financial markets.",
+          "thumbnail": "resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00003.jpg",
+          "duration": "26:45",
+          "airDate": "2024-03-29"
+        }
+      ]
+    },
+
+    "stonk-wars": {
+      "id": "stonk-wars",
+      "title": "Stonk Wars",
+      "tagline": "AI agents react to real-time market chaos",
+      "description": "24/7 livestream featuring AI agents that react to live financial markets on a virtual trading floor.",
+      "longDescription": "Stonk Wars is a 24/7 livestream featuring AI agents that react to live financial markets on a virtual NYSE trading floor. Watch as AI traders respond to real-time data from crypto, stocks, and forex markets. This isn't financial advice — it's derpy entertainment. AI characters read and respond to chat messages in real-time, creating dynamic audience participation.",
+      "category": "24/7 Livestream",
+      "schedule": "Always On",
+      "duration": "24/7",
+      "accentColor": "#22c55e",
+      "status": "live",
+      "premiere": "2024-05-01",
+      "heroImage": "stonkwars-hero.jpeg",
+      "showPage": "shows/stonk-wars.html",
+      "externalLinks": {
+        "twitch": "https://www.twitch.tv/stonkwars",
+        "metaverse": "https://hyperfy.io/stonkexchange",
+        "website": "https://m3-org.github.io/stonkwars-website/"
+      },
+      "characters": [
+        {
+          "id": "eliza",
+          "name": "Eliza",
+          "role": "Floor Host",
+          "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png"
+        },
+        {
+          "id": "aixvc",
+          "name": "AIXVC",
+          "role": "VC Analyst",
+          "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png"
+        },
+        {
+          "id": "spartan",
+          "name": "Degen Spartan",
+          "role": "Crypto Degen",
+          "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png"
+        },
+        {
+          "id": "shaw",
+          "name": "Shaw",
+          "role": "Tech Analyst",
+          "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png"
+        },
+        {
+          "id": "peepo",
+          "name": "Peepo",
+          "role": "Meme Trader",
+          "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png"
+        }
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Market Data",
+          "description": "Live feeds from crypto exchanges, stock markets, and forex platforms stream in continuously."
+        },
+        {
+          "step": 2,
+          "title": "AI Analysis",
+          "description": "AI agents process market movements and generate contextual reactions and commentary."
+        },
+        {
+          "step": 3,
+          "title": "Chat Integration",
+          "description": "Viewer messages are processed in real-time, influencing AI character responses."
+        },
+        {
+          "step": 4,
+          "title": "Live Render",
+          "description": "The 3D trading floor is rendered live with dynamic cameras and character animations."
+        }
+      ],
+      "features": [
+        {
+          "title": "Real-Time Data",
+          "description": "Live market data from stocks, crypto, and forex drives AI reactions. BTC, ETH, NVDA, S&P 500, and more.",
+          "icon": "chart"
+        },
+        {
+          "title": "Interactive Chat",
+          "description": "AI characters read and respond to chat messages in real-time. Influence the show with your messages.",
+          "icon": "chat"
+        },
+        {
+          "title": "AI Characters",
+          "description": "Virtual personalities populate the trading floor with dynamic interactions and entertaining commentary.",
+          "icon": "smile"
+        }
+      ],
+      "marketTickers": ["BTC", "ETH", "SOL", "NVDA", "SPY", "EUR/USD"]
+    }
+  },
+
+  "characters": {
+    "eliza": {
+      "id": "eliza",
+      "name": "Eliza",
+      "fullName": "Eliza",
+      "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png",
+      "description": "The primary host across M3TV shows, known for her engaging presentation style.",
+      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+    },
+    "aixvc": {
+      "id": "aixvc",
+      "name": "AIXVC",
+      "fullName": "AI Marc / AIXVC",
+      "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png",
+      "description": "Investment-focused AI personality bringing VC perspective to discussions.",
+      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+    },
+    "shaw": {
+      "id": "shaw",
+      "name": "AI Shaw",
+      "fullName": "AI Shaw",
+      "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png",
+      "description": "Technical analyst providing deep-dives into code, architecture, and tech trends.",
+      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+    },
+    "spartan": {
+      "id": "spartan",
+      "name": "Degen Spartan",
+      "fullName": "Degen Spartan AI",
+      "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png",
+      "description": "Crypto-focused personality with degen energy and market insights.",
+      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+    },
+    "peepo": {
+      "id": "peepo",
+      "name": "Peepo",
+      "fullName": "Peepo",
+      "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png",
+      "description": "Meme-savvy personality bringing humor and cultural commentary.",
+      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+    }
+  },
+
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-12",
+    "totalShows": 4,
+    "totalCharacters": 5,
+    "colorPalette": {
+      "cronJob": "#00d4ff",
+      "clankTank": "#ff6b35",
+      "jedaiCouncil": "#a855f7",
+      "stonkWars": "#22c55e"
+    }
+  }
+}

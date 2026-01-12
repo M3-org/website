@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - M3TV</title>
+  <meta name="description" content="M3TV is a DAO-native television network creating AI-powered shows. Learn how we generate content using cutting-edge AI pipelines.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About M3TV">
+  <meta property="og:description" content="DAO-native television for the decentralized age. Learn how AI generates our shows.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep': '#0a0a0f',
+            'surface': '#141418',
+            'elevated': '#1c1c24',
+            'cyan': '#00d4ff',
+            'ember': '#ff6b35',
+            'violet': '#a855f7',
+            'stonk': '#22c55e',
+          },
+          fontFamily: {
+            'display': ['Cormorant Garamond', 'serif'],
+            'body': ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #141418;
+      --bg-elevated: #1c1c24;
+      --accent-cyan: #00d4ff;
+      --accent-ember: #ff6b35;
+      --accent-violet: #a855f7;
+      --accent-stonk: #22c55e;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1aa;
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navigation */
+    .nav-glass {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+    }
+
+    .nav-link:hover { color: var(--text-primary); }
+
+    /* Typography */
+    .headline-xl {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+
+    /* Pipeline */
+    .pipeline-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .pipeline-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pipeline-step {
+      position: relative;
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .pipeline-step .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 auto 1rem;
+    }
+
+    .pipeline-arrow {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .pipeline-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-cyan);
+        opacity: 0.5;
+      }
+    }
+
+    /* Character grid */
+    .character-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .character-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .character-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 3px solid rgba(0, 212, 255, 0.3);
+      background: var(--bg-elevated);
+    }
+
+    .character-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Tech stack */
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-surface);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Show cards */
+    .show-card-mini {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .show-card-mini:hover {
+      transform: translateX(4px);
+    }
+
+    .show-card-mini .show-color {
+      width: 4px;
+      height: 40px;
+      border-radius: 2px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: var(--bg-deep);
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="index.html#stream" class="nav-link">Watch</a>
+          <a href="index.html#shows" class="nav-link">Shows</a>
+          <a href="archive.html" class="nav-link">Archive</a>
+          <a href="about.html" class="nav-link text-white">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 bg-deep">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <span class="section-label text-cyan block mb-4">About M3TV</span>
+      <h1 class="headline-xl text-4xl md:text-5xl lg:text-6xl mb-6">
+        DAO-Native Television<br>for the Decentralized Age
+      </h1>
+      <p class="text-xl text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+        We're building the future of media — where AI creates content, communities curate it, and everyone owns a piece of the story.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="section-label text-cyan block mb-4">The Vision</span>
+          <h2 class="headline-xl text-3xl md:text-4xl mb-6">Beyond Traditional Media</h2>
+          <p class="text-zinc-400 text-lg leading-relaxed mb-6">
+            M3TV isn't just another streaming platform. It's an experiment in what happens when you combine AI-generated content, decentralized governance, and community-driven storytelling.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            Our daily stream isn't a content catalog — it's a shared ritual. The archive isn't a library — it's collective memory. Every show, every character, every episode is generated by AI and shaped by our community.
+          </p>
+          <p class="text-zinc-400 leading-relaxed">
+            We believe entertainment should be open, collaborative, and owned by the people who create and consume it.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-deep p-6 rounded-xl border border-zinc-800">
+            <div class="text-3xl font-display font-bold text-cyan mb-2">4</div>
+            <div class="text-zinc-500 text-sm">Active Shows</div>
+          </div>
+          <div class="bg-deep p-6 rounded-xl border border-zinc-800">
+            <div class="text-3xl font-display font-bold text-ember mb-2">5</div>
+            <div class="text-zinc-500 text-sm">AI Characters</div>
+          </div>
+          <div class="bg-deep p-6 rounded-xl border border-zinc-800">
+            <div class="text-3xl font-display font-bold text-violet mb-2">24/7</div>
+            <div class="text-zinc-500 text-sm">Live Content</div>
+          </div>
+          <div class="bg-deep p-6 rounded-xl border border-zinc-800">
+            <div class="text-3xl font-display font-bold text-stonk mb-2">100%</div>
+            <div class="text-zinc-500 text-sm">AI Generated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Shows Are Made -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-cyan block mb-4">Behind the Curtain</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">How Shows Are Made</h2>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          Every episode is generated through a multi-stage AI pipeline — from data collection to final render
+        </p>
+      </div>
+
+      <!-- Main Pipeline -->
+      <div class="pipeline-container mb-16">
+        <div class="pipeline-step">
+          <div class="step-number">1</div>
+          <h3 class="font-semibold text-lg mb-2">Data Collection</h3>
+          <p class="text-zinc-400 text-sm">
+            We gather data from GitHub, Discord, market feeds, and community submissions — the raw material for our stories.
+          </p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-number">2</div>
+          <h3 class="font-semibold text-lg mb-2">Script Generation</h3>
+          <p class="text-zinc-400 text-sm">
+            Large language models analyze the data and generate conversational scripts tailored to each character's personality.
+          </p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-number">3</div>
+          <h3 class="font-semibold text-lg mb-2">Voice Synthesis</h3>
+          <p class="text-zinc-400 text-sm">
+            AI voice models convert scripts to speech, with unique voice profiles for each character using ElevenLabs.
+          </p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-number">4</div>
+          <h3 class="font-semibold text-lg mb-2">3D Production</h3>
+          <p class="text-zinc-400 text-sm">
+            Characters are animated in real-time 3D environments with dynamic cameras, lighting, and atmospheric effects.
+          </p>
+        </div>
+      </div>
+
+      <!-- Detailed breakdown -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-surface p-6 rounded-xl border border-zinc-800">
+          <div class="w-12 h-12 bg-cyan/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">AI Writers' Room</h3>
+          <p class="text-zinc-400 text-sm mb-4">
+            Claude and GPT-4 collaborate to create natural dialogue, ensuring each character maintains their unique voice and perspective.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge text-xs">Claude</span>
+            <span class="tech-badge text-xs">GPT-4</span>
+            <span class="tech-badge text-xs">Perplexity</span>
+          </div>
+        </div>
+
+        <div class="bg-surface p-6 rounded-xl border border-zinc-800">
+          <div class="w-12 h-12 bg-violet/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Voice Pipeline</h3>
+          <p class="text-zinc-400 text-sm mb-4">
+            Each character has a unique AI voice profile. We use professional voice cloning with careful attention to tone and emotion.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge text-xs">ElevenLabs</span>
+            <span class="tech-badge text-xs">Voice Cloning</span>
+          </div>
+        </div>
+
+        <div class="bg-surface p-6 rounded-xl border border-zinc-800">
+          <div class="w-12 h-12 bg-ember/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">3D Rendering</h3>
+          <p class="text-zinc-400 text-sm mb-4">
+            Real-time 3D engines render our virtual studios with cinematic camera work and atmospheric effects.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge text-xs">PlayCanvas</span>
+            <span class="tech-badge text-xs">Unreal Engine</span>
+            <span class="tech-badge text-xs">Three.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Characters -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-cyan block mb-4">The Cast</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">Meet Our AI Personalities</h2>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          Our characters aren't just avatars — they're AI agents with distinct personalities, expertise, and debate styles
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
+          </div>
+          <h3 class="font-semibold mb-1">Eliza</h3>
+          <p class="text-cyan text-sm mb-3">Primary Host</p>
+          <p class="text-zinc-500 text-xs">
+            The engaging face of M3TV, known for her warm presentation style and sharp interviewing skills.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar" style="border-color: rgba(255, 107, 53, 0.3);">
+            <img src="resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="AIXVC">
+          </div>
+          <h3 class="font-semibold mb-1">AIXVC / Marc</h3>
+          <p class="text-ember text-sm mb-3">VC Perspective</p>
+          <p class="text-zinc-500 text-xs">
+            Investment-focused analyst bringing venture capital insights to every discussion.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar" style="border-color: rgba(168, 85, 247, 0.3);">
+            <img src="resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="AI Shaw">
+          </div>
+          <h3 class="font-semibold mb-1">AI Shaw</h3>
+          <p class="text-violet text-sm mb-3">Tech Analyst</p>
+          <p class="text-zinc-500 text-xs">
+            Deep technical expertise in code, architecture, and emerging tech trends.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar" style="border-color: rgba(34, 197, 94, 0.3);">
+            <img src="resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Degen Spartan">
+          </div>
+          <h3 class="font-semibold mb-1">Degen Spartan</h3>
+          <p class="text-stonk text-sm mb-3">Crypto Degen</p>
+          <p class="text-zinc-500 text-xs">
+            High-energy crypto commentary with degen energy and market alpha.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="Peepo">
+          </div>
+          <h3 class="font-semibold mb-1">Peepo</h3>
+          <p class="text-zinc-400 text-sm mb-3">Meme Expert</p>
+          <p class="text-zinc-500 text-xs">
+            Internet culture specialist bringing humor and meme-savvy commentary.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Shows -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-cyan block mb-4">Our Shows</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">The M3TV Lineup</h2>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          Each show has a unique format, but they all share our AI-first production approach
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="shows/cron-job.html" class="show-card-mini">
+          <div class="show-color" style="background: #00d4ff;"></div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">Cron Job</h3>
+            <p class="text-zinc-400 text-sm">Daily automated news from the ElizaOS ecosystem</p>
+          </div>
+          <svg class="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a href="shows/clank-tank.html" class="show-card-mini">
+          <div class="show-color" style="background: #ff6b35;"></div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">Clank Tank</h3>
+            <p class="text-zinc-400 text-sm">AI judges evaluate blockchain pitches</p>
+          </div>
+          <svg class="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a href="shows/jedai-council.html" class="show-card-mini">
+          <div class="show-color" style="background: #a855f7;"></div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">JedAI Council</h3>
+            <p class="text-zinc-400 text-sm">Philosophical debates on tech and society</p>
+          </div>
+          <svg class="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a href="shows/stonk-wars.html" class="show-card-mini">
+          <div class="show-color" style="background: #22c55e;"></div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">Stonk Wars</h3>
+            <p class="text-zinc-400 text-sm">24/7 live market reactions and trading chaos</p>
+          </div>
+          <svg class="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The DAO -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="section-label text-cyan block mb-4">The DAO</span>
+          <h2 class="headline-xl text-3xl md:text-4xl mb-6">Community Owned</h2>
+          <p class="text-zinc-400 text-lg leading-relaxed mb-6">
+            M3TV is part of the M3 collective — a DAO of builders, creators, and dreamers working on the intersection of AI, crypto, and culture.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-8">
+            We believe in open-source development, transparent governance, and giving creators ownership of what they build. Everything we create is open for the community to use, remix, and build upon.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://discord.gg/ai16z" target="_blank" class="btn-secondary">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
+              Join Discord
+            </a>
+            <a href="https://github.com/m3-org" target="_blank" class="btn-secondary">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="bg-deep p-8 rounded-2xl border border-zinc-800">
+          <h3 class="font-semibold text-xl mb-6">Open Source Stack</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between py-3 border-b border-zinc-800">
+              <span class="text-zinc-400">ElizaOS</span>
+              <span class="text-cyan text-sm">AI Agent Framework</span>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b border-zinc-800">
+              <span class="text-zinc-400">Shmotime</span>
+              <span class="text-cyan text-sm">Episode Rendering</span>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b border-zinc-800">
+              <span class="text-zinc-400">PlayCanvas</span>
+              <span class="text-cyan text-sm">3D Engine</span>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b border-zinc-800">
+              <span class="text-zinc-400">HYPERFY</span>
+              <span class="text-cyan text-sm">Metaverse Platform</span>
+            </div>
+            <div class="flex items-center justify-between py-3">
+              <span class="text-zinc-400">ElevenLabs</span>
+              <span class="text-cyan text-sm">Voice Synthesis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="headline-xl text-3xl md:text-4xl mb-6">Ready to Watch?</h2>
+      <p class="text-zinc-400 text-lg mb-8 max-w-2xl mx-auto">
+        Tune into the daily stream, explore our shows, or join the community to help shape the future of AI-generated entertainment.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="index.html" class="btn-primary">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Start Watching
+        </a>
+        <a href="https://discord.gg/ai16z" target="_blank" class="btn-secondary">
+          Join the DAO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-surface border-t border-zinc-800/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-lg font-display font-semibold">M3TV</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="https://twitter.com/maboroshi_3" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://discord.gg/ai16z" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/m3-org" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p class="text-sm text-zinc-600">&copy; 2025 M3TV. Open source, community owned.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

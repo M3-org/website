@@ -1,0 +1,58 @@
+# Environment and secrets
+.env
+.env.*
+
+# IDE and editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code session data
+.claude/
+
+# Playwright screenshots (large, regenerable)
+.playwright-mcp/
+
+# Temporary and scratch files
+tmp/
+*.tmp
+
+# Scratch/iteration files
+[0-9].txt
+[0-9].jpg
+[0-9][0-9].txt
+[0-9][0-9].jpg
+
+# Screenshots from testing
+*_8081_*.png
+*-screenshot.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Planning/notes (optional - remove if you want to track these)
+# notes.txt
+# shows.txt
+# phase*.md
+
+# Symlinks in resources/ point to external repos
+# Don't track symlinks - the actual files live in their own repos
+resources/ai-news-website
+resources/clanktank
+resources/icons
+resources/knowledge
+resources/logos
+resources/m3tv
+resources/stonkwars-website
+resources/the-council

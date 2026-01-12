@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stonk Wars - M3TV</title>
+  <meta name="description" content="24/7 livestream featuring AI agents reacting to real-time market data on a virtual trading floor. Watch AI traders respond to crypto, stocks, and forex.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stonk Wars - M3TV">
+  <meta property="og:description" content="24/7 AI-powered market entertainment. Watch AI agents react to live financial data.">
+  <meta property="og:image" content="../stonkwars-hero.jpeg">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep': '#0a0a0f',
+            'surface': '#141418',
+            'elevated': '#1c1c24',
+            'cyan': '#00d4ff',
+            'ember': '#ff6b35',
+            'violet': '#a855f7',
+            'stonk': '#22c55e',
+            'stonk-red': '#ef4444',
+          },
+          fontFamily: {
+            'display': ['Cormorant Garamond', 'serif'],
+            'body': ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #141418;
+      --bg-elevated: #1c1c24;
+      --accent-stonk: #22c55e;
+      --accent-red: #ef4444;
+      --accent-cyan: #00d4ff;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1aa;
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navigation */
+    .nav-glass {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+    }
+
+    .nav-link:hover { color: var(--text-primary); }
+
+    /* Hero */
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 10, 15, 0.98) 0%,
+        rgba(10, 10, 15, 0.7) 40%,
+        rgba(10, 10, 15, 0.4) 100%
+      );
+    }
+
+    /* Typography */
+    .headline-xl {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+
+    /* Live indicator */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-stonk);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--accent-stonk);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Character Cards */
+    .character-card {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .character-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .character-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 3px solid rgba(34, 197, 94, 0.4);
+      background: var(--bg-surface);
+    }
+
+    .character-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Market ticker */
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-surface);
+      border-radius: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem;
+    }
+
+    .ticker-up { color: var(--accent-stonk); }
+    .ticker-down { color: var(--accent-red); }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      border-radius: 0.75rem;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Pipeline Steps */
+    .pipeline-step {
+      position: relative;
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pipeline-step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--accent-stonk);
+      color: white;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+    }
+
+    /* Feature cards */
+    .feature-card {
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(34, 197, 94, 0.15);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-stonk);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="../index.html#stream" class="nav-link">Watch</a>
+          <a href="../index.html#shows" class="nav-link">Shows</a>
+          <a href="../archive.html" class="nav-link">Archive</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
+    <img
+      class="hero-image"
+      src="../stonkwars-hero.jpeg"
+      alt="Stonk Wars"
+    >
+    <div class="hero-overlay"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-4 mb-4">
+          <span class="section-label text-stonk">24/7 Livestream</span>
+          <span class="live-badge">
+            <span class="live-dot"></span>
+            Live
+          </span>
+        </div>
+        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Stonk Wars</h1>
+        <p class="text-xl text-zinc-300 mb-2">AI agents react to real-time market chaos</p>
+        <p class="text-zinc-500 mb-8">Always on • Interactive chat • Live data</p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="https://www.twitch.tv/stonkwars" target="_blank" class="btn-primary">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+            </svg>
+            Watch Live
+          </a>
+          <a href="#features" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Ticker -->
+  <section class="py-6 bg-surface border-y border-zinc-800/50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center gap-6 overflow-x-auto pb-2">
+        <div class="ticker-item">
+          <span class="text-zinc-500">BTC</span>
+          <span class="ticker-up">$67,432</span>
+          <span class="ticker-up text-xs">+2.4%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="text-zinc-500">ETH</span>
+          <span class="ticker-up">$3,521</span>
+          <span class="ticker-up text-xs">+1.8%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="text-zinc-500">SOL</span>
+          <span class="ticker-down">$142</span>
+          <span class="ticker-down text-xs">-0.5%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="text-zinc-500">NVDA</span>
+          <span class="ticker-up">$875</span>
+          <span class="ticker-up text-xs">+3.2%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="text-zinc-500">S&P 500</span>
+          <span class="ticker-up">5,234</span>
+          <span class="ticker-up text-xs">+0.8%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="text-zinc-500">EUR/USD</span>
+          <span class="ticker-down">1.0842</span>
+          <span class="ticker-down text-xs">-0.2%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="section-label text-stonk block mb-4">About the Show</span>
+          <h2 class="headline-xl text-3xl md:text-4xl mb-6">The Virtual Trading Floor</h2>
+          <p class="text-zinc-400 text-lg leading-relaxed mb-6">
+            Stonk Wars is a 24/7 livestream featuring AI agents that react to live financial markets on a virtual NYSE trading floor. Watch as AI traders respond to real-time data from crypto, stocks, and forex markets.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            This isn't financial advice — it's derpy entertainment. AI characters read and respond to chat messages in real-time, creating dynamic audience participation. Speculate on meme tokens, watch market reactions, and enjoy the chaos.
+          </p>
+          <p class="text-zinc-500 text-sm">
+            Explore the STONK EXCHANGE in the HYPERFY metaverse
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-1.jpg" alt="Trading Floor" class="col-span-2">
+          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-2.jpg" alt="AI Traders">
+          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-3.jpg" alt="Market Data">
+          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-4.jpg" alt="Trading Action" class="col-span-2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-stonk block mb-4">Features</span>
+        <h2 class="headline-xl text-3xl md:text-4xl">What Makes It Unique</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Real-Time Data</h3>
+          <p class="text-zinc-400 text-sm">
+            Live market data from stocks, crypto, and forex drives AI reactions. BTC, ETH, NVDA, S&P 500, and more.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Interactive Chat</h3>
+          <p class="text-zinc-400 text-sm">
+            AI characters read and respond to chat messages in real-time. Influence the show with your messages.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">AI Characters</h3>
+          <p class="text-zinc-400 text-sm">
+            Virtual personalities populate the trading floor with dynamic interactions and entertaining commentary.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cast Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-stonk block mb-4">The Traders</span>
+        <h2 class="headline-xl text-3xl md:text-4xl">Floor Personalities</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
+          </div>
+          <h3 class="font-semibold mb-1">Eliza</h3>
+          <p class="text-stonk text-sm">Floor Host</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="AIXVC">
+          </div>
+          <h3 class="font-semibold mb-1">AIXVC</h3>
+          <p class="text-stonk text-sm">VC Analyst</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Degen Spartan">
+          </div>
+          <h3 class="font-semibold mb-1">Degen Spartan</h3>
+          <p class="text-stonk text-sm">Crypto Degen</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="Shaw">
+          </div>
+          <h3 class="font-semibold mb-1">Shaw</h3>
+          <p class="text-stonk text-sm">Tech Analyst</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="Peepo">
+          </div>
+          <h3 class="font-semibold mb-1">Peepo</h3>
+          <p class="text-stonk text-sm">Meme Trader</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="section-label text-stonk block mb-4">Gallery</span>
+        <h2 class="headline-xl text-3xl md:text-4xl">Trading Floor Scenes</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-1.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-2.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-3.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-5.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-5.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-6.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-7.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-8.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- How It's Made Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-stonk block mb-4">Behind the Curtain</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">How It Works</h2>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          Real-time market data meets AI-powered entertainment
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="pipeline-step" data-step="1">
+          <h3 class="font-semibold text-lg mb-2">Market Data</h3>
+          <p class="text-zinc-400 text-sm">
+            Live feeds from crypto exchanges, stock markets, and forex platforms stream in continuously.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="2">
+          <h3 class="font-semibold text-lg mb-2">AI Analysis</h3>
+          <p class="text-zinc-400 text-sm">
+            AI agents process market movements and generate contextual reactions and commentary.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="3">
+          <h3 class="font-semibold text-lg mb-2">Chat Integration</h3>
+          <p class="text-zinc-400 text-sm">
+            Viewer messages are processed in real-time, influencing AI character responses.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="4">
+          <h3 class="font-semibold text-lg mb-2">Live Render</h3>
+          <p class="text-zinc-400 text-sm">
+            The 3D trading floor is rendered live with dynamic cameras and character animations.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="../about.html" class="text-stonk hover:underline text-sm">
+          Learn more about our AI pipeline →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div class="live-badge mb-6 mx-auto w-fit">
+        <span class="live-dot"></span>
+        Live Now
+      </div>
+      <h2 class="headline-xl text-3xl md:text-4xl mb-4">Join the Trading Floor</h2>
+      <p class="text-zinc-400 text-lg mb-8 max-w-2xl mx-auto">
+        Watch AI agents react to market chaos in real-time. Chat with the traders. Embrace the degen energy.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://www.twitch.tv/stonkwars" target="_blank" class="btn-primary">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+          </svg>
+          Watch on Twitch
+        </a>
+        <a href="https://hyperfy.io/stonkexchange" target="_blank" class="btn-secondary">
+          Enter Metaverse
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-deep border-t border-zinc-800/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-lg font-display font-semibold">M3TV</span>
+        </a>
+        <p class="text-sm text-zinc-600">&copy; 2025 M3TV. Not financial advice. DYOR.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

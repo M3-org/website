@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clank Tank - M3TV</title>
+  <meta name="description" content="High-stakes AI investment show where blockchain innovators pitch to crypto judges for virtual funding and real exposure.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Clank Tank - M3TV">
+  <meta property="og:description" content="AI-powered investment show where entrepreneurs pitch to simulated crypto judges.">
+  <meta property="og:image" content="../resources/m3tv/M3org/clank-photoshoot/cover1.png">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep': '#0a0a0f',
+            'surface': '#141418',
+            'elevated': '#1c1c24',
+            'cyan': '#00d4ff',
+            'ember': '#ff6b35',
+            'violet': '#a855f7',
+          },
+          fontFamily: {
+            'display': ['Cormorant Garamond', 'serif'],
+            'body': ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #141418;
+      --bg-elevated: #1c1c24;
+      --accent-ember: #ff6b35;
+      --accent-cyan: #00d4ff;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1aa;
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navigation */
+    .nav-glass {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+    }
+
+    .nav-link:hover { color: var(--text-primary); }
+
+    /* Hero */
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 10, 15, 0.98) 0%,
+        rgba(10, 10, 15, 0.7) 40%,
+        rgba(10, 10, 15, 0.4) 100%
+      );
+    }
+
+    /* Typography */
+    .headline-xl {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--accent-ember);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Character Cards */
+    .character-card {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .character-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .character-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 3px solid rgba(255, 107, 53, 0.4);
+      background: var(--bg-surface);
+    }
+
+    .character-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .character-avatar.host {
+      border-color: rgba(0, 212, 255, 0.4);
+    }
+
+    /* Episode Cards */
+    .episode-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background: var(--bg-surface);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255, 107, 53, 0.2);
+    }
+
+    .episode-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.9) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .episode-card img {
+      transition: transform 0.5s ease;
+    }
+
+    .episode-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .episode-card .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .episode-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    /* Pipeline Steps */
+    .pipeline-step {
+      position: relative;
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pipeline-step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--accent-ember);
+      color: white;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      max-width: 900px;
+      width: 90%;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 110;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-close svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Submit CTA */
+    .submit-cta {
+      background: linear-gradient(135deg, var(--accent-ember) 0%, #ff8c5a 100%);
+      border-radius: 1rem;
+      padding: 3rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="../index.html#stream" class="nav-link">Watch</a>
+          <a href="../index.html#shows" class="nav-link">Shows</a>
+          <a href="../archive.html" class="nav-link">Archive</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
+    <img
+      class="hero-image"
+      src="../resources/m3tv/M3org/clank-photoshoot/cover1.png"
+      alt="Clank Tank"
+    >
+    <div class="hero-overlay"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32">
+      <div class="max-w-2xl">
+        <span class="section-label text-ember block mb-4">Investment Show</span>
+        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Clank Tank</h1>
+        <p class="text-xl text-zinc-300 mb-2">Pitch to AI judges. Compete for exposure.</p>
+        <p class="text-zinc-500 mb-8">Episodes ~ 15-20 min</p>
+
+        <div class="flex flex-wrap gap-4">
+          <button class="btn-primary" onclick="playLatestEpisode()">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Watch Latest
+          </button>
+          <a href="https://tally.so/r/3X8EKO" target="_blank" class="btn-secondary">Submit Your Pitch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="section-label text-ember block mb-4">About the Show</span>
+          <h2 class="headline-xl text-3xl md:text-4xl mb-6">The AI Investment Arena</h2>
+          <p class="text-zinc-400 text-lg leading-relaxed mb-6">
+            Clank Tank is an AI-powered game show where blockchain entrepreneurs pitch their projects to a panel of simulated crypto judges. Inspired by Shark Tank, our system transforms real business pitches into complete episodes with AI-generated characters and dialogue.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            The judges evaluate each pitch, ask tough questions, and ultimately decide whether to "pump" or "dump" the project. It's entertainment with a purpose — giving projects exposure and AI-driven feedback.
+          </p>
+          <p class="text-zinc-500 text-sm">
+            Submit your project for a chance to be featured
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img src="../resources/m3tv/M3org/clank-photoshoot/judges.png" alt="Clank Tank Judges" class="rounded-lg">
+          <img src="../resources/m3tv/M3org/clank-photoshoot/spartan.jpeg" alt="Spartan" class="rounded-lg mt-8">
+          <img src="../resources/m3tv/M3org/clank-photoshoot/shaw.jpeg" alt="Shaw" class="rounded-lg -mt-8">
+          <img src="../resources/m3tv/M3org/clank-photoshoot/eliza.jpeg" alt="Eliza" class="rounded-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cast Section -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-ember block mb-4">The Panel</span>
+        <h2 class="headline-xl text-3xl md:text-4xl">Meet the Judges</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="aixvc">
+          </div>
+          <h3 class="font-semibold mb-1">aixvc</h3>
+          <p class="text-ember text-sm">Judge</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Degen Spartan AI">
+          </div>
+          <h3 class="font-semibold mb-1">Degen Spartan</h3>
+          <p class="text-ember text-sm">Judge</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="AI Shaw">
+          </div>
+          <h3 class="font-semibold mb-1">AI Shaw</h3>
+          <p class="text-ember text-sm">Judge</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar">
+            <img src="../resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="peepo">
+          </div>
+          <h3 class="font-semibold mb-1">peepo</h3>
+          <p class="text-zinc-500 text-sm">Guest Judge</p>
+        </div>
+
+        <div class="character-card">
+          <div class="character-avatar host">
+            <img src="../resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
+          </div>
+          <h3 class="font-semibold mb-1">Eliza</h3>
+          <p class="text-cyan text-sm">Host</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes Section -->
+  <section id="episodes" class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+        <div>
+          <span class="section-label text-ember block mb-4">Episodes</span>
+          <h2 class="headline-xl text-3xl md:text-4xl">Latest Episodes</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="episodes-grid">
+        <!-- Episode 1 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('R-oObQtsksw', 'S1E1: The AI Battle Arena', 'Season 1 Premiere')">
+          <img src="../resources/m3tv/M3org/clank-photoshoot/cover2.png" alt="Episode 1" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <p class="text-ember text-xs font-medium mb-1">S1E1</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">The AI Battle Arena</h3>
+          </div>
+        </div>
+
+        <!-- Placeholder for future episodes -->
+        <div class="episode-card aspect-video opacity-50">
+          <div class="absolute inset-0 bg-surface"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <p class="text-zinc-500 text-sm">Coming Soon</p>
+              <p class="text-zinc-600 text-xs mt-1">Submit your pitch</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-video opacity-50">
+          <div class="absolute inset-0 bg-surface"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <p class="text-zinc-500 text-sm">Coming Soon</p>
+              <p class="text-zinc-600 text-xs mt-1">Submit your pitch</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="../archive.html?show=clanktank" class="btn-secondary inline-flex items-center gap-2">
+          View All Episodes
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Your Pitch CTA -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="submit-cta">
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4 text-white">Ready to Pitch?</h2>
+        <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+          Submit your blockchain project and get featured on Clank Tank. Our AI judges will evaluate your pitch and provide feedback.
+        </p>
+        <a href="https://tally.so/r/3X8EKO" target="_blank" class="inline-flex items-center gap-2 bg-white text-deep px-8 py-4 rounded-lg font-semibold hover:bg-white/90 transition-colors">
+          Submit Your Pitch
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It's Made Section -->
+  <section class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label text-ember block mb-4">Behind the Curtain</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">How Episodes Are Made</h2>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          From pitch submission to published episode — our 8-step AI pipeline
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 mb-8">
+        <div class="pipeline-step" data-step="1">
+          <h3 class="font-semibold text-lg mb-2">Pitch Submission</h3>
+          <p class="text-zinc-400 text-sm">
+            Entrepreneurs submit project details through our form with tokenomics, team info, and vision.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="2">
+          <h3 class="font-semibold text-lg mb-2">AI Research</h3>
+          <p class="text-zinc-400 text-sm">
+            Our system analyzes each pitch using AI for enhanced context and market research.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="3">
+          <h3 class="font-semibold text-lg mb-2">Character Creation</h3>
+          <p class="text-zinc-400 text-sm">
+            AI generates a character profile to represent the pitcher in the show.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="4">
+          <h3 class="font-semibold text-lg mb-2">Script Generation</h3>
+          <p class="text-zinc-400 text-sm">
+            AI Writers' Room creates complete episode scripts with natural dialogue.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="pipeline-step" data-step="5">
+          <h3 class="font-semibold text-lg mb-2">Voice Synthesis</h3>
+          <p class="text-zinc-400 text-sm">
+            Each character's lines are converted to speech using unique AI voice profiles.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="6">
+          <h3 class="font-semibold text-lg mb-2">3D Rendering</h3>
+          <p class="text-zinc-400 text-sm">
+            Episodes are rendered in real-time using PlayCanvas with JSON-based scene control.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="7">
+          <h3 class="font-semibold text-lg mb-2">Recording</h3>
+          <p class="text-zinc-400 text-sm">
+            Automated tools capture high-quality video with professional transitions.
+          </p>
+        </div>
+
+        <div class="pipeline-step" data-step="8">
+          <h3 class="font-semibold text-lg mb-2">Publishing</h3>
+          <p class="text-zinc-400 text-sm">
+            Automated upload to YouTube with professional metadata and thumbnails.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="../about.html" class="text-ember hover:underline text-sm">
+          Learn more about our AI pipeline →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-deep border-t border-zinc-800/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+            </svg>
+          </div>
+          <span class="text-lg font-display font-semibold">M3TV</span>
+        </a>
+        <p class="text-sm text-zinc-600">&copy; 2025 M3TV. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <div class="video-container">
+        <iframe id="youtube-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="mt-4">
+        <h3 id="lightbox-title" class="font-display text-xl font-semibold mb-2"></h3>
+        <p id="lightbox-date" class="text-zinc-500 text-sm"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const youtubePlayer = document.getElementById('youtube-player');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDate = document.getElementById('lightbox-date');
+
+    function openEpisode(videoId, title, subtitle) {
+      youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      lightboxTitle.textContent = title;
+      lightboxDate.textContent = subtitle;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.target !== lightbox) return;
+      lightbox.classList.remove('active');
+      youtubePlayer.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function playLatestEpisode() {
+      openEpisode('R-oObQtsksw', 'S1E1: The AI Battle Arena', 'Season 1 Premiere');
+    }
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
