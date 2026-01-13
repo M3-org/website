@@ -53,11 +53,83 @@
     },
     {
       "show": "clanktank",
+      "youtube": "J0UC8JgKD4Y",
+      "title": "Clank Tank S1E4: Silkroad, Eido, Rita",
+      "thumbnail": "https://i.ytimg.com/vi_webp/J0UC8JgKD4Y/maxresdefault.webp",
+      "label": "S1E4",
+      "description": "Dollar Silk Road, Agent Swarms, AI Co-host"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "mY6gEcoC-fE",
+      "title": "Clank Tank S1E3: Full Episode",
+      "thumbnail": "https://i.ytimg.com/vi_webp/mY6gEcoC-fE/maxresdefault.webp",
+      "label": "S1E3",
+      "description": "AI Artist, Ticket Out, NounSpace"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "ldYcVK4X6Qk",
+      "title": "Clank Tank S1E2: VC Milei, Mizuki, Hayden Davis",
+      "thumbnail": "https://i.ytimg.com/vi_webp/ldYcVK4X6Qk/maxresdefault.webp",
+      "label": "S1E2",
+      "description": "Season 1 Episode 2"
+    },
+    {
+      "show": "clanktank",
       "youtube": "R-oObQtsksw",
-      "title": "Clank Tank: Pilot Episode",
-      "thumbnail": "shows/clanktank-hero.jpg",
-      "label": "Pilot",
-      "description": "Web3 Investment Pitch Show"
+      "title": "Clank Tank S1E1: Pilot Episode",
+      "thumbnail": "https://i.ytimg.com/vi_webp/R-oObQtsksw/maxresdefault.webp",
+      "label": "S1E1",
+      "description": "Season 1 Premiere"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "-LsjOq-sGEk",
+      "title": "Clank Tank S2 Preview: Voxels Succession",
+      "thumbnail": "https://i.ytimg.com/vi_webp/-LsjOq-sGEk/maxresdefault.webp",
+      "label": "S2 Preview",
+      "description": "Ben Nolan pitches Voxels"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "R6B4ng4CCfw",
+      "title": "Clank Tank Sensemaking: Ethereum for the World",
+      "thumbnail": "https://i.ytimg.com/vi_webp/R6B4ng4CCfw/maxresdefault.webp",
+      "label": "Sensemaking",
+      "description": "Gitcoin Governance Analysis"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "gLlIs-a1nkw",
+      "title": "Clank Tank Launch Trailer",
+      "thumbnail": "https://i.ytimg.com/vi_webp/gLlIs-a1nkw/maxresdefault.webp",
+      "label": "Trailer",
+      "description": "Official Launch Trailer"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "n_g7VaO-zVE",
+      "title": "Clank Tank Announcement Trailer",
+      "thumbnail": "https://i.ytimg.com/vi_webp/n_g7VaO-zVE/maxresdefault.webp",
+      "label": "Teaser",
+      "description": "Announcement Teaser"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "Q6PATiyZmI0",
+      "title": "Clank Tank Episode 4 Sizzler",
+      "thumbnail": "https://i.ytimg.com/vi_webp/Q6PATiyZmI0/maxresdefault.webp",
+      "label": "Promo",
+      "description": "Episode 4 Promotional Clip"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "ZEsQPhNjLBQ",
+      "title": "Clank Tank S1E3: NounSpace Tom Pitch",
+      "thumbnail": "https://i.ytimg.com/vi_webp/ZEsQPhNjLBQ/maxresdefault.webp",
+      "label": "Clip",
+      "description": "NounSpace Social Platform Pitch"
     },
     {
       "show": "jedai",
@@ -274,6 +346,70 @@
       "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/renderout-dance-49018c39.jpg",
       "label": "Dance",
       "description": "Dance Animation Render"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/ai-council-final.mp4",
+      "title": "AI Council Final",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/ai-council-final-22a284e6.jpg",
+      "label": "AI Council",
+      "description": "JedAI Council Full Production"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/clankpromo.mp4",
+      "title": "Clank Tank Promo",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/clankpromo-54cc9e2c.jpg",
+      "label": "Clank Promo",
+      "description": "Clank Tank Promotional Video"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/debate.mp4",
+      "title": "Debate Arena",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/debate-f7c3fe82.jpg",
+      "label": "Debate",
+      "description": "AI Debate Arena Showcase"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/jedi-1.mp4",
+      "title": "JedAI Council Clip",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/jedi-1-947507c9.jpg",
+      "label": "JedAI Clip",
+      "description": "JedAI Council Preview"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/m3-outro.mp4",
+      "title": "M3 Outro",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/m3-outro-98444a57.jpg",
+      "label": "M3 Outro",
+      "description": "M3TV Network Outro Animation"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/promo-1.mp4",
+      "title": "M3TV Promo",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/promo-1-ab72aca9.jpg",
+      "label": "M3 Promo",
+      "description": "M3TV Network Promotional"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/stonkwars-rev-b.mp4",
+      "title": "Stonk Wars Preview",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/stonkwars-rev-b-b1411f6f.jpg",
+      "label": "Stonk Wars",
+      "description": "Stonk Wars Trading Floor Preview"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/boom-veg.mp4",
+      "title": "Boom Veg",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/boom-veg-92fd39a8.jpg",
+      "label": "Boom Veg",
+      "description": "Animation Showcase"
     },
     {
       "show": "stonkwars",
