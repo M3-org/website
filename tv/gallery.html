@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - M3TV</title>
+  <meta name="description" content="Browse the complete M3TV gallery. Collective memory of a DAO-native television network.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gallery - M3TV">
+  <meta property="og:description" content="Browse the complete M3TV gallery. Collective memory.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/m3tv.svg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep': '#0a0a0f',
+            'surface': '#141418',
+            'elevated': '#1c1c24',
+            'cyan': '#00d4ff',
+            'ember': '#ff6b35',
+            'violet': '#a855f7',
+          },
+          fontFamily: {
+            'display': ['Cormorant Garamond', 'serif'],
+            'body': ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #141418;
+      --bg-elevated: #1c1c24;
+      --accent-cyan: #00d4ff;
+      --accent-ember: #ff6b35;
+      --accent-violet: #a855f7;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1aa;
+      --text-muted: #52525b;
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navigation */
+    .nav-glass {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    /* Typography */
+    .headline-xl {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 500;
+    }
+
+    /* Filter Pills */
+    .filter-pill {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .filter-pill:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--text-primary);
+    }
+
+    .filter-pill.active {
+      background: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      color: var(--bg-deep);
+    }
+
+    /* Episode Cards */
+    .episode-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background: var(--bg-surface);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .episode-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 10, 15, 0.95) 0%,
+        rgba(10, 10, 15, 0.4) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .episode-card img {
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .episode-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .episode-card .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .episode-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .play-btn.live-indicator {
+      background: rgba(239, 68, 68, 0.8);
+      animation: pulse-live 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    .play-btn:hover {
+      background: var(--accent-ember);
+      transform: scale(1.1);
+    }
+
+    /* Show Badge */
+    .show-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-cronjob { background: rgba(0, 212, 255, 0.2); color: var(--accent-cyan); }
+    .badge-clanktank { background: rgba(255, 107, 53, 0.2); color: var(--accent-ember); }
+    .badge-jedai { background: rgba(168, 85, 247, 0.2); color: var(--accent-violet); }
+    .badge-stonkwars { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .badge-special { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      max-width: 1000px;
+      width: 90%;
+      position: relative;
+    }
+
+    .lightbox-video {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      background: #000;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .lightbox-video video,
+    .lightbox-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.5rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-close svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    .lightbox-info {
+      padding: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10">
+            <img src="assets/m3tv.svg" alt="M3TV" class="w-full h-full">
+          </div>
+        </a>
+
+        <!-- Nav Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="index.html#stream" class="nav-link">Watch</a>
+          <a href="index.html#shows" class="nav-link">Shows</a>
+          <a href="gallery.html" class="nav-link active">Gallery</a>
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="https://paragraph.com/@m3org" target="_blank" class="nav-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="pt-32 pb-16 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <span class="section-title text-xs text-cyan tracking-[0.3em] block mb-4">Collective Memory</span>
+      <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-6">Gallery</h1>
+      <p class="text-xl text-zinc-400 max-w-2xl">
+        Browse the complete collection. Every episode, every moment, preserved as collective memory.
+      </p>
+    </div>
+  </header>
+
+  <!-- Filters -->
+  <section class="py-8 bg-deep border-b border-zinc-800/50 sticky top-20 z-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <button class="filter-pill active" data-filter="all">All Episodes</button>
+        <button class="filter-pill" data-filter="cronjob">Cron Job</button>
+        <button class="filter-pill" data-filter="clanktank">Clank Tank</button>
+        <button class="filter-pill" data-filter="jedai">JedAI Council</button>
+        <button class="filter-pill" data-filter="stonkwars">Stonk Wars</button>
+        <button class="filter-pill" data-filter="special">Specials</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode Grid -->
+  <main class="py-16 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="episode-grid">
+
+        <!-- Cron Job Episodes -->
+        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="ArNCBfC9_f0" data-title="Cron Job: New AI Testing Framework & DAO Platform Evolution" onclick="openLightbox(this)">
+          <img src="assets/cron-job/thumbnails/2025-08-25.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Aug 25</h3>
+            <p class="text-zinc-400 text-sm">AI Testing Framework & DAO Evolution</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="VbaM4iNzKQc" data-title="Cron Job: Async Embedding & CCT Standard Integration" onclick="openLightbox(this)">
+          <img src="assets/cron-job/thumbnails/2025-08-18.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Aug 18</h3>
+            <p class="text-zinc-400 text-sm">Async Embedding & CCT Integration</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="JyJM3u9SmxQ" data-title="Cron Job: ElizaOS Major Backend Changes & Reporting Tools" onclick="openLightbox(this)">
+          <img src="assets/cron-job/thumbnails/2025-08-17.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Aug 17</h3>
+            <p class="text-zinc-400 text-sm">Major Backend Changes & Tools</p>
+          </div>
+        </div>
+
+        <!-- Clank Tank -->
+        <div class="episode-card aspect-[4/3]" data-show="clanktank" data-youtube="R-oObQtsksw" data-title="Clank Tank: Pilot Episode" onclick="openLightbox(this)">
+          <img src="shows/clanktank-hero.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-clanktank mb-2">Clank Tank</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Pilot</h3>
+            <p class="text-zinc-400 text-sm">Web3 Investment Pitch Show</p>
+          </div>
+        </div>
+
+        <!-- JedAI Council Episodes - All 15 -->
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="e6GBaL84iVs" data-title="JedAI Council S1E15: Holo Agents and Token Economics" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E15.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E15</h3>
+            <p class="text-zinc-400 text-sm">Holo Agents and Token Economics</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="xsxXRq09ZPI" data-title="JedAI Council S1E14: The Wisdom of Transitions" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E14.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E14</h3>
+            <p class="text-zinc-400 text-sm">The Wisdom of Transitions</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="2bWvAvcqUDs" data-title="JedAI Council S1E13: Crypto Wisdom in the AI Age" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E13.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E13</h3>
+            <p class="text-zinc-400 text-sm">Crypto Wisdom in the AI Age</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="jiQnMEvGNJQ" data-title="JedAI Council S1E12: The Stealth Strategy" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E12.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E12</h3>
+            <p class="text-zinc-400 text-sm">The Stealth Strategy</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="uqUIQ76jN8A" data-title="JedAI Council S1E11: The Quiet Launch" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E11.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E11</h3>
+            <p class="text-zinc-400 text-sm">The Quiet Launch</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="mEeKlAm9gDs" data-title="JedAI Council S1E10: The Open Source Dilemma" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E10.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E10</h3>
+            <p class="text-zinc-400 text-sm">The Open Source Dilemma</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="kiToXWX-56A" data-title="JedAI Council S1E9: The Version 1.0 Dilemma" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E9.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E9</h3>
+            <p class="text-zinc-400 text-sm">The Version 1.0 Dilemma</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="M7nqyfcn9gg" data-title="JedAI Council S1E8: The Multi Chain Vision" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E8.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E8</h3>
+            <p class="text-zinc-400 text-sm">The Multi Chain Vision</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="c1-Cu_1SyMk" data-title="JedAI Council S1E7: The Great Intelligence Upgrade" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E7.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E7</h3>
+            <p class="text-zinc-400 text-sm">The Great Intelligence Upgrade</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="TG3WEWctO_Q" data-title="JedAI Council S1E6: The Plugin Prophecy" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E6.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E6</h3>
+            <p class="text-zinc-400 text-sm">The Plugin Prophecy</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="-bQsXAIFVfI" data-title="JedAI Council S1E5: The Plugin Revolution" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E5.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E5</h3>
+            <p class="text-zinc-400 text-sm">The Plugin Revolution</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="3JKrutYATTc" data-title="JedAI Council S1E4: Composability vs Autonomy" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E4.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E4</h3>
+            <p class="text-zinc-400 text-sm">Composability vs Autonomy</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="HrwRgurKRGo" data-title="JedAI Council S1E3: The Blockchain Paradox" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E3.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E3</h3>
+            <p class="text-zinc-400 text-sm">The Blockchain Paradox</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="26PDE_3wfbI" data-title="JedAI Council S1E2: The Competitive Landscape" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E2.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E2</h3>
+            <p class="text-zinc-400 text-sm">The Competitive Landscape</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="j75DBjlZX90" data-title="JedAI Council S1E1: The Governance Dilemma" onclick="openLightbox(this)">
+          <img src="assets/jedai-council/thumbnails/S1E1.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
+            <h3 class="font-display text-xl font-semibold mb-1">S1 E1</h3>
+            <p class="text-zinc-400 text-sm">The Governance Dilemma</p>
+          </div>
+        </div>
+
+        <!-- Specials -->
+        <div class="episode-card aspect-[4/3]" data-show="special" data-video="https://cdn.elizaos.news/showcase/M3org/eliza-agent-bazaar.mp4" data-title="Eliza Agent Bazaar" onclick="openLightbox(this)">
+          <img src="https://cdn.elizaos.news/showcase/thumbs/eliza-agent-bazaar-790f50ae.jpg" alt="Eliza Bazaar" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-special mb-2">Special</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Eliza Agent Bazaar</h3>
+            <p class="text-zinc-400 text-sm">Special Event Coverage</p>
+          </div>
+        </div>
+
+        <div class="episode-card aspect-[4/3]" data-show="special" data-video="https://cdn.elizaos.news/showcase/M3org/CSTUDIO/cstudio-final.mp4" data-title="Character Studio" onclick="openLightbox(this)">
+          <img src="https://cdn.elizaos.news/showcase/thumbs/cstudio-final-8e40fe14.jpg" alt="Character Studio" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-special mb-2">Special</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Character Studio</h3>
+            <p class="text-zinc-400 text-sm">3D Character Creation Tool</p>
+          </div>
+        </div>
+
+        <!-- Stonk Wars -->
+        <a href="shows/stonk-wars.html" class="episode-card aspect-[4/3]" data-show="stonkwars">
+          <img src="assets/stills/stonkwars/stonkwars-1.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn live-indicator">
+              <span class="text-xs font-bold text-white">LIVE</span>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-stonkwars mb-2">Stonk Wars</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Preview</h3>
+            <p class="text-zinc-400 text-sm">24/7 Live Trading Stream</p>
+          </div>
+        </a>
+
+        <a href="shows/stonk-wars.html" class="episode-card aspect-[4/3]" data-show="stonkwars">
+          <img src="assets/stills/stonkwars/stonkwars-8.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge badge-stonkwars mb-2">Stonk Wars</span>
+            <h3 class="font-display text-xl font-semibold mb-1">Trading Floor</h3>
+            <p class="text-zinc-400 text-sm">Behind the Scenes</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Video Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="lightbox-video">
+        <video id="lightbox-video" controls autoplay style="display: none;">
+          <source src="" type="video/mp4">
+        </video>
+        <iframe id="lightbox-youtube" style="display: none;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="lightbox-info">
+        <h3 id="lightbox-title" class="font-display text-2xl font-semibold mb-2"></h3>
+        <p id="lightbox-desc" class="text-zinc-400"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-surface border-t border-zinc-800/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-12 h-12">
+            <img src="assets/m3tv.svg" alt="M3TV" class="w-full h-full">
+          </div>
+        </a>
+
+        <!-- Social Links -->
+        <div class="flex items-center gap-4">
+          <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://m3org.com/discord/" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="Discord">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/m3-org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@m3org/videos" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-sm text-zinc-600">
+          &copy; 2025 M3TV. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Filter functionality
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const episodeGrid = document.getElementById('episode-grid');
+
+    function applyFilter(filter) {
+      // Update URL
+      const url = new URL(window.location);
+      if (filter === 'all') {
+        url.searchParams.delete('show');
+      } else {
+        url.searchParams.set('show', filter);
+      }
+      window.history.pushState({}, '', url);
+
+      // Update active pill
+      filterPills.forEach(p => {
+        p.classList.toggle('active', p.dataset.filter === filter);
+      });
+
+      // Filter cards - query fresh each time to handle dynamic content
+      const cards = episodeGrid.querySelectorAll('.episode-card');
+      cards.forEach(card => {
+        const show = card.dataset.show;
+        const shouldShow = filter === 'all' || show === filter;
+
+        if (shouldShow) {
+          card.style.display = '';
+          card.style.opacity = '1';
+        } else {
+          card.style.opacity = '0';
+          setTimeout(() => {
+            if (card.style.opacity === '0') {
+              card.style.display = 'none';
+            }
+          }, 200);
+        }
+      });
+    }
+
+    // Add click handlers to pills
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        applyFilter(pill.dataset.filter);
+      });
+    });
+
+    // Apply filter from URL on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('show') || 'all';
+    applyFilter(initialFilter);
+
+    // Lightbox Functions
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const lightboxYoutube = document.getElementById('lightbox-youtube');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+
+    function openLightbox(element) {
+      const videoSrc = element.dataset.video;
+      const youtubeId = element.dataset.youtube;
+      const title = element.dataset.title;
+
+      // Reset both players
+      lightboxVideo.style.display = 'none';
+      lightboxYoutube.style.display = 'none';
+      lightboxVideo.pause();
+      lightboxYoutube.src = '';
+
+      if (youtubeId) {
+        // YouTube embed
+        lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+        lightboxYoutube.style.display = 'block';
+      } else if (videoSrc) {
+        // Local video
+        lightboxVideo.querySelector('source').src = videoSrc;
+        lightboxVideo.load();
+        lightboxVideo.style.display = 'block';
+      }
+
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = '';
+
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.target !== lightbox) return;
+
+      lightbox.classList.remove('active');
+      lightboxVideo.pause();
+      lightboxVideo.querySelector('source').src = '';
+      lightboxYoutube.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close lightbox on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
