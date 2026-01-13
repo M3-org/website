@@ -12,6 +12,9 @@
   <meta property="og:image" content="https://elizaos.news/media/15.jpg">
   <meta property="og:type" content="website">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/m3tv.svg">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -338,20 +341,15 @@
       <div class="flex items-center justify-between h-20">
         <a href="../index.html" class="flex items-center gap-3">
           <div class="w-10 h-10">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
           <a href="../index.html#stream" class="nav-link">Watch</a>
           <a href="../index.html#shows" class="nav-link">Shows</a>
-          <a href="../archive.html" class="nav-link">Archive</a>
+          <a href="../gallery.html" class="nav-link">Gallery</a>
           <a href="../index.html#about" class="nav-link">About</a>
+          <a href="https://paragraph.com/@m3org" target="_blank" class="nav-link">Blog</a>
         </div>
       </div>
     </div>
@@ -491,7 +489,7 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="../archive.html?show=cronjob" class="btn-secondary inline-flex items-center gap-2">
+        <a href="../gallery.html?show=cronjob" class="btn-secondary inline-flex items-center gap-2">
           View All Episodes
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -555,16 +553,32 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-8 h-8">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+          <div class="w-12 h-12">
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-lg font-display font-semibold">M3TV</span>
         </a>
+        <div class="flex items-center gap-4">
+          <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://m3org.com/discord/" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="Discord">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/m3-org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@m3org/videos" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
         <p class="text-sm text-zinc-600">&copy; 2025 M3TV. All rights reserved.</p>
       </div>
     </div>
@@ -589,27 +603,44 @@
   </div>
 
   <script>
-    // Episode data - would be loaded from JSON in production
-    const EPISODES_URL = 'https://cdn.elizaos.news/cron-job/episodes.json';
-    let episodes = {};
-    let currentLang = 'en';
-
-    // Load episodes
-    async function loadEpisodes() {
-      try {
-        const response = await fetch(EPISODES_URL);
-        episodes = await response.json();
-        renderEpisodes();
-      } catch (error) {
-        console.error('Failed to load episodes:', error);
-        // Fallback to sample data
-        renderSampleEpisodes();
+    // Episode data - embedded for reliability (en, ch, ko)
+    const episodes = {
+      '2025-08-25': {
+        en: { id: 'ArNCBfC9_f0', title: 'New AI Testing Framework & DAO Platform Evolution', thumbnail: '2025-08-25.jpg' },
+        ch: { id: 'Ba-pqUPxLKw', title: '重大测试框架更新与DAO平台演进', thumbnail: '2025-08-25.jpg' },
+        ko: { id: 'GskmAqhKgQ4', title: '새로운 AI 테스팅 프레임워크 & DAO 플랫폼 진화', thumbnail: '2025-08-25.jpg' }
+      },
+      '2025-08-18': {
+        en: { id: 'VbaM4iNzKQc', title: 'Async Embedding & $19B CCT Standard Integration', thumbnail: '2025-08-18.jpg' },
+        ch: { id: 'xpcyOxF0X2A', title: '异步嵌入和CCT标准：重大更新', thumbnail: '2025-08-18.jpg' },
+        ko: { id: '4Yq5Zy0ZFwI', title: '비동기 임베딩 및 190억 달러 CCT 표준 통합', thumbnail: '2025-08-18.jpg' }
+      },
+      '2025-08-17': {
+        en: { id: 'JyJM3u9SmxQ', title: 'ElizaOS: Major Backend Changes & New Reporting Tools', thumbnail: '2025-08-17.jpg' },
+        ch: { id: 'V8e_yzPcvcw', title: 'ElizaOS：后端系统全面改革和新增报告功能', thumbnail: '2025-08-17.jpg' },
+        ko: { id: 'kn9dffeS0iM', title: 'ElizaOS: 주요 백엔드 변경사항과 새로운 리포팅 도구', thumbnail: '2025-08-17.jpg' }
+      },
+      '2025-08-16': {
+        en: { id: '-yvuCdl_r40', title: 'ElizaOS: Domain Drama & Database Timeout Troubles', thumbnail: '2025-08-16.jpg' },
+        ch: { id: 'KCvV9ohBdh8', title: 'ElizaOS：域名迁移与数据库风波', thumbnail: '2025-08-16.jpg' },
+        ko: { id: '3suQsLdl0kg', title: 'ElizaOS: 도메인 문제와 데이터베이스 타임아웃 트러블', thumbnail: '2025-08-16.jpg' }
+      },
+      '2025-08-15': {
+        en: { id: 'fhGpWEHYUkk', title: 'ElizaOS: Major Architecture Update & Bond Protocol', thumbnail: '2025-08-15.jpg' },
+        ch: { id: 'zJiMqRCS9kg', title: 'ElizaOS：重大架构改造和债券协议', thumbnail: '2025-08-15.jpg' },
+        ko: { id: 'rR452JOyaS4', title: 'ElizaOS: 주요 아키텍처 업데이트 및 본드 프로토콜', thumbnail: '2025-08-15.jpg' }
+      },
+      '2025-08-14': {
+        en: { id: '8Xo-O75p7cA', title: 'ElizaOS Debates: Social Agents vs Simplification', thumbnail: '2025-08-14.jpg' },
+        ch: { id: 'BdNPaeiTxgw', title: 'ElizaOS架构辩论 & 机械坦克2.0揭秘', thumbnail: '2025-08-14.jpg' },
+        ko: { id: 'f48YE5EZbv8', title: 'ElizaOS 논쟁: 소셜 에이전트 vs 단순화', thumbnail: '2025-08-14.jpg' }
       }
-    }
+    };
+    let currentLang = 'en';
 
     function renderEpisodes() {
       const grid = document.getElementById('episodes-grid');
-      const dates = Object.keys(episodes).sort().reverse().slice(0, 6);
+      const dates = Object.keys(episodes).sort().reverse();
 
       grid.innerHTML = dates.map(date => {
         const ep = episodes[date][currentLang];
@@ -617,7 +648,7 @@
 
         return `
           <div class="episode-card aspect-video" onclick="openEpisode('${ep.id}', '${ep.title}', '${date}')">
-            <img src="https://cdn.elizaos.news/cron-job/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
+            <img src="../assets/cron-job/thumbnails/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
             <div class="play-overlay">
               <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -627,24 +658,11 @@
             </div>
             <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
               <p class="text-cyan text-xs font-medium mb-1">${date}</p>
-              <h3 class="font-display text-lg font-semibold line-clamp-2">${ep.title.split(': ')[1] || ep.title}</h3>
+              <h3 class="font-display text-lg font-semibold line-clamp-2">${ep.title}</h3>
             </div>
           </div>
         `;
       }).join('');
-    }
-
-    function renderSampleEpisodes() {
-      const grid = document.getElementById('episodes-grid');
-      grid.innerHTML = `
-        <div class="episode-card aspect-video">
-          <img src="../assets/stills/ep08.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <p class="text-cyan text-xs font-medium mb-1">Sample Episode</p>
-            <h3 class="font-display text-lg font-semibold">Loading episodes...</h3>
-          </div>
-        </div>
-      `;
     }
 
     // Language switching
@@ -694,7 +712,7 @@
     });
 
     // Initialize
-    loadEpisodes();
+    renderEpisodes();
   </script>
 </body>
 </html>

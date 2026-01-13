@@ -347,378 +347,13 @@
   <main class="py-16 bg-deep">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="episode-grid">
-
-        <!-- Cron Job Episodes -->
-        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="ArNCBfC9_f0" data-title="Cron Job: New AI Testing Framework & DAO Platform Evolution" onclick="openLightbox(this)">
-          <img src="assets/cron-job/thumbnails/2025-08-25.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Aug 25</h3>
-            <p class="text-zinc-400 text-sm">AI Testing Framework & DAO Evolution</p>
+        <!-- Loading state -->
+        <div id="loading-state" class="col-span-full text-center py-12">
+          <div class="animate-pulse">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-zinc-700"></div>
+            <p class="text-zinc-500">Loading gallery...</p>
           </div>
         </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="VbaM4iNzKQc" data-title="Cron Job: Async Embedding & CCT Standard Integration" onclick="openLightbox(this)">
-          <img src="assets/cron-job/thumbnails/2025-08-18.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Aug 18</h3>
-            <p class="text-zinc-400 text-sm">Async Embedding & CCT Integration</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="cronjob" data-youtube="JyJM3u9SmxQ" data-title="Cron Job: ElizaOS Major Backend Changes & Reporting Tools" onclick="openLightbox(this)">
-          <img src="assets/cron-job/thumbnails/2025-08-17.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-cronjob mb-2">Cron Job</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Aug 17</h3>
-            <p class="text-zinc-400 text-sm">Major Backend Changes & Tools</p>
-          </div>
-        </div>
-
-        <!-- Clank Tank -->
-        <div class="episode-card aspect-[4/3]" data-show="clanktank" data-youtube="R-oObQtsksw" data-title="Clank Tank: Pilot Episode" onclick="openLightbox(this)">
-          <img src="shows/clanktank-hero.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-clanktank mb-2">Clank Tank</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Pilot</h3>
-            <p class="text-zinc-400 text-sm">Web3 Investment Pitch Show</p>
-          </div>
-        </div>
-
-        <!-- JedAI Council Episodes - All 15 -->
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="e6GBaL84iVs" data-title="JedAI Council S1E15: Holo Agents and Token Economics" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E15.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E15</h3>
-            <p class="text-zinc-400 text-sm">Holo Agents and Token Economics</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="xsxXRq09ZPI" data-title="JedAI Council S1E14: The Wisdom of Transitions" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E14.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E14</h3>
-            <p class="text-zinc-400 text-sm">The Wisdom of Transitions</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="2bWvAvcqUDs" data-title="JedAI Council S1E13: Crypto Wisdom in the AI Age" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E13.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E13</h3>
-            <p class="text-zinc-400 text-sm">Crypto Wisdom in the AI Age</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="jiQnMEvGNJQ" data-title="JedAI Council S1E12: The Stealth Strategy" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E12.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E12</h3>
-            <p class="text-zinc-400 text-sm">The Stealth Strategy</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="uqUIQ76jN8A" data-title="JedAI Council S1E11: The Quiet Launch" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E11.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E11</h3>
-            <p class="text-zinc-400 text-sm">The Quiet Launch</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="mEeKlAm9gDs" data-title="JedAI Council S1E10: The Open Source Dilemma" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E10.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E10</h3>
-            <p class="text-zinc-400 text-sm">The Open Source Dilemma</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="kiToXWX-56A" data-title="JedAI Council S1E9: The Version 1.0 Dilemma" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E9.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E9</h3>
-            <p class="text-zinc-400 text-sm">The Version 1.0 Dilemma</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="M7nqyfcn9gg" data-title="JedAI Council S1E8: The Multi Chain Vision" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E8.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E8</h3>
-            <p class="text-zinc-400 text-sm">The Multi Chain Vision</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="c1-Cu_1SyMk" data-title="JedAI Council S1E7: The Great Intelligence Upgrade" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E7.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E7</h3>
-            <p class="text-zinc-400 text-sm">The Great Intelligence Upgrade</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="TG3WEWctO_Q" data-title="JedAI Council S1E6: The Plugin Prophecy" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E6.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E6</h3>
-            <p class="text-zinc-400 text-sm">The Plugin Prophecy</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="-bQsXAIFVfI" data-title="JedAI Council S1E5: The Plugin Revolution" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E5.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E5</h3>
-            <p class="text-zinc-400 text-sm">The Plugin Revolution</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="3JKrutYATTc" data-title="JedAI Council S1E4: Composability vs Autonomy" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E4.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E4</h3>
-            <p class="text-zinc-400 text-sm">Composability vs Autonomy</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="HrwRgurKRGo" data-title="JedAI Council S1E3: The Blockchain Paradox" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E3.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E3</h3>
-            <p class="text-zinc-400 text-sm">The Blockchain Paradox</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="26PDE_3wfbI" data-title="JedAI Council S1E2: The Competitive Landscape" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E2.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E2</h3>
-            <p class="text-zinc-400 text-sm">The Competitive Landscape</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="jedai" data-youtube="j75DBjlZX90" data-title="JedAI Council S1E1: The Governance Dilemma" onclick="openLightbox(this)">
-          <img src="assets/jedai-council/thumbnails/S1E1.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-jedai mb-2">JedAI Council</span>
-            <h3 class="font-display text-xl font-semibold mb-1">S1 E1</h3>
-            <p class="text-zinc-400 text-sm">The Governance Dilemma</p>
-          </div>
-        </div>
-
-        <!-- Specials -->
-        <div class="episode-card aspect-[4/3]" data-show="special" data-video="https://cdn.elizaos.news/showcase/M3org/eliza-agent-bazaar.mp4" data-title="Eliza Agent Bazaar" onclick="openLightbox(this)">
-          <img src="https://cdn.elizaos.news/showcase/thumbs/eliza-agent-bazaar-790f50ae.jpg" alt="Eliza Bazaar" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-special mb-2">Special</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Eliza Agent Bazaar</h3>
-            <p class="text-zinc-400 text-sm">Special Event Coverage</p>
-          </div>
-        </div>
-
-        <div class="episode-card aspect-[4/3]" data-show="special" data-video="https://cdn.elizaos.news/showcase/M3org/CSTUDIO/cstudio-final.mp4" data-title="Character Studio" onclick="openLightbox(this)">
-          <img src="https://cdn.elizaos.news/showcase/thumbs/cstudio-final-8e40fe14.jpg" alt="Character Studio" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-special mb-2">Special</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Character Studio</h3>
-            <p class="text-zinc-400 text-sm">3D Character Creation Tool</p>
-          </div>
-        </div>
-
-        <!-- Stonk Wars -->
-        <a href="shows/stonk-wars.html" class="episode-card aspect-[4/3]" data-show="stonkwars">
-          <img src="assets/stills/stonkwars/stonkwars-1.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn live-indicator">
-              <span class="text-xs font-bold text-white">LIVE</span>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-stonkwars mb-2">Stonk Wars</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Preview</h3>
-            <p class="text-zinc-400 text-sm">24/7 Live Trading Stream</p>
-          </div>
-        </a>
-
-        <a href="shows/stonk-wars.html" class="episode-card aspect-[4/3]" data-show="stonkwars">
-          <img src="assets/stills/stonkwars/stonkwars-8.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover">
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge badge-stonkwars mb-2">Stonk Wars</span>
-            <h3 class="font-display text-xl font-semibold mb-1">Trading Floor</h3>
-            <p class="text-zinc-400 text-sm">Behind the Scenes</p>
-          </div>
-        </a>
-
       </div>
     </div>
   </main>
@@ -788,10 +423,92 @@
   </footer>
 
   <script>
-    // Filter functionality
+    // DOM Elements
     const filterPills = document.querySelectorAll('.filter-pill');
     const episodeGrid = document.getElementById('episode-grid');
+    const loadingState = document.getElementById('loading-state');
 
+    // Gallery data
+    let galleryData = null;
+
+    // Create an episode card element
+    function createCard(item, shows) {
+      const show = shows[item.show];
+
+      // Determine if this is a link card or a playable card
+      if (item.link) {
+        // Link card (for show pages like Stonk Wars)
+        const card = document.createElement('a');
+        card.href = item.link;
+        card.className = 'episode-card aspect-[4/3]';
+        card.dataset.show = item.show;
+
+        card.innerHTML = `
+          <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn${item.live ? ' live-indicator' : ''}">
+              ${item.live
+                ? '<span class="text-xs font-bold text-white">LIVE</span>'
+                : `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>`
+              }
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge ${show.badge} mb-2">${show.name}</span>
+            <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
+            <p class="text-zinc-400 text-sm">${item.description}</p>
+          </div>
+        `;
+        return card;
+      } else {
+        // Playable card (YouTube or video)
+        const card = document.createElement('div');
+        card.className = 'episode-card aspect-[4/3]';
+        card.dataset.show = item.show;
+        card.dataset.title = item.title;
+        if (item.youtube) card.dataset.youtube = item.youtube;
+        if (item.video) card.dataset.video = item.video;
+        card.onclick = function() { openLightbox(this); };
+
+        card.innerHTML = `
+          <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <span class="show-badge ${show.badge} mb-2">${show.name}</span>
+            <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
+            <p class="text-zinc-400 text-sm">${item.description}</p>
+          </div>
+        `;
+        return card;
+      }
+    }
+
+    // Render all cards
+    function renderGallery(data) {
+      // Remove loading state
+      if (loadingState) loadingState.remove();
+
+      // Create and append cards
+      data.items.forEach(item => {
+        const card = createCard(item, data.shows);
+        episodeGrid.appendChild(card);
+      });
+
+      // Apply initial filter after cards are rendered
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialFilter = urlParams.get('show') || 'all';
+      applyFilter(initialFilter);
+    }
+
+    // Filter functionality
     function applyFilter(filter) {
       // Update URL
       const url = new URL(window.location);
@@ -807,7 +524,7 @@
         p.classList.toggle('active', p.dataset.filter === filter);
       });
 
-      // Filter cards - query fresh each time to handle dynamic content
+      // Filter cards
       const cards = episodeGrid.querySelectorAll('.episode-card');
       cards.forEach(card => {
         const show = card.dataset.show;
@@ -834,11 +551,6 @@
       });
     });
 
-    // Apply filter from URL on page load
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('show') || 'all';
-    applyFilter(initialFilter);
-
     // Lightbox Functions
     const lightbox = document.getElementById('lightbox');
     const lightboxVideo = document.getElementById('lightbox-video');
@@ -858,11 +570,9 @@
       lightboxYoutube.src = '';
 
       if (youtubeId) {
-        // YouTube embed
         lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
         lightboxYoutube.style.display = 'block';
       } else if (videoSrc) {
-        // Local video
         lightboxVideo.querySelector('source').src = videoSrc;
         lightboxVideo.load();
         lightboxVideo.style.display = 'block';
@@ -891,6 +601,27 @@
         closeLightbox();
       }
     });
+
+    // Load gallery data
+    fetch('gallery.json')
+      .then(response => response.json())
+      .then(data => {
+        galleryData = data;
+        renderGallery(data);
+      })
+      .catch(error => {
+        console.error('Error loading gallery:', error);
+        if (loadingState) {
+          loadingState.innerHTML = `
+            <div class="text-center">
+              <p class="text-red-400 mb-2">Failed to load gallery</p>
+              <button onclick="location.reload()" class="text-cyan hover:text-white transition-colors text-sm">
+                Try Again
+              </button>
+            </div>
+          `;
+        }
+      });
   </script>
 </body>
 </html>
