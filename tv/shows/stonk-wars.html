@@ -9,8 +9,11 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Stonk Wars - M3TV">
   <meta property="og:description" content="24/7 AI-powered market entertainment. Watch AI agents react to live financial data.">
-  <meta property="og:image" content="stonkwars-hero.jpeg">
+  <meta property="og:image" content="stonkwars-hero.jpg">
   <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/m3tv.svg">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -236,6 +239,82 @@
       transform: scale(1.02);
     }
 
+    .gallery-grid img, .lightbox-trigger {
+      cursor: pointer;
+    }
+
+    /* Image Lightbox */
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .image-lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
     /* Pipeline Steps */
     .pipeline-step {
       position: relative;
@@ -291,20 +370,14 @@
       <div class="flex items-center justify-between h-20">
         <a href="../index.html" class="flex items-center gap-3">
           <div class="w-10 h-10">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
-          <a href="../index.html#stream" class="nav-link">Watch</a>
           <a href="../index.html#shows" class="nav-link">Shows</a>
-          <a href="../archive.html" class="nav-link">Archive</a>
-          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../gallery.html" class="nav-link">Gallery</a>
+          <a href="../about.html" class="nav-link">About</a>
+          <a href="https://paragraph.com/@m3org" target="_blank" class="nav-link">Blog</a>
         </div>
       </div>
     </div>
@@ -312,11 +385,15 @@
 
   <!-- Hero Section -->
   <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
-    <img
+    <video
       class="hero-image"
-      src="stonkwars-hero.jpeg"
-      alt="Stonk Wars"
-    >
+      src="https://cdn.elizaos.news/showcase/M3org/stonkwars-rev-b.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster="stonkwars-hero.jpg"
+    ></video>
     <div class="hero-overlay"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32">
@@ -333,54 +410,21 @@
         <p class="text-zinc-500 mb-8">Always on • Interactive chat • Live data</p>
 
         <div class="flex flex-wrap gap-4">
-          <a href="https://www.twitch.tv/stonkwars" target="_blank" class="btn-primary">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+          <span class="btn-primary opacity-75 cursor-default">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            Watch Live
-          </a>
+            Coming Soon
+          </span>
           <a href="#features" class="btn-secondary">Learn More</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Live Ticker -->
-  <section class="py-6 bg-surface border-y border-zinc-800/50 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center gap-6 overflow-x-auto pb-2">
-        <div class="ticker-item">
-          <span class="text-zinc-500">BTC</span>
-          <span class="ticker-up">$67,432</span>
-          <span class="ticker-up text-xs">+2.4%</span>
-        </div>
-        <div class="ticker-item">
-          <span class="text-zinc-500">ETH</span>
-          <span class="ticker-up">$3,521</span>
-          <span class="ticker-up text-xs">+1.8%</span>
-        </div>
-        <div class="ticker-item">
-          <span class="text-zinc-500">SOL</span>
-          <span class="ticker-down">$142</span>
-          <span class="ticker-down text-xs">-0.5%</span>
-        </div>
-        <div class="ticker-item">
-          <span class="text-zinc-500">NVDA</span>
-          <span class="ticker-up">$875</span>
-          <span class="ticker-up text-xs">+3.2%</span>
-        </div>
-        <div class="ticker-item">
-          <span class="text-zinc-500">S&P 500</span>
-          <span class="ticker-up">5,234</span>
-          <span class="ticker-up text-xs">+0.8%</span>
-        </div>
-        <div class="ticker-item">
-          <span class="text-zinc-500">EUR/USD</span>
-          <span class="ticker-down">1.0842</span>
-          <span class="ticker-down text-xs">-0.2%</span>
-        </div>
-      </div>
-    </div>
+  <!-- Live Ticker - Polymarket -->
+  <section class="bg-surface border-y border-zinc-800/50 overflow-hidden">
+    <iframe src="https://ticker.polymarket.com/embed?category=Crypto&theme=dark&speed=1&displayMode=classic&height=48" width="100%" height="48" frameborder="0" scrolling="no" style="border: none; overflow: hidden;"></iframe>
   </section>
 
   <!-- About Section -->
@@ -401,110 +445,10 @@
           </p>
         </div>
         <div class="gallery-grid">
-          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-1.jpg" alt="Trading Floor" class="col-span-2">
-          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-2.jpg" alt="AI Traders">
-          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-3.jpg" alt="Market Data">
-          <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-4.jpg" alt="Trading Action" class="col-span-2">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="py-20 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="section-label text-stonk block mb-4">Features</span>
-        <h2 class="headline-xl text-3xl md:text-4xl">What Makes It Unique</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">Real-Time Data</h3>
-          <p class="text-zinc-400 text-sm">
-            Live market data from stocks, crypto, and forex drives AI reactions. BTC, ETH, NVDA, S&P 500, and more.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">Interactive Chat</h3>
-          <p class="text-zinc-400 text-sm">
-            AI characters read and respond to chat messages in real-time. Influence the show with your messages.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">AI Characters</h3>
-          <p class="text-zinc-400 text-sm">
-            Virtual personalities populate the trading floor with dynamic interactions and entertaining commentary.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cast Section -->
-  <section class="py-20 bg-deep">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="section-label text-stonk block mb-4">The Traders</span>
-        <h2 class="headline-xl text-3xl md:text-4xl">Floor Personalities</h2>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
-          </div>
-          <h3 class="font-semibold mb-1">Eliza</h3>
-          <p class="text-stonk text-sm">Floor Host</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="AIXVC">
-          </div>
-          <h3 class="font-semibold mb-1">AIXVC</h3>
-          <p class="text-stonk text-sm">VC Analyst</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Degen Spartan">
-          </div>
-          <h3 class="font-semibold mb-1">Degen Spartan</h3>
-          <p class="text-stonk text-sm">Crypto Degen</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="Shaw">
-          </div>
-          <h3 class="font-semibold mb-1">Shaw</h3>
-          <p class="text-stonk text-sm">Tech Analyst</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="Peepo">
-          </div>
-          <h3 class="font-semibold mb-1">Peepo</h3>
-          <p class="text-stonk text-sm">Meme Trader</p>
+          <img src="../assets/stills/stonkwars/stonkwars-2.jpg" alt="Trading Floor" class="col-span-2">
+          <img src="../assets/stills/stonkwars/stonkwars-11.jpg" alt="AI Traders">
+          <img src="../assets/stills/stonkwars/stonkwars-7.jpg" alt="Market Data">
+          <img src="../assets/stills/stonkwars/stonkwars-4.jpg" alt="Trading Action" class="col-span-2">
         </div>
       </div>
     </div>
@@ -519,14 +463,14 @@
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-1.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-2.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-3.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/Environments/stock-exchange/stonks-5.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-5.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-6.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-7.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
-        <img src="../resources/m3tv/M3org/stills/StonkWars_websitestills/stonkwars-8.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/environments/stock-exchange/stonks-1.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/environments/stock-exchange/stonks-2.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/environments/stock-exchange/stonks-3.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/environments/stock-exchange/stonks-5.jpg" alt="Trading Floor" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/stills/stonkwars/stonkwars-5.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/stills/stonkwars/stonkwars-6.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/stills/stonkwars/stonkwars-1.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
+        <img src="../assets/stills/stonkwars/stonkwars-8.jpg" alt="Action" class="rounded-lg aspect-video object-cover">
       </div>
     </div>
   </section>
@@ -592,12 +536,12 @@
         Watch AI agents react to market chaos in real-time. Chat with the traders. Embrace the degen energy.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://www.twitch.tv/stonkwars" target="_blank" class="btn-primary">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+        <span class="btn-primary opacity-75 cursor-default">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          Watch on Twitch
-        </a>
+          Coming Soon
+        </span>
         <a href="https://hyperfy.io/stonkexchange" target="_blank" class="btn-secondary">
           Enter Metaverse
         </a>
@@ -610,19 +554,105 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-8 h-8">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+          <div class="w-12 h-12">
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-lg font-display font-semibold">M3TV</span>
         </a>
+        <div class="flex items-center gap-4">
+          <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://m3org.com/discord/" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="Discord">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/m3-org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@m3org/videos" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
         <p class="text-sm text-zinc-600">&copy; 2025 M3TV. Not financial advice. DYOR.</p>
       </div>
     </div>
   </footer>
+
+  <!-- Image Lightbox -->
+  <div id="image-lightbox" class="image-lightbox" onclick="closeImageLightbox()">
+    <button class="lightbox-close" onclick="closeImageLightbox()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <img id="lightbox-image" src="" alt="Gallery image" onclick="event.stopPropagation()">
+    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // Image Lightbox functionality
+    const galleryImages = [];
+    let currentImageIndex = 0;
+
+    // Collect all gallery images
+    document.querySelectorAll('.gallery-grid img, .lightbox-trigger').forEach((img, index) => {
+      galleryImages.push(img.src);
+      img.addEventListener('click', () => openImageLightbox(index));
+    });
+
+    // Also add images from the grid section
+    document.querySelectorAll('section .grid img:not(.character-avatar img):not([src*="m3tv.svg"]):not([src*="thumbnails"])').forEach(img => {
+      if (!galleryImages.includes(img.src)) {
+        const index = galleryImages.length;
+        galleryImages.push(img.src);
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => openImageLightbox(index));
+      }
+    });
+
+    const imageLightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+
+    function openImageLightbox(index) {
+      currentImageIndex = index;
+      lightboxImage.src = galleryImages[index];
+      imageLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageLightbox() {
+      imageLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(direction) {
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentImageIndex];
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!imageLightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeImageLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+  </script>
 </body>
 </html>

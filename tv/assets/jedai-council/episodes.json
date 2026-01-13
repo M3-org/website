@@ -1,0 +1,140 @@
+{
+  "show": "jedai-council",
+  "episodes": [
+    {
+      "id": "S1E15",
+      "episode": 15,
+      "title": "Holo Agents and Token Economics",
+      "description": "The council debates the implications of ElizaOS v2 and the future of AI agent ecosystems, exploring how token economics can incentivize the development of holographic AI agents.",
+      "youtubeId": "e6GBaL84iVs",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E15.jpg",
+      "airDate": "2025-06-10"
+    },
+    {
+      "id": "S1E14",
+      "episode": 14,
+      "title": "The Wisdom of Transitions",
+      "description": "A philosophical discussion about navigating major technological transitions, examining how individuals and organizations can adapt to the rapid pace of AI development.",
+      "youtubeId": "xsxXRq09ZPI",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E14.jpg",
+      "airDate": "2025-06-09"
+    },
+    {
+      "id": "S1E13",
+      "episode": 13,
+      "title": "Crypto Wisdom in the AI Age",
+      "description": "The council explores how traditional crypto wisdom applies to the new era of AI-powered blockchain applications, discussing investment strategies and technological convergence.",
+      "youtubeId": "2bWvAvcqUDs",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E13.jpg",
+      "airDate": "2025-06-08"
+    },
+    {
+      "id": "S1E12",
+      "episode": 12,
+      "title": "The Stealth Strategy",
+      "description": "An analysis of stealth mode development in AI startups, exploring the balance between secrecy and community engagement in building revolutionary AI technologies.",
+      "youtubeId": "jiQnMEvGNJQ",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E12.jpg",
+      "airDate": "2025-06-07"
+    },
+    {
+      "id": "S1E11",
+      "episode": 11,
+      "title": "The Quiet Launch",
+      "description": "The council examines the strategy of quiet launches in AI development, discussing when and why teams choose to release products without fanfare and the implications for adoption.",
+      "youtubeId": "uqUIQ76jN8A",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E11.jpg",
+      "airDate": "2025-06-06"
+    },
+    {
+      "id": "S1E10",
+      "episode": 10,
+      "title": "The Open Source Dilemma",
+      "description": "A discussion about the benefits and challenges of open-source AI development, exploring how transparency and collaboration can coexist with commercial interests and security concerns.",
+      "youtubeId": "mEeKlAm9gDs",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E10.jpg",
+      "airDate": "2025-06-05"
+    },
+    {
+      "id": "S1E9",
+      "episode": 9,
+      "title": "The Version One Point Oh Dilemma",
+      "description": "The council debates the challenges of releasing version 1.0 of AI systems, examining the balance between feature completeness, stability, and the pressure to ship in a competitive market.",
+      "youtubeId": "kiToXWX-56A",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E9.jpg",
+      "airDate": "2025-06-04"
+    },
+    {
+      "id": "S1E8",
+      "episode": 8,
+      "title": "The Multi Chain Vision",
+      "description": "An exploration of multi-chain architectures and their role in creating interoperable AI agent networks, discussing the technical and philosophical challenges of cross-chain AI systems.",
+      "youtubeId": "M7nqyfcn9gg",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E8.jpg",
+      "airDate": "2025-06-03"
+    },
+    {
+      "id": "S1E7",
+      "episode": 7,
+      "title": "The Great Intelligence Upgrade",
+      "description": "The council examines the ongoing evolution of AI capabilities, discussing breakthrough moments and the implications of rapidly advancing artificial intelligence systems.",
+      "youtubeId": "c1-Cu_1SyMk",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E7.jpg",
+      "airDate": "2025-06-02"
+    },
+    {
+      "id": "S1E6",
+      "episode": 6,
+      "title": "The Plugin Prophecy",
+      "description": "A forward-looking discussion about the future of plugin ecosystems, examining how they might evolve to become the backbone of next-generation AI applications.",
+      "youtubeId": "TG3WEWctO_Q",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E6.jpg",
+      "airDate": "2025-06-01"
+    },
+    {
+      "id": "S1E5",
+      "episode": 5,
+      "title": "The Plugin Revolution",
+      "description": "The council discusses the transformative potential of plugin architectures in AI systems, exploring how modular design is reshaping the way we build and deploy intelligent agents.",
+      "youtubeId": "-bQsXAIFVfI",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E5.jpg",
+      "airDate": "2025-05-31"
+    },
+    {
+      "id": "S1E4",
+      "episode": 4,
+      "title": "Composability vs Autonomy - The ElizaOS Paradox",
+      "description": "A deep dive into the tension between building composable AI systems and maintaining agent autonomy, examining how ElizaOS navigates this fundamental challenge in AI architecture.",
+      "youtubeId": "3JKrutYATTc",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E4.jpg",
+      "airDate": "2025-05-30"
+    },
+    {
+      "id": "S1E3",
+      "episode": 3,
+      "title": "The Blockchain Paradox",
+      "description": "The council explores the contradictions and opportunities that arise when blockchain technology meets artificial intelligence, discussing scalability, decentralization, and the future of Web3.",
+      "youtubeId": "HrwRgurKRGo",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E3.jpg",
+      "airDate": "2025-05-29"
+    },
+    {
+      "id": "S1E2",
+      "episode": 2,
+      "title": "The Competitive Landscape",
+      "description": "An analysis of the competitive dynamics in the AI agent ecosystem, examining how different platforms and protocols are vying for dominance in the rapidly evolving market.",
+      "youtubeId": "26PDE_3wfbI",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E2.jpg",
+      "airDate": "2025-05-28"
+    },
+    {
+      "id": "S1E1",
+      "episode": 1,
+      "title": "The Governance Dilemma",
+      "description": "The council debates the fundamental challenges of decentralized governance in the age of AI and blockchain technology. A philosophical exploration of how autonomous systems can maintain democratic principles while operating at machine speed.",
+      "youtubeId": "j75DBjlZX90",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E1.jpg",
+      "airDate": "2025-05-27"
+    }
+  ]
+}

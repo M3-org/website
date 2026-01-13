@@ -1,0 +1,432 @@
+{
+  "shows": {
+    "cronjob": {
+      "name": "Cron Job",
+      "badge": "badge-cronjob",
+      "description": "Daily ElizaOS news summary"
+    },
+    "clanktank": {
+      "name": "Clank Tank",
+      "badge": "badge-clanktank",
+      "description": "Web3 Investment Pitch Show"
+    },
+    "jedai": {
+      "name": "JedAI Council",
+      "badge": "badge-jedai",
+      "description": "AI governance debates"
+    },
+    "stonkwars": {
+      "name": "Stonk Wars",
+      "badge": "badge-stonkwars",
+      "description": "24/7 Live Trading Stream"
+    },
+    "special": {
+      "name": "Special",
+      "badge": "badge-special",
+      "description": "Special events and features"
+    }
+  },
+  "items": [
+    {
+      "show": "cronjob",
+      "youtube": "ArNCBfC9_f0",
+      "title": "Cron Job: New AI Testing Framework & DAO Platform Evolution",
+      "thumbnail": "assets/cron-job/thumbnails/2025-08-25.jpg",
+      "label": "Aug 25",
+      "description": "AI Testing Framework & DAO Evolution"
+    },
+    {
+      "show": "cronjob",
+      "youtube": "VbaM4iNzKQc",
+      "title": "Cron Job: Async Embedding & CCT Standard Integration",
+      "thumbnail": "assets/cron-job/thumbnails/2025-08-18.jpg",
+      "label": "Aug 18",
+      "description": "Async Embedding & CCT Integration"
+    },
+    {
+      "show": "cronjob",
+      "youtube": "JyJM3u9SmxQ",
+      "title": "Cron Job: ElizaOS Major Backend Changes & Reporting Tools",
+      "thumbnail": "assets/cron-job/thumbnails/2025-08-17.jpg",
+      "label": "Aug 17",
+      "description": "Major Backend Changes & Tools"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "J0UC8JgKD4Y",
+      "title": "Clank Tank S1E4: Silkroad, Eido, Rita",
+      "thumbnail": "https://i.ytimg.com/vi_webp/J0UC8JgKD4Y/maxresdefault.webp",
+      "label": "S1E4",
+      "description": "Dollar Silk Road, Agent Swarms, AI Co-host"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "mY6gEcoC-fE",
+      "title": "Clank Tank S1E3: Full Episode",
+      "thumbnail": "https://i.ytimg.com/vi_webp/mY6gEcoC-fE/maxresdefault.webp",
+      "label": "S1E3",
+      "description": "AI Artist, Ticket Out, NounSpace"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "ldYcVK4X6Qk",
+      "title": "Clank Tank S1E2: VC Milei, Mizuki, Hayden Davis",
+      "thumbnail": "https://i.ytimg.com/vi_webp/ldYcVK4X6Qk/maxresdefault.webp",
+      "label": "S1E2",
+      "description": "Season 1 Episode 2"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "R-oObQtsksw",
+      "title": "Clank Tank S1E1: Pilot Episode",
+      "thumbnail": "https://i.ytimg.com/vi_webp/R-oObQtsksw/maxresdefault.webp",
+      "label": "S1E1",
+      "description": "Season 1 Premiere"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "-LsjOq-sGEk",
+      "title": "Clank Tank S2 Preview: Voxels Succession",
+      "thumbnail": "https://i.ytimg.com/vi_webp/-LsjOq-sGEk/maxresdefault.webp",
+      "label": "S2 Preview",
+      "description": "Ben Nolan pitches Voxels"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "R6B4ng4CCfw",
+      "title": "Clank Tank Sensemaking: Ethereum for the World",
+      "thumbnail": "https://i.ytimg.com/vi_webp/R6B4ng4CCfw/maxresdefault.webp",
+      "label": "Sensemaking",
+      "description": "Gitcoin Governance Analysis"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "gLlIs-a1nkw",
+      "title": "Clank Tank Launch Trailer",
+      "thumbnail": "https://i.ytimg.com/vi_webp/gLlIs-a1nkw/maxresdefault.webp",
+      "label": "Trailer",
+      "description": "Official Launch Trailer"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "n_g7VaO-zVE",
+      "title": "Clank Tank Announcement Trailer",
+      "thumbnail": "https://i.ytimg.com/vi_webp/n_g7VaO-zVE/maxresdefault.webp",
+      "label": "Teaser",
+      "description": "Announcement Teaser"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "Q6PATiyZmI0",
+      "title": "Clank Tank Episode 4 Sizzler",
+      "thumbnail": "https://i.ytimg.com/vi_webp/Q6PATiyZmI0/maxresdefault.webp",
+      "label": "Promo",
+      "description": "Episode 4 Promotional Clip"
+    },
+    {
+      "show": "clanktank",
+      "youtube": "ZEsQPhNjLBQ",
+      "title": "Clank Tank S1E3: NounSpace Tom Pitch",
+      "thumbnail": "https://i.ytimg.com/vi_webp/ZEsQPhNjLBQ/maxresdefault.webp",
+      "label": "Clip",
+      "description": "NounSpace Social Platform Pitch"
+    },
+    {
+      "show": "jedai",
+      "youtube": "e6GBaL84iVs",
+      "title": "JedAI Council S1E15: Holo Agents and Token Economics",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E15.jpg",
+      "label": "S1 E15",
+      "description": "Holo Agents and Token Economics"
+    },
+    {
+      "show": "jedai",
+      "youtube": "xsxXRq09ZPI",
+      "title": "JedAI Council S1E14: The Wisdom of Transitions",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E14.jpg",
+      "label": "S1 E14",
+      "description": "The Wisdom of Transitions"
+    },
+    {
+      "show": "jedai",
+      "youtube": "2bWvAvcqUDs",
+      "title": "JedAI Council S1E13: Crypto Wisdom in the AI Age",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E13.jpg",
+      "label": "S1 E13",
+      "description": "Crypto Wisdom in the AI Age"
+    },
+    {
+      "show": "jedai",
+      "youtube": "jiQnMEvGNJQ",
+      "title": "JedAI Council S1E12: The Stealth Strategy",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E12.jpg",
+      "label": "S1 E12",
+      "description": "The Stealth Strategy"
+    },
+    {
+      "show": "jedai",
+      "youtube": "uqUIQ76jN8A",
+      "title": "JedAI Council S1E11: The Quiet Launch",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E11.jpg",
+      "label": "S1 E11",
+      "description": "The Quiet Launch"
+    },
+    {
+      "show": "jedai",
+      "youtube": "mEeKlAm9gDs",
+      "title": "JedAI Council S1E10: The Open Source Dilemma",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E10.jpg",
+      "label": "S1 E10",
+      "description": "The Open Source Dilemma"
+    },
+    {
+      "show": "jedai",
+      "youtube": "kiToXWX-56A",
+      "title": "JedAI Council S1E9: The Version 1.0 Dilemma",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E9.jpg",
+      "label": "S1 E9",
+      "description": "The Version 1.0 Dilemma"
+    },
+    {
+      "show": "jedai",
+      "youtube": "M7nqyfcn9gg",
+      "title": "JedAI Council S1E8: The Multi Chain Vision",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E8.jpg",
+      "label": "S1 E8",
+      "description": "The Multi Chain Vision"
+    },
+    {
+      "show": "jedai",
+      "youtube": "c1-Cu_1SyMk",
+      "title": "JedAI Council S1E7: The Great Intelligence Upgrade",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E7.jpg",
+      "label": "S1 E7",
+      "description": "The Great Intelligence Upgrade"
+    },
+    {
+      "show": "jedai",
+      "youtube": "TG3WEWctO_Q",
+      "title": "JedAI Council S1E6: The Plugin Prophecy",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E6.jpg",
+      "label": "S1 E6",
+      "description": "The Plugin Prophecy"
+    },
+    {
+      "show": "jedai",
+      "youtube": "-bQsXAIFVfI",
+      "title": "JedAI Council S1E5: The Plugin Revolution",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E5.jpg",
+      "label": "S1 E5",
+      "description": "The Plugin Revolution"
+    },
+    {
+      "show": "jedai",
+      "youtube": "3JKrutYATTc",
+      "title": "JedAI Council S1E4: Composability vs Autonomy",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E4.jpg",
+      "label": "S1 E4",
+      "description": "Composability vs Autonomy"
+    },
+    {
+      "show": "jedai",
+      "youtube": "HrwRgurKRGo",
+      "title": "JedAI Council S1E3: The Blockchain Paradox",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E3.jpg",
+      "label": "S1 E3",
+      "description": "The Blockchain Paradox"
+    },
+    {
+      "show": "jedai",
+      "youtube": "26PDE_3wfbI",
+      "title": "JedAI Council S1E2: The Competitive Landscape",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E2.jpg",
+      "label": "S1 E2",
+      "description": "The Competitive Landscape"
+    },
+    {
+      "show": "jedai",
+      "youtube": "j75DBjlZX90",
+      "title": "JedAI Council S1E1: The Governance Dilemma",
+      "thumbnail": "assets/jedai-council/thumbnails/S1E1.jpg",
+      "label": "S1 E1",
+      "description": "The Governance Dilemma"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/eliza-agent-bazaar.mp4",
+      "title": "Eliza Agent Bazaar",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/eliza-agent-bazaar-790f50ae.jpg",
+      "label": "Eliza Agent Bazaar",
+      "description": "Special Event Coverage"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/CSTUDIO/cstudio-final.mp4",
+      "title": "Character Studio",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/cstudio-final-8e40fe14.jpg",
+      "label": "Character Studio",
+      "description": "3D Character Creation Tool"
+    },
+    {
+      "show": "special",
+      "video": "https://arweave.net/Tguqw-tvyfVIhOh4sJC_-3LFYyMy_NURPbimnnrg2HU/gangnam.mp4",
+      "title": "Gangnam Style",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/gangnam-a01ffc95.jpg",
+      "label": "Gangnam",
+      "description": "Shaw's Asia Tour - January 2025"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/throne-and-bazaar.mp4",
+      "title": "Throne and Bazaar",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/throne-and-bazaar-5dd6c754.jpg",
+      "label": "Throne & Bazaar",
+      "description": "Environment Showcase"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/floyd.mp4",
+      "title": "Floyd",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/floyd-90b5e6b1.jpg",
+      "label": "Floyd",
+      "description": "Special Feature"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/hackathon-intro.mp4",
+      "title": "Hackathon Intro",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/hackathon-intro-93a84dd5.jpg",
+      "label": "Hackathon",
+      "description": "M3 Hackathon Introduction"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/rebrand/rebrand-tokyo-revb.mp4",
+      "title": "Rebrand: Tokyo",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/rebrand-tokyo-revb-3986b242.jpg",
+      "label": "Tokyo",
+      "description": "Rebrand Series - Tokyo Theme"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/rebrand/shawrunner-revb.mp4",
+      "title": "Rebrand: Shaw Runner",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/shawrunner-revb-e53e47f8.jpg",
+      "label": "Shaw Runner",
+      "description": "Rebrand Series - Blade Runner Theme"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/rebrand/western-alsara-has-audio.mp4",
+      "title": "Rebrand: Western",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/western-alsara-has-audio-d1e5b321.jpg",
+      "label": "Western",
+      "description": "Rebrand Series - Western Theme"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/rebrand/dubbing-office.mp4",
+      "title": "Rebrand: Dubbing Office",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/dubbing-office-2e175555.jpg",
+      "label": "Dubbing Office",
+      "description": "Rebrand Series - Office Theme"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/walter-dance2.mp4",
+      "title": "Walter Dance",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/walter-dance2-d7412fda.jpg",
+      "label": "Walter Dance",
+      "description": "Fun Animation"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/renderout-dance.mp4",
+      "title": "Dance Render",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/renderout-dance-49018c39.jpg",
+      "label": "Dance",
+      "description": "Dance Animation Render"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/ai-council-final.mp4",
+      "title": "AI Council Final",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/ai-council-final-22a284e6.jpg",
+      "label": "AI Council",
+      "description": "JedAI Council Full Production"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/clankpromo.mp4",
+      "title": "Clank Tank Promo",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/clankpromo-54cc9e2c.jpg",
+      "label": "Clank Promo",
+      "description": "Clank Tank Promotional Video"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/debate.mp4",
+      "title": "Debate Arena",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/debate-f7c3fe82.jpg",
+      "label": "Debate",
+      "description": "AI Debate Arena Showcase"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/jedi-1.mp4",
+      "title": "JedAI Council Clip",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/jedi-1-947507c9.jpg",
+      "label": "JedAI Clip",
+      "description": "JedAI Council Preview"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/m3-outro.mp4",
+      "title": "M3 Outro",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/m3-outro-98444a57.jpg",
+      "label": "M3 Outro",
+      "description": "M3TV Network Outro Animation"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/promo-1.mp4",
+      "title": "M3TV Promo",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/promo-1-ab72aca9.jpg",
+      "label": "M3 Promo",
+      "description": "M3TV Network Promotional"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/stonkwars-rev-b.mp4",
+      "title": "Stonk Wars Preview",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/stonkwars-rev-b-b1411f6f.jpg",
+      "label": "Stonk Wars",
+      "description": "Stonk Wars Trading Floor Preview"
+    },
+    {
+      "show": "special",
+      "video": "https://cdn.elizaos.news/showcase/M3org/boom-veg.mp4",
+      "title": "Boom Veg",
+      "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/boom-veg-92fd39a8.jpg",
+      "label": "Boom Veg",
+      "description": "Animation Showcase"
+    },
+    {
+      "show": "stonkwars",
+      "link": "shows/stonk-wars.html",
+      "title": "Stonk Wars Preview",
+      "thumbnail": "assets/stills/stonkwars/stonkwars-1.jpg",
+      "label": "Preview",
+      "description": "24/7 Live Trading Stream",
+      "live": true
+    },
+    {
+      "show": "stonkwars",
+      "link": "shows/stonk-wars.html",
+      "title": "Stonk Wars Trading Floor",
+      "thumbnail": "assets/stills/stonkwars/stonkwars-8.jpg",
+      "label": "Trading Floor",
+      "description": "Behind the Scenes"
+    }
+  ]
+}

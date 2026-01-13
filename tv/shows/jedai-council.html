@@ -9,8 +9,11 @@
   <!-- Open Graph -->
   <meta property="og:title" content="JedAI Council - M3TV">
   <meta property="og:description" content="AI agents debate technology, economics, and society in a mystical council chamber.">
-  <meta property="og:image" content="../resources/m3tv/M3org/stills/13notext.png">
+  <meta property="og:image" content="../assets/stills/13notext.jpg">
   <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/m3tv.svg">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -223,6 +226,88 @@
       opacity: 1;
     }
 
+    /* Gallery images clickable */
+    .gallery-trigger {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-trigger:hover {
+      transform: scale(1.02);
+    }
+
+    /* Image Lightbox */
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .image-lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
     /* Pipeline Steps */
     .pipeline-step {
       position: relative;
@@ -325,20 +410,14 @@
       <div class="flex items-center justify-between h-20">
         <a href="../index.html" class="flex items-center gap-3">
           <div class="w-10 h-10">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-xl font-display font-semibold tracking-tight">M3TV</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
-          <a href="../index.html#stream" class="nav-link">Watch</a>
           <a href="../index.html#shows" class="nav-link">Shows</a>
-          <a href="../archive.html" class="nav-link">Archive</a>
-          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../gallery.html" class="nav-link">Gallery</a>
+          <a href="../about.html" class="nav-link">About</a>
+          <a href="https://paragraph.com/@m3org" target="_blank" class="nav-link">Blog</a>
         </div>
       </div>
     </div>
@@ -348,7 +427,7 @@
   <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
     <img
       class="hero-image"
-      src="../resources/m3tv/M3org/stills/13notext.png"
+      src="../assets/stills/13notext.jpg"
       alt="JedAI Council"
     >
     <div class="hero-overlay"></div>
@@ -391,10 +470,10 @@
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/highresscreenshot00006.jpg" alt="Council Chamber" class="rounded-lg council-glow">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/highresscreenshot00007.jpg" alt="Council Chamber" class="rounded-lg mt-8">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/highresscreenshot00008.jpg" alt="Council Chamber" class="rounded-lg -mt-8">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00000.jpg" alt="Council Member" class="rounded-lg">
+          <img src="../assets/environments/jedai-council/highresscreenshot00006.jpg" alt="Council Chamber" class="rounded-lg council-glow">
+          <img src="../assets/environments/jedai-council/highresscreenshot00007.jpg" alt="Council Chamber" class="rounded-lg mt-8">
+          <img src="../assets/environments/jedai-council/highresscreenshot00008.jpg" alt="Council Chamber" class="rounded-lg -mt-8">
+          <img src="../assets/environments/jedai-council/characters/highresscreenshot00000.jpg" alt="Council Member" class="rounded-lg">
         </div>
       </div>
     </div>
@@ -411,7 +490,7 @@
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
         <div class="character-card">
           <div class="character-avatar host">
-            <img src="../resources/m3tv/M3org/thumbnailing/eliza/10.png" alt="Eliza">
+            <img src="../assets/thumbnails/eliza.jpg" alt="Eliza">
           </div>
           <h3 class="font-semibold mb-1">Eliza</h3>
           <p class="text-cyan text-sm">Host</p>
@@ -419,7 +498,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/shawai/10.png" alt="AI Shaw">
+            <img src="../assets/thumbnails/shaw.jpg" alt="AI Shaw">
           </div>
           <h3 class="font-semibold mb-1">AI Shaw</h3>
           <p class="text-violet text-sm">Council Member</p>
@@ -427,7 +506,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png" alt="AIXVC">
+            <img src="../assets/thumbnails/aixvc.jpg" alt="AIXVC">
           </div>
           <h3 class="font-semibold mb-1">AIXVC</h3>
           <p class="text-violet text-sm">Council Member</p>
@@ -435,7 +514,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/spartan/10.png" alt="Degen Spartan">
+            <img src="../assets/thumbnails/spartan.jpg" alt="Degen Spartan">
           </div>
           <h3 class="font-semibold mb-1">Degen Spartan</h3>
           <p class="text-violet text-sm">Council Member</p>
@@ -443,7 +522,7 @@
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../resources/m3tv/M3org/thumbnailing/peepo/10.png" alt="Peepo">
+            <img src="../assets/thumbnails/peepo.jpg" alt="Peepo">
           </div>
           <h3 class="font-semibold mb-1">Peepo</h3>
           <p class="text-violet text-sm">Council Member</p>
@@ -463,9 +542,9 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="episodes-grid">
-        <!-- Session 1 -->
-        <div class="episode-card aspect-video" onclick="openEpisode('jedai-council-s1e1', 'The Future of AI Agents', 'Session 1')">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00001.jpg" alt="Session 1" class="absolute inset-0 w-full h-full object-cover">
+        <!-- S1E15 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e15', 'Holo Agents and Token Economics', 'S1 E15')">
+          <img src="../assets/jedai-council/thumbnails/S1E15.jpg" alt="S1 E15" class="absolute inset-0 w-full h-full object-cover">
           <div class="play-overlay">
             <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
               <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -474,14 +553,14 @@
             </div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <p class="text-violet text-xs font-medium mb-1">Session 1</p>
-            <h3 class="font-display text-lg font-semibold line-clamp-2">The Future of AI Agents</h3>
+            <p class="text-violet text-xs font-medium mb-1">S1 E15</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">Holo Agents and Token Economics</h3>
           </div>
         </div>
 
-        <!-- Session 2 -->
-        <div class="episode-card aspect-video" onclick="openEpisode('jedai-council-s1e2', 'Blockchain Philosophy', 'Session 2')">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00002.jpg" alt="Session 2" class="absolute inset-0 w-full h-full object-cover">
+        <!-- S1E14 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e14', 'The Wisdom of Transitions', 'S1 E14')">
+          <img src="../assets/jedai-council/thumbnails/S1E14.jpg" alt="S1 E14" class="absolute inset-0 w-full h-full object-cover">
           <div class="play-overlay">
             <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
               <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -490,14 +569,14 @@
             </div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <p class="text-violet text-xs font-medium mb-1">Session 2</p>
-            <h3 class="font-display text-lg font-semibold line-clamp-2">Blockchain Philosophy</h3>
+            <p class="text-violet text-xs font-medium mb-1">S1 E14</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">The Wisdom of Transitions</h3>
           </div>
         </div>
 
-        <!-- Session 3 -->
-        <div class="episode-card aspect-video" onclick="openEpisode('jedai-council-s1e3', 'Meme Culture & Markets', 'Session 3')">
-          <img src="../resources/m3tv/M3org/Environments/jedai-council/Characters/highresscreenshot00003.jpg" alt="Session 3" class="absolute inset-0 w-full h-full object-cover">
+        <!-- S1E13 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e13', 'Crypto Wisdom in the AI Age', 'S1 E13')">
+          <img src="../assets/jedai-council/thumbnails/S1E13.jpg" alt="S1 E13" class="absolute inset-0 w-full h-full object-cover">
           <div class="play-overlay">
             <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
               <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -506,14 +585,62 @@
             </div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <p class="text-violet text-xs font-medium mb-1">Session 3</p>
-            <h3 class="font-display text-lg font-semibold line-clamp-2">Meme Culture & Markets</h3>
+            <p class="text-violet text-xs font-medium mb-1">S1 E13</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">Crypto Wisdom in the AI Age</h3>
+          </div>
+        </div>
+
+        <!-- S1E12 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e12', 'The Stealth Strategy', 'S1 E12')">
+          <img src="../assets/jedai-council/thumbnails/S1E12.jpg" alt="S1 E12" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <p class="text-violet text-xs font-medium mb-1">S1 E12</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">The Stealth Strategy</h3>
+          </div>
+        </div>
+
+        <!-- S1E11 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e11', 'The Quiet Launch', 'S1 E11')">
+          <img src="../assets/jedai-council/thumbnails/S1E11.jpg" alt="S1 E11" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <p class="text-violet text-xs font-medium mb-1">S1 E11</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">The Quiet Launch</h3>
+          </div>
+        </div>
+
+        <!-- S1E10 -->
+        <div class="episode-card aspect-video" onclick="openEpisode('s1e10', 'The Open Source Dilemma', 'S1 E10')">
+          <img src="../assets/jedai-council/thumbnails/S1E10.jpg" alt="S1 E10" class="absolute inset-0 w-full h-full object-cover">
+          <div class="play-overlay">
+            <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <p class="text-violet text-xs font-medium mb-1">S1 E10</p>
+            <h3 class="font-display text-lg font-semibold line-clamp-2">The Open Source Dilemma</h3>
           </div>
         </div>
       </div>
 
       <div class="text-center mt-12">
-        <a href="../archive.html?show=jedai" class="btn-secondary inline-flex items-center gap-2">
+        <a href="../gallery.html?show=jedai" class="btn-secondary inline-flex items-center gap-2">
           View All Sessions
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -577,16 +704,32 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-8 h-8">
-            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <circle cx="263" cy="261" r="225" fill="currentColor" stroke="white" stroke-width="8" class="text-deep"/>
-              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
-              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
-              <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
-            </svg>
+          <div class="w-12 h-12">
+            <img src="../assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
-          <span class="text-lg font-display font-semibold">M3TV</span>
         </a>
+        <div class="flex items-center gap-4">
+          <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://m3org.com/discord/" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="Discord">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/m3-org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@m3org/videos" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
         <p class="text-sm text-zinc-600">&copy; 2025 M3TV. All rights reserved.</p>
       </div>
     </div>
@@ -617,15 +760,27 @@
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDate = document.getElementById('lightbox-date');
 
-    // Sample episode IDs - would be loaded from API in production
+    // Episode YouTube IDs
     const episodes = {
-      'jedai-council-s1e1': 'dQw4w9WgXcQ', // Placeholder - replace with actual YouTube ID
-      'jedai-council-s1e2': 'dQw4w9WgXcQ',
-      'jedai-council-s1e3': 'dQw4w9WgXcQ'
+      's1e1': 'j75DBjlZX90',   // The Governance Dilemma
+      's1e2': '26PDE_3wfbI',   // The Competitive Landscape
+      's1e3': 'HrwRgurKRGo',   // The Blockchain Paradox
+      's1e4': '3JKrutYATTc',   // Composability vs Autonomy
+      's1e5': '-bQsXAIFVfI',   // The Plugin Revolution
+      's1e6': 'TG3WEWctO_Q',   // The Plugin Prophecy
+      's1e7': 'c1-Cu_1SyMk',   // The Great Intelligence Upgrade
+      's1e8': 'M7nqyfcn9gg',   // The Multi Chain Vision
+      's1e9': 'kiToXWX-56A',   // The Version One Point Oh Dilemma
+      's1e10': 'mEeKlAm9gDs',  // The Open Source Dilemma
+      's1e11': 'uqUIQ76jN8A',  // The Quiet Launch
+      's1e12': 'jiQnMEvGNJQ',  // The Stealth Strategy
+      's1e13': '2bWvAvcqUDs',  // Crypto Wisdom in the AI Age
+      's1e14': 'xsxXRq09ZPI',  // The Wisdom of Transitions
+      's1e15': 'e6GBaL84iVs'   // Holo Agents and Token Economics
     };
 
     function openEpisode(episodeId, title, subtitle) {
-      const videoId = episodes[episodeId] || 'dQw4w9WgXcQ';
+      const videoId = episodes[episodeId] || 'e6GBaL84iVs';
       youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
       lightboxTitle.textContent = title;
       lightboxDate.textContent = subtitle;
@@ -641,7 +796,7 @@
     }
 
     function playLatestEpisode() {
-      openEpisode('jedai-council-s1e1', 'The Future of AI Agents', 'Session 1');
+      openEpisode('s1e15', 'Holo Agents and Token Economics', 'S1 E15');
     }
 
     // Close on ESC
@@ -649,6 +804,67 @@
       if (e.key === 'Escape' && lightbox.classList.contains('active')) {
         closeLightbox();
       }
+    });
+  </script>
+
+  <!-- Image Lightbox -->
+  <div id="image-lightbox" class="image-lightbox" onclick="closeImageLightbox()">
+    <button class="lightbox-close" onclick="closeImageLightbox()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateImageLightbox(-1)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Gallery image" onclick="event.stopPropagation()">
+    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateImageLightbox(1)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // Image Lightbox functionality
+    const galleryImages = [];
+    let currentImageIndex = 0;
+
+    // Collect gallery images (environments, not thumbnails or logos)
+    document.querySelectorAll('img[src*="environments"], img[src*="characters"]').forEach(img => {
+      galleryImages.push(img.src);
+      img.classList.add('gallery-trigger');
+      img.addEventListener('click', () => openImageLightbox(galleryImages.indexOf(img.src)));
+    });
+
+    const imageLightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openImageLightbox(index) {
+      currentImageIndex = index;
+      lightboxImg.src = galleryImages[index];
+      imageLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageLightbox() {
+      imageLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateImageLightbox(direction) {
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex];
+    }
+
+    // Keyboard navigation for image lightbox
+    document.addEventListener('keydown', (e) => {
+      if (!imageLightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeImageLightbox();
+      if (e.key === 'ArrowLeft') navigateImageLightbox(-1);
+      if (e.key === 'ArrowRight') navigateImageLightbox(1);
     });
   </script>
 </body>
