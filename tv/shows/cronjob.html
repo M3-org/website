@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- HTML Meta Tags -->
-  <title>Cron Job - M3TV</title>
-  <meta name="description" content="Yesterday's ElizaOS news today. Daily automated AI news show.">
+  <title>Cronjob - M3TV</title>
+  <meta name="description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://m3org.com/tv/shows/cron-job.html">
+  <meta property="og:url" content="https://m3org.com/tv/shows/cronjob.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cron Job - M3TV">
-  <meta property="og:description" content="Yesterday's ElizaOS news today. Daily automated AI news show.">
-  <meta property="og:image" content="https://elizaos.news/media/15.jpg">
+  <meta property="og:title" content="Cronjob - M3TV">
+  <meta property="og:description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
+  <meta property="og:image" content="https://m3org.com/tv/assets/cronjob/s1.jpg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
-  <meta property="og:image:alt" content="Cron Job - Daily AI News Show">
+  <meta property="og:image:alt" content="Cronjob - Weekly AI News Show">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@m3org">
-  <meta property="twitter:url" content="https://m3org.com/tv/shows/cron-job.html">
-  <meta name="twitter:title" content="Cron Job - M3TV">
-  <meta name="twitter:description" content="Yesterday's ElizaOS news today. Daily automated AI news show.">
-  <meta name="twitter:image" content="https://elizaos.news/media/15.jpg">
-  <meta name="twitter:image:alt" content="Cron Job - Daily AI News Show">
+  <meta property="twitter:url" content="https://m3org.com/tv/shows/cronjob.html">
+  <meta name="twitter:title" content="Cronjob - M3TV">
+  <meta name="twitter:description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
+  <meta name="twitter:image" content="https://m3org.com/tv/assets/cronjob/s1.jpg">
+  <meta name="twitter:image:alt" content="Cronjob - Weekly AI News Show">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../assets/m3tv.svg">
@@ -259,28 +259,6 @@
       border-radius: 9999px;
     }
 
-    /* Language Tabs */
-    .lang-tab {
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lang-tab:hover {
-      color: var(--text-primary);
-    }
-
-    .lang-tab.active {
-      background: var(--accent-cyan);
-      color: var(--bg-deep);
-    }
-
     /* Lightbox */
     .lightbox {
       position: fixed;
@@ -347,6 +325,19 @@
       width: 100%;
       height: 100%;
     }
+
+    /* Season 1 Archive Card */
+    .archive-link {
+      background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .archive-link:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      background: var(--bg-elevated);
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -373,21 +364,21 @@
   <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
     <video
       class="hero-video"
-      src="../assets/cron-job/trailer.mp4"
+      src="../assets/cronjob/hero.mp4"
       muted
       autoplay
       loop
       playsinline
-      poster="../assets/cron-job/15.jpg"
+      poster="../assets/cronjob/s1.jpg"
     ></video>
     <div class="hero-overlay"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32">
       <div class="max-w-2xl">
-        <span class="section-label text-cyan block mb-4">Daily Show</span>
-        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Cron Job</h1>
+        <span class="section-label text-cyan block mb-4">Weekly Show</span>
+        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Cronjob</h1>
         <p class="text-xl text-zinc-300 mb-2">Yesterday's ElizaOS news, today</p>
-        <p class="text-zinc-500 mb-8">Daily episodes ~ 12 min</p>
+        <p class="text-zinc-500 mb-8">Weekly episodes ~ 9-12 min</p>
 
         <div class="flex flex-wrap gap-4">
           <button class="btn-primary" onclick="playLatestEpisode()">
@@ -408,22 +399,17 @@
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
           <span class="section-label text-cyan block mb-4">About the Show</span>
-          <h2 class="headline-xl text-3xl md:text-4xl mb-6">The Daily Ritual</h2>
+          <h2 class="headline-xl text-3xl md:text-4xl mb-6">The Weekly Briefing</h2>
           <p class="text-zinc-400 text-lg leading-relaxed mb-6">
-            Cron Job is a fully-automated 3D news show that transforms Discord conversations and GitHub activity into polished daily episodes. Every day, AI hosts Marc and Eliza deliver the latest developments from the ElizaOS ecosystem.
+            Cronjob is a fully-automated 3D news show covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements.
           </p>
           <p class="text-zinc-400 leading-relaxed mb-6">
-            From merged pull requests to community discussions, no update goes unnoticed. Shaw provides technical deep-dives, while Sparty and Pepo keep you updated on crypto market movements.
-          </p>
-          <p class="text-zinc-500 text-sm">
-            Available in English, Chinese, and Korean
+            Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage, a refreshed cast, and a cinematic weekly format. Sparty delivers the market report while Peepo keeps everyone honest with skeptical commentary.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <img src="../assets/cron-job/1.jpg" alt="Cron Job" class="rounded-lg">
-          <img src="../assets/cron-job/5.jpg" alt="Cron Job" class="rounded-lg mt-8">
-          <img src="../assets/cron-job/10.jpg" alt="Cron Job" class="rounded-lg -mt-8">
-          <img src="../assets/cron-job/15.jpg" alt="Cron Job" class="rounded-lg">
+          <img src="../assets/cronjob/s1.jpg" alt="Cronjob Season 2" class="rounded-lg">
+          <img src="../assets/cronjob/s2.jpg" alt="Cronjob Season 2" class="rounded-lg mt-8">
         </div>
       </div>
     </div>
@@ -437,29 +423,21 @@
         <h2 class="headline-xl text-3xl md:text-4xl">Meet Your Hosts</h2>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
         <div class="character-card">
           <div class="character-avatar">
             <img src="../assets/thumbnails/eliza.jpg" alt="Eliza">
           </div>
           <h3 class="font-semibold mb-1">Eliza</h3>
-          <p class="text-zinc-500 text-sm">Co-Host</p>
+          <p class="text-zinc-500 text-sm">Anchor</p>
         </div>
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../assets/thumbnails/aixvc.jpg" alt="Marc">
+            <img src="../assets/thumbnails/jin.jpg" alt="Jin" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-elevated flex items-center justify-center text-zinc-600 text-2xl font-display\'>J</div>'">
           </div>
-          <h3 class="font-semibold mb-1">Marc</h3>
+          <h3 class="font-semibold mb-1">Jin</h3>
           <p class="text-zinc-500 text-sm">Co-Host</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../assets/thumbnails/shaw.jpg" alt="Shaw">
-          </div>
-          <h3 class="font-semibold mb-1">Shaw</h3>
-          <p class="text-zinc-500 text-sm">Tech Analyst</p>
         </div>
 
         <div class="character-card">
@@ -467,15 +445,15 @@
             <img src="../assets/thumbnails/spartan.jpg" alt="Sparty">
           </div>
           <h3 class="font-semibold mb-1">Sparty</h3>
-          <p class="text-zinc-500 text-sm">Market Watch</p>
+          <p class="text-zinc-500 text-sm">Market Reporter</p>
         </div>
 
         <div class="character-card">
           <div class="character-avatar">
-            <img src="../assets/thumbnails/peepo.jpg" alt="Pepo">
+            <img src="../assets/thumbnails/peepo.jpg" alt="Peepo">
           </div>
-          <h3 class="font-semibold mb-1">Pepo</h3>
-          <p class="text-zinc-500 text-sm">Market Watch</p>
+          <h3 class="font-semibold mb-1">Peepo</h3>
+          <p class="text-zinc-500 text-sm">Skeptic</p>
         </div>
       </div>
     </div>
@@ -488,13 +466,6 @@
         <div>
           <span class="section-label text-cyan block mb-4">Episodes</span>
           <h2 class="headline-xl text-3xl md:text-4xl">Latest Episodes</h2>
-        </div>
-
-        <!-- Language Tabs -->
-        <div class="flex gap-2" id="lang-tabs">
-          <button class="lang-tab active" data-lang="en">English</button>
-          <button class="lang-tab" data-lang="ch">中文</button>
-          <button class="lang-tab" data-lang="ko">한국어</button>
         </div>
       </div>
 
@@ -526,7 +497,7 @@
           <iframe
             class="absolute inset-0 w-full h-full rounded-lg"
             src="https://www.youtube.com/embed/fIGoyaEd0Hw"
-            title="How Cron Job is Made"
+            title="How Cronjob is Made"
             frameborder="0"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -539,14 +510,14 @@
         <div class="pipeline-step" data-step="1">
           <h3 class="font-semibold text-lg mb-2">Data Collection</h3>
           <p class="text-zinc-400 text-sm">
-            GitHub PRs, issues, and Discord conversations from the ElizaOS ecosystem are gathered automatically.
+            GitHub PRs, Discord discussions, security advisories, and market data from the ElizaOS ecosystem are gathered automatically.
           </p>
         </div>
 
         <div class="pipeline-step" data-step="2">
           <h3 class="font-semibold text-lg mb-2">Script Generation</h3>
           <p class="text-zinc-400 text-sm">
-            AI analyzes the data and generates a conversational script for our cast of characters.
+            AI generates a structured session log with dialogue, scene directions, and word-level timecodes for each character.
           </p>
         </div>
 
@@ -558,9 +529,9 @@
         </div>
 
         <div class="pipeline-step" data-step="4">
-          <h3 class="font-semibold text-lg mb-2">3D Animation</h3>
+          <h3 class="font-semibold text-lg mb-2">3D Production</h3>
           <p class="text-zinc-400 text-sm">
-            Characters are animated in a 3D studio environment and rendered to video.
+            PlayCanvas renders the episode in real-time with dynamic cameras and cinematic lighting.
           </p>
         </div>
       </div>
@@ -570,6 +541,26 @@
           Learn more about our AI pipeline →
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Season 1 Archive -->
+  <section class="py-12 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <a href="https://elizaos.news/unity.html" target="_blank" class="archive-link flex items-center gap-6 p-6 group">
+        <div class="w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-elevated">
+          <img src="../assets/cronjob/15.jpg" alt="Season 1" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold mb-1">Season 1 (Unity Era)</h3>
+          <p class="text-zinc-500 text-sm">Daily episodes from August 2025. Built in Unity with the original cast.</p>
+        </div>
+        <div class="flex-shrink-0 text-zinc-500 group-hover:text-cyan transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -604,7 +595,7 @@
             </svg>
           </a>
         </div>
-        <p class="text-sm text-zinc-600">&copy; 2025 M3TV. All rights reserved.</p>
+        <p class="text-sm text-zinc-600">&copy; 2026 M3TV. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -628,37 +619,10 @@
   </div>
 
   <script>
-    // Episode data - embedded for reliability (en, ch, ko)
+    // Episode data - S2 episodes (add new episodes here)
     const episodes = {
-      '2025-08-25': {
-        en: { id: 'ArNCBfC9_f0', title: 'New AI Testing Framework & DAO Platform Evolution', thumbnail: '2025-08-25.jpg' },
-        ch: { id: 'Ba-pqUPxLKw', title: '重大测试框架更新与DAO平台演进', thumbnail: '2025-08-25.jpg' },
-        ko: { id: 'GskmAqhKgQ4', title: '새로운 AI 테스팅 프레임워크 & DAO 플랫폼 진화', thumbnail: '2025-08-25.jpg' }
-      },
-      '2025-08-18': {
-        en: { id: 'VbaM4iNzKQc', title: 'Async Embedding & $19B CCT Standard Integration', thumbnail: '2025-08-18.jpg' },
-        ch: { id: 'xpcyOxF0X2A', title: '异步嵌入和CCT标准：重大更新', thumbnail: '2025-08-18.jpg' },
-        ko: { id: '4Yq5Zy0ZFwI', title: '비동기 임베딩 및 190억 달러 CCT 표준 통합', thumbnail: '2025-08-18.jpg' }
-      },
-      '2025-08-17': {
-        en: { id: 'JyJM3u9SmxQ', title: 'ElizaOS: Major Backend Changes & New Reporting Tools', thumbnail: '2025-08-17.jpg' },
-        ch: { id: 'V8e_yzPcvcw', title: 'ElizaOS：后端系统全面改革和新增报告功能', thumbnail: '2025-08-17.jpg' },
-        ko: { id: 'kn9dffeS0iM', title: 'ElizaOS: 주요 백엔드 변경사항과 새로운 리포팅 도구', thumbnail: '2025-08-17.jpg' }
-      },
-      '2025-08-16': {
-        en: { id: '-yvuCdl_r40', title: 'ElizaOS: Domain Drama & Database Timeout Troubles', thumbnail: '2025-08-16.jpg' },
-        ch: { id: 'KCvV9ohBdh8', title: 'ElizaOS：域名迁移与数据库风波', thumbnail: '2025-08-16.jpg' },
-        ko: { id: '3suQsLdl0kg', title: 'ElizaOS: 도메인 문제와 데이터베이스 타임아웃 트러블', thumbnail: '2025-08-16.jpg' }
-      },
-      '2025-08-15': {
-        en: { id: 'fhGpWEHYUkk', title: 'ElizaOS: Major Architecture Update & Bond Protocol', thumbnail: '2025-08-15.jpg' },
-        ch: { id: 'zJiMqRCS9kg', title: 'ElizaOS：重大架构改造和债券协议', thumbnail: '2025-08-15.jpg' },
-        ko: { id: 'rR452JOyaS4', title: 'ElizaOS: 주요 아키텍처 업데이트 및 본드 프로토콜', thumbnail: '2025-08-15.jpg' }
-      },
-      '2025-08-14': {
-        en: { id: '8Xo-O75p7cA', title: 'ElizaOS Debates: Social Agents vs Simplification', thumbnail: '2025-08-14.jpg' },
-        ch: { id: 'BdNPaeiTxgw', title: 'ElizaOS架构辩论 & 机械坦克2.0揭秘', thumbnail: '2025-08-14.jpg' },
-        ko: { id: 'f48YE5EZbv8', title: 'ElizaOS 논쟁: 소셜 에이전트 vs 단순화', thumbnail: '2025-08-14.jpg' }
+      '2026-02-02': {
+        en: { id: 'placeholder', title: 'Cronjob S2E1: Workflow Revolution', thumbnail: '2026-02-02_Cron-Job_Workflow-Revolution.png' }
       }
     };
     let currentLang = 'en';
@@ -667,13 +631,18 @@
       const grid = document.getElementById('episodes-grid');
       const dates = Object.keys(episodes).sort().reverse();
 
+      if (dates.length === 0) {
+        grid.innerHTML = '<div class="col-span-full text-center text-zinc-500 py-12">Season 2 episodes coming soon.</div>';
+        return;
+      }
+
       grid.innerHTML = dates.map(date => {
         const ep = episodes[date][currentLang];
         if (!ep) return '';
 
         return `
           <div class="episode-card aspect-video" onclick="openEpisode('${ep.id}', '${ep.title}', '${date}')">
-            <img src="../assets/cron-job/thumbnails/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
+            <img src="../assets/cronjob/thumbnails/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
             <div class="play-overlay">
               <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -689,16 +658,6 @@
         `;
       }).join('');
     }
-
-    // Language switching
-    document.querySelectorAll('.lang-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentLang = tab.dataset.lang;
-        renderEpisodes();
-      });
-    });
 
     // Lightbox
     const lightbox = document.getElementById('lightbox');

@@ -1,20 +1,20 @@
 {
   "shows": {
-    "cron-job": {
-      "id": "cron-job",
-      "title": "Cron Job",
+    "cronjob": {
+      "id": "cronjob",
+      "title": "Cronjob",
       "tagline": "Yesterday's ElizaOS news, today",
-      "description": "A fully-automated 3D news show that transforms Discord conversations and GitHub activity into polished daily episodes. Every day, AI hosts deliver the latest developments from the ElizaOS ecosystem.",
-      "longDescription": "Cron Job is a fully-automated 3D news show that transforms Discord conversations and GitHub activity into polished daily episodes. Every day, AI hosts Marc and Eliza deliver the latest developments from the ElizaOS ecosystem. From merged pull requests to community discussions, no update goes unnoticed. Shaw provides technical deep-dives, while Sparty and Pepo keep you updated on crypto market movements.",
+      "description": "A fully-automated 3D news show covering the ElizaOS ecosystem with weekly episodes rendered in PlayCanvas.",
+      "longDescription": "Cronjob is a fully-automated 3D news show covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements. Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage, a refreshed cast, and a cinematic weekly format. Sparty delivers the market report while Peepo keeps everyone honest with skeptical commentary.",
       "category": "News",
-      "schedule": "Daily",
-      "duration": "~12 min",
+      "schedule": "Weekly",
+      "duration": "~9-12 min",
       "accentColor": "#00d4ff",
       "status": "active",
       "premiere": "2024-01-01",
       "heroImage": "cronjob-splash.png",
-      "heroVideo": "resources/ai-news-website/media/trailer.mp4",
-      "showPage": "shows/cron-job.html",
+      "heroVideo": "assets/cronjob/hero.mp4",
+      "showPage": "shows/cronjob.html",
       "externalLinks": {
         "website": "https://elizaos.news",
         "youtube": "https://youtube.com/@elizaosnews"
@@ -23,31 +23,25 @@
         {
           "id": "eliza",
           "name": "Eliza",
-          "role": "Co-Host",
+          "role": "Anchor",
           "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png"
         },
         {
-          "id": "marc",
-          "name": "Marc",
+          "id": "jin",
+          "name": "Jin",
           "role": "Co-Host",
-          "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png"
-        },
-        {
-          "id": "shaw",
-          "name": "Shaw",
-          "role": "Tech Analyst",
-          "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png"
+          "avatar": "assets/thumbnails/jin.jpg"
         },
         {
           "id": "sparty",
           "name": "Sparty",
-          "role": "Market Watch",
+          "role": "Market Reporter",
           "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png"
         },
         {
-          "id": "pepo",
-          "name": "Pepo",
-          "role": "Market Watch",
+          "id": "peepo",
+          "name": "Peepo",
+          "role": "Skeptic",
           "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png"
         }
       ],
@@ -55,12 +49,12 @@
         {
           "step": 1,
           "title": "Data Collection",
-          "description": "GitHub PRs, issues, and Discord conversations from the ElizaOS ecosystem are gathered automatically."
+          "description": "GitHub PRs, Discord discussions, security advisories, and market data from the ElizaOS ecosystem are gathered automatically."
         },
         {
           "step": 2,
           "title": "Script Generation",
-          "description": "AI analyzes the data and generates a conversational script for our cast of characters."
+          "description": "AI generates a structured session log with dialogue, scene directions, and word-level timecodes for each character."
         },
         {
           "step": 3,
@@ -69,11 +63,11 @@
         },
         {
           "step": 4,
-          "title": "3D Animation",
-          "description": "Characters are animated in a 3D studio environment and rendered to video."
+          "title": "3D Production",
+          "description": "PlayCanvas renders the episode in real-time with dynamic cameras and cinematic lighting."
         }
       ],
-      "languages": ["en", "zh", "ko"],
+      "languages": ["en"],
       "episodesSource": "resources/ai-news-website/episodes.json"
     },
 
@@ -382,7 +376,7 @@
       "fullName": "Eliza",
       "avatar": "resources/m3tv/M3org/thumbnailing/eliza/10.png",
       "description": "The primary host across M3TV shows, known for her engaging presentation style.",
-      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+      "appearances": ["cronjob", "clank-tank", "jedai-council", "stonk-wars"]
     },
     "aixvc": {
       "id": "aixvc",
@@ -390,7 +384,7 @@
       "fullName": "AI Marc / AIXVC",
       "avatar": "resources/m3tv/M3org/thumbnailing/aixvc_agent/10.png",
       "description": "Investment-focused AI personality bringing VC perspective to discussions.",
-      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+      "appearances": ["clank-tank", "jedai-council", "stonk-wars"]
     },
     "shaw": {
       "id": "shaw",
@@ -398,7 +392,15 @@
       "fullName": "AI Shaw",
       "avatar": "resources/m3tv/M3org/thumbnailing/shawai/10.png",
       "description": "Technical analyst providing deep-dives into code, architecture, and tech trends.",
-      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+      "appearances": ["clank-tank", "jedai-council", "stonk-wars"]
+    },
+    "jin": {
+      "id": "jin",
+      "name": "Jin",
+      "fullName": "Jin",
+      "avatar": "assets/thumbnails/jin.jpg",
+      "description": "Co-host of Cronjob, bringing community perspective and production insights.",
+      "appearances": ["cronjob"]
     },
     "spartan": {
       "id": "spartan",
@@ -406,7 +408,7 @@
       "fullName": "Degen Spartan AI",
       "avatar": "resources/m3tv/M3org/thumbnailing/spartan/10.png",
       "description": "Crypto-focused personality with degen energy and market insights.",
-      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+      "appearances": ["cronjob", "clank-tank", "jedai-council", "stonk-wars"]
     },
     "peepo": {
       "id": "peepo",
@@ -414,15 +416,15 @@
       "fullName": "Peepo",
       "avatar": "resources/m3tv/M3org/thumbnailing/peepo/10.png",
       "description": "Meme-savvy personality bringing humor and cultural commentary.",
-      "appearances": ["cron-job", "clank-tank", "jedai-council", "stonk-wars"]
+      "appearances": ["cronjob", "clank-tank", "jedai-council", "stonk-wars"]
     }
   },
 
   "meta": {
-    "version": "1.0.0",
-    "lastUpdated": "2025-01-12",
+    "version": "1.1.0",
+    "lastUpdated": "2026-02-06",
     "totalShows": 4,
-    "totalCharacters": 5,
+    "totalCharacters": 6,
     "colorPalette": {
       "cronJob": "#00d4ff",
       "clankTank": "#ff6b35",
