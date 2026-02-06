@@ -1,188 +1,988 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M3 Metaverse Makers</title>
-<meta property="og:title" content="M3 Metaverse Makers">
-<meta property="og:type" content="website" />
+<title>M3 - Metaverse Makers</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="M3 - Metaverse Makers">
+<meta property="og:type" content="website">
 <meta property="og:description" content="Virtual hackerspace / homebrew metaverse club. We host weekly events, make f*cking epic drops, and work on virtual productions.">
-<meta property="og:image" content="https://m3org.com/meta_image.jpg">
+<meta property="og:image" content="https://m3org.com/media/hero/m3charter-header.jpg">
 <meta property="og:url" content="https://m3org.com/">
-<meta property="twitter:domain" content="m3org.com">
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://m3org.com/meta_image.jpg"/>
-<meta name="twitter:title" content="M3 Metaverse Makers"/>
-<meta name="twitter:description" content="Virtual hackerspace / homebrew metaverse club. We host weekly events, make f*cking epic drops, and work on virtual productions."/>
-<meta content="@m3org" name="twitter:site"/>
-<link rel="icon" type="image/x-icon" href="https://m3org.com/favicon.ico" />
+<meta property="twitter:domain" content="m3org.com">
+<meta name="twitter:title" content="M3 - Metaverse Makers">
+<meta name="twitter:description" content="Virtual hackerspace / homebrew metaverse club. We host weekly events, make f*cking epic drops, and work on virtual productions.">
+<meta name="twitter:image" content="https://m3org.com/media/hero/m3charter-header.jpg">
+<meta content="@m3org" name="twitter:site">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="https://m3org.com/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    background-color: black;
-    color: green;
-    font-family: monospace;
+  :root {
+    --bg-deep: #0a0a0f;
+    --bg-surface: #141418;
+    --bg-elevated: #1c1c24;
+    --accent-cyan: #00d4ff;
+    --accent-ember: #ff6b35;
+    --accent-violet: #a855f7;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --text-muted: #52525b;
+  }
+
+  *, *::before, *::after {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  h1 {
-    text-align: center;
-    font-size: 4em;
+
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
   }
-  h2 {
-    text-align: center;
-    font-size: 3em;
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
-  .ascii-art {
-    text-align: center;
+
+  body.loaded {
+    opacity: 1;
   }
-  .links {
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* ---- Grain Overlay ---- */
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* ---- CRT Scanlines ---- */
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.3;
+    background: repeating-linear-gradient(
+      transparent 0 2px,
+      rgba(0, 0, 0, 0.15) 2px 4px
+    );
+  }
+
+  /* ---- Dither Overlay ---- */
+  .dither {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.06;
+    mix-blend-mode: soft-light;
+    background-image:
+      repeating-conic-gradient(rgba(255,255,255,0.7) 0% 25%, transparent 0% 50%);
+    background-size: 4px 4px;
+    image-rendering: pixelated;
+  }
+
+  /* ---- Navbar ---- */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.5rem;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
   }
-  .links a {
-    display: block;
-    width: 33%;
-    text-align: center;
-    padding: 10px 0;
-    color: lime;
+
+  .navbar.scrolled {
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  .links a.cyan {
-  color: cyan;
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
   }
-  .links a.pink {
-  color: pink;
+
+  .navbar-logo svg {
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
   }
-  footer {
-    text-align: center;
-    color: pink;
-    padding: 10px 0;
+
+  .navbar-logo:hover svg {
+    opacity: 1;
   }
-  .hidden {
-    display: none;
+
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
   }
-  .iframe-placeholder {
-    width: 100%;
-    height: 640px;
-    background-color: #00000f;
+
+  .navbar-icons a {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .navbar-icons a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .navbar-icons svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  /* ---- Hero Section ---- */
+  .hero {
     position: relative;
-    top: 100%;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .hero-media.active {
+    opacity: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 10, 15, 0.4) 0%,
+      rgba(10, 10, 15, 0.5) 30%,
+      rgba(10, 10, 15, 0.75) 60%,
+      rgba(10, 10, 15, 0.98) 100%
+    );
+    z-index: 2;
+  }
+
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(10, 10, 15, 0.6) 100%
+    );
+    z-index: 3;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 4;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .hero-logo {
+    width: 160px;
+    height: auto;
+    margin: 0 auto 1.25rem;
+    display: block;
+    opacity: 0.95;
+  }
+
+  .hero-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+    color: var(--accent-cyan);
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-tagline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- Hackerspace Tooltip ---- */
+  .tooltip {
+    position: relative;
+    border-bottom: 1px dotted var(--text-muted);
+    cursor: help;
+  }
+
+  .tooltip::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 280px;
+    width: max-content;
+    white-space: normal;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+  }
+
+  .tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ---- Scroll Indicator ---- */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+  }
+
+  .scroll-indicator .chevron {
+    width: 16px;
+    height: 16px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: rotate(45deg) translateY(0); }
+    50% { opacity: 1; transform: rotate(45deg) translateY(4px); }
+  }
+
+  /* ---- Content Section (below hero) ---- */
+  .content-section {
+    position: relative;
+    z-index: 5;
+    padding: 0 1.5rem 2rem;
+    margin-top: -20vh;
+  }
+
+  .content-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ---- Featured Cards ---- */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .featured-card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 1.75rem 1.25rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .featured-card.card-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease, opacity 0.5s ease;
+  }
+
+  .featured-card:hover {
+    border-color: rgba(0, 212, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.08), inset 0 0 20px rgba(0, 212, 255, 0.03);
+    transform: scale(1.02);
+  }
+
+  .featured-card.card-visible:hover {
+    transform: scale(1.02);
+  }
+
+  .featured-card .card-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .featured-card .card-logo img,
+  .featured-card .card-logo svg {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .featured-card .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+  }
+
+  .featured-card .card-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ---- Section Divider ---- */
+  .section-divider {
+    height: 1px;
+    margin: 0 auto 3rem;
+    max-width: 600px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.08) 30%,
+      rgba(255, 255, 255, 0.08) 70%,
+      transparent
+    );
+  }
+
+  /* ---- RSS Feed Section ---- */
+  .feed-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .feed-column h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .feed-item {
+    margin-bottom: 1rem;
+    padding-left: 0;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .feed-item:hover {
+    border-left-color: var(--accent-cyan);
+    padding-left: 0.75rem;
+  }
+
+  .feed-item a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+    line-height: 1.4;
+    display: inline-block;
+  }
+
+  .feed-item a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .feed-item .feed-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .feed-item .feed-snippet {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .feed-fallback {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .feed-loading {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ---- Secondary Links ---- */
+  .secondary-links {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.25rem;
+  }
+
+  .secondary-links a {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .secondary-links a:hover {
+    color: var(--accent-violet);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .featured-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-section {
+      margin-top: -15vh;
+      padding: 0 1.25rem 2rem;
+    }
+
+    .hero-content {
+      transform: translate(-50%, -65%);
+    }
+
+    .hero-logo {
+      width: 120px;
+    }
+
+    .feed-section {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .navbar {
+      padding: 0.75rem 1rem;
+    }
+
+    .navbar-icons {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .content-section {
+      margin-top: -10vh;
+    }
+
+    .hero-content {
+      transform: translate(-50%, -70%);
+    }
+
+    .hero-logo {
+      width: 100px;
+    }
+
+    .tooltip::after {
+      left: 0;
+      transform: translateX(0) translateY(6px);
+    }
+
+    .tooltip:hover::after {
+      transform: translateX(0) translateY(0);
+    }
   }
 </style>
 </head>
 <body>
-<marquee>/\/\ etaverse /\/\akers /\/\____ ..... Meetups?... Mastermind?.... Missionaries?.... Mixers?.... Media?.... Serving the open metaverse underground since 2019.... Upcoming drops: boomboxheads v2 .... 7OROY .... Call of the Mountain: Altered Evil .... Space Base by jin ..... Welcome, anon</marquee>
-<h1>M3 Org</h1>
-<pre class="ascii-art">
-             ,----------------,              ,---------,
-        ,-----------------------,          ,"        ,"|
-      ,"                      ,"|        ,"        ,"  |
-     +-----------------------+  |      ,"        ,"    |
-     |  .-----------------.  |  |     +---------+      |
-     |  |                 |  |  |     | -==----'|      |
-     |  |      M3 Org     |  |  |     |         |      |
-     |  |                 |  |  |/----|`---=    |      |
-     |  |      login      |  |  |   ,/|==== ooo |      ;
-     |  |                 |  |  |  // |(((( [33]|    ," 
-     |  `-----------------'  |," .;'| |((((     |  ,"   
-     +-----------------------+  ;;  | |         |,"     
-        /_)______________(_/  //'   | +---------+       
-   ___________________________/___  `,                  
-  /  oooooooooooooooo  .o.  oooo /,   \,"-----------    
- / ==ooooooooooooooo==.o.  ooo= //   ,`\--{)B     ,"    
-/_==__==========__==_ooo__ooo=_/'   /___________,"      
-`-----------------------------'                         
-</pre>
-<div class="links">
-  <a href="tv/" class="pink">M3TV [NEW]</a>
-  <a href="https://tv.m3org.com/" class="pink">M3TV 3D Site</a>
-  <a href="https://github.com/m3-org" class="cyan">GitHub</a>
-  <a href="https://m3org.com/discord" class="cyan">Discord</a>
-  <a href="https://hackmd.io/@xr/book" class="cyan">Research</a>
-  <a href="https://x.com/m3org" class="cyan">X (Twitter)</a>
-  <a href="https://github.com/m3-org/avatar-interop#Calendar" class="cyan">Calendar</a>
-  <a href="https://hackmd.io/@xr/vprod" class="cyan">Virtual Production</a>
-  <a href="https://juicebox.money/@openvoxels" class="cyan">OpenVoxels</a>
-  <a href="https://hyperfy.io/m3" class="cyan">M3 HQ</a>
-  <a href="https://gm3.github.io/boomboxheads-v2/">Boomboxheads V2</a>
-  <a href="https://m3org.com/mart/">M3 Merch</a>
-  <a href="https://hyperfy.io/">Hyperfy</a>
-  <a href="https://3ov.xyz/">Three Object Viewer</a>
-  <a href="https://emotionull.art/">Phettaverse</a>
-  <a href="https://github.com/jbaicoianu/janusweb">JanusWeb</a>
-  <a href="https://github.com/webaverse">Webaverse</a>
-  <a href="https://cryptoavatars.io/">Cryptoavatars</a>
-  <a href="https://m3org.com/mfshop">MetaFactory</a>
-  <a href="https://www.unavi.xyz/">UNAVI</a>
-  <a href="https://www.zesty.market/">Zesty Market</a>
-  <a href="https://anarchyarcade.com/">Anarchy Arcade</a>
-</div>
-<footer class="pink">
-  Neighborhood:
-  <a href="https://framevr.io/omi" class="ping">OMI group</a>
-  <a href="https://hyperfy.io/msf" class="pink">Metaverse Standards Forum</a>
-  <a href="https://twitter.com/neon_buidl" class="pink">Neon Buidl</a>
-  <a href="https://uncannyalley.io" class="pink">Uncanny Alley</a>
-</footer>
-<div class="iframe-placeholder">
-<pre class="ascii-art">
-                                   .^!7?YY?JJJY7!!!!!?YYJ?JYJ?!^:                                   
-                             .:!JY5Y?!^:.                  ..^~7YYYJ7^.                             
-                         .~?YJ7~:                                  .^!?Y?!.                         
-                      ^?5Y!:                                            .!J5J^                      
-                   :?5J^.                                                   ^?5Y^                   
-                .7PJ^                 .~7J5GGBBBBBBBBBBGGPY?~:                 :?P?.                
-              :YP7.              :7YGBGPJ7~:..        ..:~!?5GBG5?^               ~P5^              
-            .5P^             :JGBP?^.                          .^7PBGY^             :55^            
-          .YG~            :Y#BJ^           :JGBB^  :BBB5^           :?G#5^            :PP:          
-         7B7           .J#B?.     ..     ^B#J::@J  !@~.7B#!     ..     .!G#5.           ~GY         
-       .PP.          .5&P:     :JG&&~  .B&7   .@J  !@:   ~&#^  :&@B5~     .Y&G:           YG:       
-      ^#7          .5&5.    .J#BJ#@~  ~@B.    .@J  !@:     Y@?  :#&YG#5:     ?&B:          ~B7      
-     !#~          7&G.    ^G&Y. Y@^  ?@7      :@J  !@^      :&P  .&B .?#B~     Y@Y          .BY     
-    7#^         .G&~    :B&?   J@^  ~@#Y5PGGGGGB^  :BGGGGGPPYB@J  .&B   !##~    .#&:         .G5    
-   !#:         ^@B.    Y&Y  ^7P@7   .~^:...              ...:^~.   :&B?~. 7&G.    Y@7          GY   
-  ^#~         ^@P    .#@P5BBP?~.    ..^!7?JY5PPGGP5PPPPPPY?7!^:.     ^?5BB5Y&&^    ?@?         .#7  
- .BY         ^@5    .B&GJ^        ?&GG5??7~^:...........^~!7?YGG&5        :?P&&:    7@?         !#: 
- JB.         @#      .   .!5B&7  :@G                            7@!  ^#BP7:   .      Y@:         PP 
-.#7         P@.       :5#BY~Y@7  5@:                             &#  :@G^JG#P~        #&         :&~
-?#.        ^@?      ?#B?.   G@.  &#                              Y@.  #&    !G&Y.     ^@?         GP
-GG         P@.    !&B^      ##  .@5   7BBB^    7BBB:7####BBB~    ^@~  Y@:     .P&J     #&         JB
-B7        .@#    ~@?        &B  :@?   5@@@#~  !&@@@~^YYYJ#@@@?    @7  !@:       :@5    Y@:        ^#
-#!        :@5    J@J~!!!!!~J@Y  ?@^   5@@@@&^~@@@@@~.~^^^G@@#~    &?  ^@Y~!!!!!!!@B    !@7        .B
-B!        :@Y    .!?7777777?~   ?@.   5@@@@@@@@@@@@~J@@@@@@@&~    &J   ^77777777?7.    ~@7        .B
-#~        :@5      ..........   ~@^   5@@@77@@^P@@@~     5@@@J    @7    ..........     !@!        .B
-B7        .@#    :@&5Y555555&5  ^@~   5@@@7 .. P@@@~J@&&&@@@#~    @!  ~@G55555YY#@7    5@:        ^#
-PG         P@.    ~##^      #&  .@P   .~~~.    :~~~ :!!!!~~~     ~@~  P@.     .P&7     #&         JB
-?#.        ~@J      7B#J:   G@.  &&                              Y@.  &&   .7B#J.     ~@7         BP
-.#?         Y@:       .JB#P~J@?  Y@:                             &#  :@G^YB#5:       .&#         ^&~
- ?#.         &#      ..   ^YG#7  :@G                            ?@~  ^#B5!.  ..      P@.         G5 
-  G5         :@P    .B@#5!.       7&BBPYJ7!^::::::::::::^~7JYPGB#Y       .~YB&#:    ?@!         ?#. 
-  :#~         :@B    .B@5YGBPY~.     .:^!?JJY555YY5PP55YJJ?!^:.     .~JPBB5Y&&:    J@?         .&!  
-   ~B^         :&#.    ?&P. .~Y@J   :7!~^..              ..:^~!:   ^@G!.  J&5     P@!         .BJ   
-    !#^          P@!    .P&Y   7@~  ~@&YPGGGBBB#^  :##BBBBGPYB@?  .&G   7&B^    :&#.         .BY    
-     ~B!          !&B:    .P&P^ J@~  !@?      .@J  !@^      ^&Y  .&G .Y#B^    .P&?          :BJ     
-      :BJ           Y&G:    .?B#Y#@!  ^&#.    .@J  !@:     P@7  ^&&JB#Y.    .Y&G.          !#!      
-       .5P.           Y&G~     .7G&&~  .P&J   .@J  !@:   !&#:  :&&G?:     :P#5.          .YG:       
-         ~G?            7##Y:      .     :G&P^^@J  !@~:Y#B~     ..     .J##J            !B?         
-           JG~            .?B#Y^.          .75PG:  .PPPJ.           :JBBY^            ^P5.          
-            .YP!             .!5BB5!:                          :~YBBG7.             ^PP:            
-              .?P7.              .!YGBBPY?~::..      ...:^7YPBBB57:               !PY:              
-                 !55!.                 .^77JPPPPPPPPPPPPY77~..                 ^JP7.                
-                   .?PY~                                                    ^J5J^                   
-                      .!YY?^.                                           :7YY7:                      
-                          ^?55J!:                                  :~J55J~.                         
-                              .~7JJJ?!~:...               ..:~!?JJJ?~:                              
-                                     .^!?YY55555555555555555Y?!^:.            
-</pre>
-</div>
-<script>
-  const iframePlaceholder = document.querySelector('.iframe-placeholder');
-  iframePlaceholder.addEventListener('click', () => {
-    iframePlaceholder.innerHTML = '<iframe src="https://3d.m3org.com/" frameborder="0" width="100%" height="100%"></iframe>';
-  });
-</script>
+  <!-- Grain Overlay -->
+  <div class="grain"></div>
+  <!-- CRT Scanlines -->
+  <div class="scanlines"></div>
+  <!-- Dither Pattern -->
+  <div class="dither"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="/" class="navbar-logo">
+      <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="263" cy="261" r="225" fill="none" stroke="currentColor" stroke-width="12"/>
+        <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="currentColor"/>
+        <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="currentColor"/>
+        <circle cx="263" cy="261" r="175" stroke="currentColor" stroke-width="12"/>
+      </svg>
+    </a>
+    <div class="navbar-icons">
+      <!-- Discord -->
+      <a href="https://m3org.com/discord" target="_blank" aria-label="Discord">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+      </a>
+      <!-- X (Twitter) -->
+      <a href="https://x.com/m3org" target="_blank" aria-label="X">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@m3org" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/m3-org" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <!-- 1. Group hackerspace scene (opener) -->
+    <img class="hero-media" src="media/hero/m3charter-header.jpg" alt="" loading="eager">
+    <!-- 2. Dreamlike Hyperfy -->
+    <video class="hero-media" src="media/hero/hyperfy-dream.mp4" muted playsinline preload="auto"></video>
+    <!-- 3. Voxel cityscape sunset -->
+    <img class="hero-media" src="media/hero/origincity.jpg" alt="" loading="lazy">
+    <!-- 4. Past-future montage -->
+    <video class="hero-media" src="media/hero/past-future.mp4" muted playsinline preload="none"></video>
+    <!-- 5. OMI Group virtual office -->
+    <img class="hero-media" src="media/hero/mpv-shot0003.jpg" alt="" loading="lazy">
+    <!-- 6. Startpages -->
+    <video class="hero-media" src="media/hero/startpages.mp4" muted playsinline preload="none"></video>
+    <!-- 7. Dark studio mood -->
+    <img class="hero-media" src="media/hero/metafactory-studio.jpg" alt="" loading="lazy">
+    <!-- 8. Soundstage -->
+    <video class="hero-media" src="media/hero/soundstage.mp4" muted playsinline preload="none"></video>
+    <!-- 9. Abstract clip -->
+    <video class="hero-media" src="media/hero/19ff43bc65b102e385e4a1fd1a743fc1.mp4" muted playsinline preload="none"></video>
+    <!-- 10. Voxel islands -->
+    <video class="hero-media" src="media/hero/video720_1.mp4" muted playsinline preload="none"></video>
+    <!-- 11. Abstract clip 2 -->
+    <video class="hero-media" src="media/hero/eb61e74fd5133186714f73d608d136c7.mp4" muted playsinline preload="none"></video>
+    <!-- 12. Web-to-native montage -->
+    <video class="hero-media" src="media/hero/web-to-native.mp4" muted playsinline preload="none"></video>
+
+    <div class="hero-overlay"></div>
+    <div class="vignette"></div>
+
+    <div class="hero-content">
+      <!-- Inline M3 Logo SVG -->
+      <svg class="hero-logo" viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="263" cy="261" r="225" fill="black" stroke="white" stroke-width="8"/>
+        <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="white"/>
+        <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="white"/>
+        <circle cx="263" cy="261" r="175" stroke="white" stroke-width="8"/>
+        <path d="M275 113.365L275.279 109.375C274.172 109.298 273.083 109.684 272.272 110.44C271.461 111.197 271 112.256 271 113.365L275 113.365ZM275.21 113.38L276.914 109.761C276.468 109.551 275.986 109.425 275.494 109.39L275.21 113.38ZM300.283 131.411L297.435 134.219L297.435 134.219L300.283 131.411ZM324.539 168.53L323.772 172.456C325.227 172.74 326.72 172.196 327.651 171.043C328.582 169.889 328.799 168.316 328.215 166.953L324.539 168.53ZM275 163.369L271 163.369C271 165.538 272.729 167.312 274.897 167.368L275 163.369ZM129.143 200.331L125.499 198.681C124.739 200.36 125.225 202.342 126.676 203.479C128.126 204.616 130.166 204.614 131.615 203.475L129.143 200.331ZM203.671 125.99L206.802 128.479C207.951 127.034 207.962 124.992 206.829 123.535C205.696 122.078 203.714 121.585 202.031 122.342L203.671 125.99ZM177.959 175.229L179.182 179.038C180.404 178.645 181.364 177.69 181.762 176.47L177.959 175.229ZM116.365 251L112.375 250.721C112.298 251.828 112.684 252.917 113.44 253.728C114.197 254.539 115.256 255 116.365 255L116.365 251ZM116.368 250.958L112.688 249.391C112.514 249.8 112.409 250.235 112.378 250.678L116.368 250.958ZM133.29 226.078L136.147 228.877L136.147 228.877L133.29 226.078ZM171.292 201.121L175.218 201.889C175.501 200.438 174.962 198.949 173.815 198.017C172.668 197.084 171.1 196.861 169.738 197.435L171.292 201.121ZM166.108 251L166.108 255C168.278 255 170.052 253.27 170.107 251.1L166.108 251ZM203.246 396.818L201.595 400.462C203.275 401.224 205.259 400.737 206.397 399.284C207.534 397.83 207.529 395.788 206.386 394.34L203.246 396.818ZM129.143 322.669L131.615 319.525C130.166 318.386 128.126 318.384 126.676 319.521C125.225 320.658 124.739 322.64 125.499 324.319L129.143 322.669ZM177.971 347.774L181.779 346.551C181.385 345.323 180.422 344.361 179.194 343.966L177.971 347.774ZM400.328 321.616L403.985 323.237C404.733 321.549 404.23 319.569 402.766 318.445C401.303 317.32 399.26 317.342 397.822 318.499L400.328 321.616ZM324.962 397.175L321.831 394.684C320.684 396.127 320.671 398.168 321.8 399.625C322.929 401.082 324.908 401.579 326.592 400.827L324.962 397.175ZM350.516 347.786L349.275 343.983C348.055 344.382 347.1 345.341 346.708 346.563L350.516 347.786ZM400.329 201.384L397.822 204.501C399.26 205.658 401.303 205.68 402.766 204.555C404.23 203.431 404.733 201.451 403.985 199.763L400.329 201.384ZM350.528 175.218L346.725 176.459C347.121 177.672 348.073 178.624 349.287 179.02L350.528 175.218ZM324.538 125.637L326.157 121.979C324.471 121.233 322.493 121.736 321.368 123.197C320.244 124.657 320.263 126.698 321.415 128.137L324.538 125.637ZM133.29 296.922L130.433 299.722L130.433 299.722L133.29 296.922ZM116.785 273L116.785 269C115.431 269 114.17 269.685 113.432 270.819C112.694 271.954 112.58 273.385 113.129 274.622L116.785 273ZM171.406 321.927L169.855 325.615C171.216 326.187 172.781 325.963 173.927 325.032C175.073 324.102 175.614 322.616 175.333 321.166L171.406 321.927ZM166.189 273L170.187 272.873C170.118 270.714 168.348 269 166.189 269L166.189 273ZM253 163.435L253.125 167.433C255.284 167.366 257 165.596 257 163.435L253 163.435ZM253 113.513L257 113.513C257 112.141 256.296 110.864 255.136 110.131C253.976 109.398 252.52 109.312 251.281 109.901L253 113.513ZM203.903 168.644L200.225 167.07C199.643 168.431 199.86 170.003 200.789 171.155C201.719 172.308 203.209 172.853 204.663 172.571L203.903 168.644ZM228.208 131.411L231.056 134.219L231.056 134.219L228.208 131.411ZM195.672 193.013L194.681 189.138C193.27 189.499 192.166 190.599 191.8 192.009L195.672 193.013ZM262.818 185.254L262.791 181.254L262.791 181.254L262.818 185.254ZM187.999 262.927L183.999 262.954L183.999 262.954L187.999 262.927ZM195.741 330.004L191.865 330.994C192.227 332.411 193.334 333.518 194.751 333.88L195.741 330.004ZM262.818 337.746L262.844 333.746L262.844 333.746L262.818 337.746ZM332.732 330.073L333.736 333.945C335.147 333.579 336.246 332.475 336.607 331.064L332.732 330.073ZM340.492 262.927L344.492 262.954L344.492 262.954L340.492 262.927ZM332.8 192.945L336.672 191.939C336.307 190.535 335.21 189.438 333.806 189.073L332.8 192.945ZM357.215 201.207L358.792 197.53C357.43 196.946 355.856 197.163 354.702 198.094C353.549 199.026 353.005 200.518 353.289 201.973L357.215 201.207ZM394.335 225.462L391.526 228.311L391.526 228.311L394.335 225.462ZM362.383 251L358.384 251.1C358.438 253.27 360.212 255 362.383 255L362.383 251ZM412.582 251L412.582 255C413.947 255 415.217 254.304 415.952 253.154C416.687 252.004 416.785 250.559 416.212 249.32L412.582 251ZM362.302 273L362.302 269C360.142 269 358.373 270.714 358.304 272.873L362.302 273ZM357.101 321.842L353.174 321.083C352.893 322.536 353.437 324.026 354.59 324.956C355.742 325.885 357.314 326.102 358.675 325.52L357.101 321.842ZM412.11 273L415.716 274.732C416.311 273.493 416.228 272.034 415.496 270.87C414.764 269.706 413.485 269 412.11 269L412.11 273ZM394.335 297.538L397.143 300.386L397.143 300.386L394.335 297.538ZM228.823 392.456L226.023 395.313L226.023 395.313L228.823 392.456ZM203.818 354.34L204.579 350.413C203.13 350.132 201.643 350.672 200.713 351.818C199.782 352.964 199.558 354.529 200.131 355.89L203.818 354.34ZM253 409.073L251.392 412.735C252.629 413.278 254.056 413.16 255.187 412.422C256.318 411.683 257 410.423 257 409.073L253 409.073ZM253 359.565L257 359.565C257 357.404 255.284 355.634 253.125 355.567L253 359.565ZM275 409.286L271 409.286C271 410.631 271.676 411.886 272.8 412.626C273.924 413.366 275.344 413.492 276.58 412.961L275 409.286ZM275 359.631L274.897 355.632C272.729 355.688 271 357.462 271 359.631L275 359.631ZM299.668 392.456L302.467 395.313L302.467 395.313L299.668 392.456ZM324.625 354.453L328.311 356.007C328.885 354.645 328.661 353.077 327.729 351.93C326.796 350.783 325.307 350.244 323.857 350.528L324.625 354.453ZM274.721 117.356C274.789 117.361 274.857 117.365 274.926 117.37L275.494 109.39C275.422 109.385 275.351 109.38 275.279 109.375L274.721 117.356ZM303.131 128.602C293.688 119.025 284.27 113.226 276.914 109.761L273.506 116.999C280.124 120.116 288.736 125.397 297.435 134.219L303.131 128.602ZM328.215 166.953C320.867 149.824 311.885 137.48 303.131 128.602L297.435 134.219C305.487 142.386 313.908 153.894 320.863 170.107L328.215 166.953ZM274.897 167.368C293.166 167.838 309.383 169.646 323.772 172.456L325.305 164.604C310.44 161.701 293.776 159.851 275.103 159.37L274.897 167.368ZM271 113.365L271 163.369L279 163.369L279 113.365L271 113.365ZM132.788 201.98C147.304 169.908 173.196 144.077 205.311 129.638L202.031 122.342C168.137 137.58 140.82 164.833 125.499 198.681L132.788 201.98ZM176.736 171.421C155.67 178.188 139.32 187.243 126.671 197.186L131.615 203.475C143.47 194.157 158.962 185.533 179.182 179.038L176.736 171.421ZM200.54 123.501C190.376 136.288 181.074 152.785 174.156 173.989L181.762 176.47C188.398 156.131 197.258 140.487 206.802 128.479L200.54 123.501ZM120.356 251.279C120.357 251.265 120.358 251.252 120.359 251.238L112.378 250.678C112.377 250.693 112.376 250.707 112.375 250.721L120.356 251.279ZM130.433 223.278C121.141 232.76 115.769 242.159 112.688 249.391L120.048 252.526C122.791 246.088 127.64 237.558 136.147 228.877L130.433 223.278ZM169.738 197.435C151.808 204.993 139.238 214.292 130.433 223.278L136.147 228.877C144.195 220.663 155.875 211.96 172.846 204.807L169.738 197.435ZM170.107 251.1C170.568 232.693 172.385 216.365 175.218 201.889L167.366 200.352C164.44 215.309 162.58 232.086 162.109 250.9L170.107 251.1ZM116.365 255L166.108 255L166.108 247L116.365 247L116.365 255ZM204.898 393.175C172.974 378.702 147.242 352.955 132.788 321.02L125.499 324.319C140.754 358.022 167.903 385.186 201.595 400.462L204.898 393.175ZM174.162 348.998C180.97 370.194 190.093 386.616 200.107 399.297L206.386 394.34C197.002 382.456 188.313 366.896 181.779 346.551L174.162 348.998ZM126.671 325.814C139.322 335.759 155.676 344.815 176.748 351.583L179.194 343.966C158.968 337.47 143.472 328.845 131.615 319.525L126.671 325.814ZM396.672 319.995C382.193 352.661 355.954 378.962 323.331 393.522L326.592 400.827C361.021 385.461 388.704 357.713 403.985 323.237L396.672 319.995ZM351.757 351.589C373.288 344.564 389.967 335.081 402.835 324.733L397.822 318.499C385.742 328.213 369.929 337.245 349.275 343.983L351.757 351.589ZM328.092 399.665C338.218 386.936 347.451 370.405 354.324 349.01L346.708 346.563C340.111 367.099 331.318 382.759 321.831 394.684L328.092 399.665ZM402.835 198.267C389.97 187.921 373.295 178.44 351.769 171.415L349.287 179.02C369.935 185.758 385.744 194.789 397.822 204.501L402.835 198.267ZM354.33 173.977C347.347 152.577 337.936 135.972 327.66 123.137L321.415 128.137C331.062 140.187 340.026 155.931 346.725 176.459L354.33 173.977ZM322.919 129.295C355.733 143.816 382.132 170.201 396.672 203.005L403.985 199.763C388.64 165.142 360.788 137.305 326.157 121.979L322.919 129.295ZM136.147 294.123C128.032 285.841 123.246 277.698 120.441 271.378L113.129 274.622C116.273 281.708 121.57 290.677 130.433 299.722L136.147 294.123ZM172.956 318.24C155.926 311.078 144.213 302.354 136.147 294.123L130.433 299.722C139.257 308.727 151.863 318.048 169.855 325.615L172.956 318.24ZM162.191 273.127C162.778 291.567 164.635 308.017 167.479 322.688L175.333 321.166C172.578 306.952 170.761 290.928 170.187 272.873L162.191 273.127ZM116.785 277L166.189 277L166.189 269L116.785 269L116.785 277ZM257 163.435L257 113.513L249 113.513L249 163.435L257 163.435ZM204.663 172.571C218.922 169.813 235.001 167.998 253.125 167.433L252.875 159.437C234.367 160.014 217.861 161.87 203.143 164.717L204.663 172.571ZM225.359 128.602C216.586 137.5 207.582 149.88 200.225 167.07L207.58 170.218C214.544 153.946 222.985 142.404 231.056 134.219L225.359 128.602ZM251.281 109.901C243.969 113.381 234.676 119.153 225.359 128.602L231.056 134.219C239.638 125.515 248.137 120.257 254.719 117.125L251.281 109.901ZM196.663 196.889C214.381 192.358 236.138 189.43 262.844 189.254L262.791 181.254C235.534 181.434 213.119 184.424 194.681 189.138L196.663 196.889ZM191.999 262.901C191.815 235.026 194.779 212.39 199.544 194.018L191.8 192.009C186.836 211.147 183.811 234.487 183.999 262.954L191.999 262.901ZM199.617 329.015C195.096 311.309 192.175 289.574 191.999 262.901L183.999 262.954C184.178 290.177 187.161 312.569 191.865 330.994L199.617 329.015ZM262.844 333.746C236.172 333.571 214.436 330.649 196.73 326.129L194.751 333.88C213.176 338.584 235.568 341.567 262.791 341.746L262.844 333.746ZM331.728 326.201C313.356 330.966 290.719 333.93 262.844 333.746L262.791 341.746C291.259 341.934 314.598 338.909 333.736 333.945L331.728 326.201ZM336.492 262.901C336.316 289.607 333.387 311.364 328.857 329.082L336.607 331.064C341.322 312.626 344.312 290.212 344.492 262.954L336.492 262.901ZM328.929 193.95C333.704 212.335 336.676 234.992 336.492 262.901L344.492 262.954C344.679 234.452 341.647 211.09 336.672 191.939L328.929 193.95ZM262.844 189.254C290.753 189.07 313.411 192.041 331.795 196.816L333.806 189.073C314.655 184.099 291.293 181.066 262.791 181.254L262.844 189.254ZM355.638 204.883C371.852 211.837 383.36 220.259 391.526 228.311L397.143 222.614C388.265 213.861 375.921 204.878 358.792 197.53L355.638 204.883ZM366.381 250.9C365.911 232.122 364.058 215.374 361.141 200.44L353.289 201.973C356.113 216.429 357.924 232.729 358.384 251.1L366.381 250.9ZM412.582 247L362.383 247L362.383 255L412.582 255L412.582 247ZM391.526 228.311C400.545 237.203 405.864 246.006 408.952 252.68L416.212 249.32C412.777 241.896 406.934 232.268 397.143 222.614L391.526 228.311ZM358.304 272.873C357.73 290.893 355.92 306.889 353.174 321.083L361.028 322.602C363.863 307.952 365.714 291.531 366.3 273.127L358.304 272.873ZM412.11 269L362.302 269L362.302 277L412.11 277L412.11 269ZM397.143 300.386C406.477 291.183 412.223 282.002 415.716 274.732L408.505 271.268C405.36 277.815 400.124 286.211 391.526 294.689L397.143 300.386ZM358.675 325.52C375.865 318.163 388.245 309.159 397.143 300.386L391.526 294.689C383.341 302.76 371.799 311.201 355.527 318.165L358.675 325.52ZM231.622 389.599C223.391 381.533 214.668 369.82 207.505 352.789L200.131 355.89C207.698 373.883 217.018 386.489 226.023 395.313L231.622 389.599ZM254.608 405.41C248.254 402.621 240.009 397.817 231.622 389.599L226.023 395.313C235.183 404.288 244.265 409.607 251.392 412.735L254.608 405.41ZM249 359.565L249 409.073L257 409.073L257 359.565L249 359.565ZM203.057 358.266C217.797 361.123 234.331 362.985 252.875 363.563L253.125 355.567C234.966 355.001 218.86 353.18 204.579 350.413L203.057 358.266ZM279 409.286L279 359.631L271 359.631L271 409.286L279 409.286ZM296.868 389.599C288.277 398.017 279.834 402.853 273.42 405.611L276.58 412.961C283.781 409.864 293.083 404.508 302.467 395.313L296.868 389.599ZM320.939 352.9C313.785 369.87 305.082 381.55 296.868 389.599L302.467 395.313C311.453 386.508 320.752 373.937 328.311 356.007L320.939 352.9ZM275.103 363.63C293.813 363.148 310.505 361.292 325.393 358.379L323.857 350.528C309.446 353.347 293.201 355.161 274.897 355.632L275.103 363.63Z" fill="white"/>
+      </svg>
+
+      <p class="hero-subtitle">Metaverse Makers</p>
+      <p class="hero-tagline">Virtual <span class="tooltip" data-tip="Hackerspaces are community-operated physical places, where people share their interest in tinkering with technology, meet and work on their projects, and learn from each other.">hackerspace</span> est. 2019</p>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span>Scroll</span>
+      <div class="chevron"></div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <div class="content-inner">
+
+      <!-- Featured Cards -->
+      <div class="featured-grid">
+        <!-- M3TV -->
+        <a href="tv/" class="featured-card">
+          <div class="card-logo">
+            <img src="tv/assets/m3tv.svg" alt="M3TV">
+          </div>
+          <div class="card-title">M3TV</div>
+          <div class="card-desc">Virtual productions &amp; AI-driven shows</div>
+        </a>
+
+        <!-- Gallery -->
+        <a href="tv/gallery.html" class="featured-card">
+          <div class="card-logo">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <rect x="4" y="8" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+              <rect x="18" y="8" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+              <rect x="32" y="8" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+              <rect x="4" y="26" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+              <rect x="18" y="26" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+              <rect x="32" y="26" width="12" height="14" rx="1.5" stroke="#a1a1aa" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="card-title">Gallery</div>
+          <div class="card-desc">Episode archive &amp; collective memory</div>
+        </a>
+
+        <!-- M3 Blog -->
+        <a href="https://paragraph.com/@m3org" target="_blank" class="featured-card">
+          <div class="card-logo">
+            <svg viewBox="0 0 526 523" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <circle cx="263" cy="261" r="225" fill="none" stroke="#a1a1aa" stroke-width="12"/>
+              <path d="M229.5 230.5H211.5V289H229.5V266H235.5V277H246.5V266H252.5V289H270.5V230.5H252.5V242H246.5V253.5H235.5V242H229.5V230.5Z" fill="#a1a1aa"/>
+              <path d="M311 230.5H275.5V242.5H298.5V254H275.5V266H298.5V277H275.5V289H311V283.5H317V258.5H311V254H317V235.5H311V230.5Z" fill="#a1a1aa"/>
+              <circle cx="263" cy="261" r="175" stroke="#a1a1aa" stroke-width="12"/>
+            </svg>
+          </div>
+          <div class="card-title">M3 Blog</div>
+          <div class="card-desc">Metaverse Makers updates</div>
+        </a>
+
+        <!-- OpenVoxels Blog -->
+        <a href="https://paragraph.com/@openvoxels" target="_blank" class="featured-card">
+          <div class="card-logo">
+            <img src="https://storage.googleapis.com/papyrus_images/b7940d93c3eecdd49fb585e857ae87f13ef0a160898f4742910190260d01d882.jpg" alt="OpenVoxels" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+          </div>
+          <div class="card-title">OpenVoxels</div>
+          <div class="card-desc">Interoperability lab notes</div>
+        </a>
+      </div>
+
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+
+      <!-- RSS Feeds -->
+      <div class="feed-section">
+        <div class="feed-column">
+          <h3>M3 Blog &mdash; Latest</h3>
+          <div id="m3-feed">
+            <p class="feed-loading">Loading&hellip;</p>
+          </div>
+        </div>
+        <div class="feed-column">
+          <h3>OpenVoxels &mdash; Latest</h3>
+          <div id="ov-feed">
+            <p class="feed-loading">Loading&hellip;</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Links -->
+      <nav class="secondary-links">
+        <a href="https://hackmd.io/@xr/vprod" target="_blank">Virtual Production</a>
+        <a href="https://hackmd.io/@xr/book" target="_blank">Research</a>
+        <a href="https://hyperfy.io/m3" target="_blank">M3 HQ</a>
+        <a href="https://gm3.github.io/boomboxheads-v2/" target="_blank">Boomboxheads V2</a>
+        <a href="https://hyperfy.io/" target="_blank">Hyperfy</a>
+        <a href="https://3ov.xyz/" target="_blank">Three Object Viewer</a>
+        <a href="https://anarchyarcade.com/" target="_blank">Anarchy Arcade</a>
+        <a href="https://m3org.com/mfshop" target="_blank">MetaFactory</a>
+        <a href="https://emotionull.art/" target="_blank">Phettaverse</a>
+        <a href="https://github.com/jbaicoianu/janusweb" target="_blank">JanusWeb</a>
+        <a href="https://www.unavi.xyz/" target="_blank">UNAVI</a>
+        <a href="https://framevr.io/omi" target="_blank">OMI Group</a>
+        <a href="https://hyperfy.io/msf" target="_blank">MSF</a>
+        <a href="https://twitter.com/neon_buidl" target="_blank">Neon Buidl</a>
+        <a href="https://uncannyalley.io" target="_blank">Uncanny Alley</a>
+      </nav>
+
+    </div>
+  </section>
+
+  <script>
+    // ---- Page fade-in ----
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('loaded');
+    });
+
+    // ---- Hero slideshow ----
+    (function() {
+      var slides = document.querySelectorAll('.hero-media');
+      var current = 0;
+      var holdTime = 5000;
+
+      function show(index) {
+        slides[current].classList.remove('active');
+        var prev = slides[current];
+        if (prev.tagName === 'VIDEO') {
+          prev.pause();
+          prev.currentTime = 0;
+        }
+        current = index % slides.length;
+        var slide = slides[current];
+        slide.classList.add('active');
+
+        if (slide.tagName === 'VIDEO') {
+          slide.currentTime = 0;
+          slide.play().catch(function(){});
+          slide.onended = function() { show(current + 1); };
+        } else {
+          setTimeout(function() { show(current + 1); }, holdTime);
+        }
+      }
+
+      slides[0].classList.add('active');
+      var first = slides[0];
+      if (first.tagName === 'VIDEO') {
+        first.play().catch(function(){});
+        first.onended = function() { show(1); };
+      } else {
+        setTimeout(function() { show(1); }, holdTime);
+      }
+    })();
+
+    // ---- Navbar scroll effect ----
+    (function() {
+      var navbar = document.getElementById('navbar');
+      var hero = document.getElementById('hero');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            navbar.classList.remove('scrolled');
+          } else {
+            navbar.classList.add('scrolled');
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(hero);
+    })();
+
+    // ---- Scroll indicator hide ----
+    (function() {
+      var indicator = document.getElementById('scroll-indicator');
+      var hidden = false;
+      window.addEventListener('scroll', function() {
+        if (!hidden && window.scrollY > 80) {
+          indicator.classList.add('hidden');
+          hidden = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ---- Staggered card entrance ----
+    (function() {
+      var cards = document.querySelectorAll('.featured-card');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var card = entry.target;
+            var index = Array.prototype.indexOf.call(cards, card);
+            setTimeout(function() {
+              card.classList.add('card-visible');
+            }, index * 100);
+            observer.unobserve(card);
+          }
+        });
+      }, { threshold: 0.15 });
+      cards.forEach(function(card) { observer.observe(card); });
+    })();
+
+    // ---- RSS Feed Loader ----
+    (function() {
+      function formatDate(dateStr) {
+        try {
+          var d = new Date(dateStr);
+          if (isNaN(d.getTime())) return '';
+          var now = new Date();
+          var diff = now - d;
+          var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          if (days === 0) return 'Today';
+          if (days === 1) return 'Yesterday';
+          if (days < 30) return days + 'd ago';
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        } catch(e) {
+          return '';
+        }
+      }
+
+      function stripHtml(html) {
+        var tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
+      }
+
+      function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+      }
+
+      function loadFeed(url, containerId, fallbackUrl, count) {
+        count = count || 3;
+        var container = document.getElementById(containerId);
+        fetch(url)
+          .then(function(res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.text();
+          })
+          .then(function(text) {
+            var xml = new DOMParser().parseFromString(text, 'text/xml');
+            var parseError = xml.querySelector('parsererror');
+            if (parseError) throw new Error('Invalid XML');
+            var items = xml.querySelectorAll('item');
+            if (items.length === 0) throw new Error('No items');
+
+            var fragment = document.createDocumentFragment();
+            var limit = Math.min(count, items.length);
+            for (var i = 0; i < limit; i++) {
+              var item = items[i];
+              var title = item.querySelector('title');
+              var link = item.querySelector('link');
+              var pubDate = item.querySelector('pubDate');
+              var desc = item.querySelector('description');
+
+              var titleText = title ? title.textContent : 'Untitled';
+              var linkHref = link ? link.textContent : '#';
+              var dateText = pubDate ? formatDate(pubDate.textContent) : '';
+              var snippet = desc ? stripHtml(desc.textContent) : '';
+              if (snippet.length > 140) snippet = snippet.substring(0, 140) + '\u2026';
+
+              var div = document.createElement('div');
+              div.className = 'feed-item';
+
+              var a = document.createElement('a');
+              a.href = linkHref;
+              a.target = '_blank';
+              a.textContent = titleText;
+              div.appendChild(a);
+
+              if (dateText) {
+                var dateEl = document.createElement('div');
+                dateEl.className = 'feed-date';
+                dateEl.textContent = dateText;
+                div.appendChild(dateEl);
+              }
+
+              if (snippet) {
+                var snippetEl = document.createElement('div');
+                snippetEl.className = 'feed-snippet';
+                snippetEl.textContent = snippet;
+                div.appendChild(snippetEl);
+              }
+
+              fragment.appendChild(div);
+            }
+            container.innerHTML = '';
+            container.appendChild(fragment);
+          })
+          .catch(function() {
+            container.innerHTML = '';
+            var p = document.createElement('p');
+            p.className = 'feed-fallback';
+            p.innerHTML = 'Could not load feed. <a href="' + escapeHtml(fallbackUrl) + '" target="_blank" style="color:var(--accent-cyan);">Read on Paragraph &rarr;</a>';
+            container.appendChild(p);
+          });
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        loadFeed(
+          'https://api.paragraph.com/blogs/rss/@m3org',
+          'm3-feed',
+          'https://paragraph.com/@m3org',
+          3
+        );
+        loadFeed(
+          'https://api.paragraph.com/blogs/rss/@openvoxels',
+          'ov-feed',
+          'https://paragraph.com/@openvoxels',
+          3
+        );
+      });
+    })();
+  </script>
 </body>
 </html>
