@@ -1,0 +1,40 @@
+# M3org
+
+> M3org is a community-driven media and builder network spanning AI entertainment, open-source ecosystems, and creator tooling. M3TV is the flagship media property under M3org, focused on AI-generated shows, live concepts, and virtual world storytelling.
+
+## Main Site
+- [M3org Home](https://m3org.com/): Primary entry point for the M3org network and brand.
+- [Discord](https://m3org.com/discord/): Main community hub for contributors, viewers, and collaborators.
+
+## M3TV Core
+- [M3TV Home](https://m3org.com/tv/): M3TV landing page with featured shows and media highlights.
+- [M3TV About](https://m3org.com/tv/about.html): Production philosophy, AI pipeline overview, and show lineup context.
+- [M3TV Gallery](https://m3org.com/tv/gallery.html): Cross-show archive for episodes, clips, stills, and specials.
+
+## M3TV Shows
+- [Cron Job](https://m3org.com/tv/shows/cronjob.html): Weekly automated open-source ecosystem news show; currently focused on ElizaOS and designed to scale to any GitHub/Discord ecosystem.
+- [Clank Tank](https://m3org.com/tv/shows/clank-tank.html): AI investment pitch format where simulated judges evaluate web3 startup projects.
+- [JedAI Council](https://m3org.com/tv/shows/jedai-council.html): Council-style AI debates on technology, governance, economics, and internet culture.
+- [Stonk Wars](https://m3org.com/tv/shows/stonk-wars.html): Live-market themed show concept with virtual trading floor scenes and continuous data-driven presentation.
+
+## M3TV Collections
+- [Cron Job Collection](https://m3org.com/tv/gallery.html?show=cronjob): Cron Job episodes, trailers, hero media, and related stills.
+- [Clank Tank Collection](https://m3org.com/tv/gallery.html?show=clanktank): Pitch episodes, promos, photoshoots, and Clank Tank world media.
+- [JedAI Council Collection](https://m3org.com/tv/gallery.html?show=jedai): Council episodes, debate visuals, chamber stills, and related clips.
+- [Stonk Wars Collection](https://m3org.com/tv/gallery.html?show=stonkwars): Trading-floor media and Stonk Wars visual archive.
+- [Special Collection](https://m3org.com/tv/gallery.html?show=special): Cross-show experiments, rebrands, transitions, and non-series media.
+
+## Publishing and Social
+- [YouTube](https://www.youtube.com/@m3org/videos): Primary long-form video distribution.
+- [Blog (Paragraph)](https://paragraph.com/@m3org): Editorial updates, announcements, and commentary.
+- [X / Twitter](https://x.com/m3org): Short-form updates and distribution touchpoint.
+- [GitHub](https://github.com/m3-org): Open-source repositories and development activity.
+
+## Ecosystem Links
+- [ElizaOS News](https://elizaos.news): External destination tied to Cron Job ecosystem coverage.
+- [AI News Unity Archive](https://elizaos.news/unity.html): Prior Unity-era archive linked from Cron Job.
+- [Stonk Exchange World](https://hyperfy.io/stonkexchange): Virtual world destination associated with Stonk Wars.
+
+## Optional
+- [Clank Tank Pitch Submission](https://tally.so/r/3X8EKO): Intake form for project pitches.
+- [Showcase Manifest](https://cdn.elizaos.news/showcase/manifest.json): Machine-readable media index for showcase assets.

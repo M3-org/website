@@ -235,6 +235,10 @@
     .badge-stonkwars { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
     .badge-special { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
 
+    .card-copy {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.44) 55%, rgba(0, 0, 0, 0) 100%);
+    }
+
     /* Lightbox */
     .lightbox {
       position: fixed;
@@ -304,6 +308,36 @@
       height: 20px;
       color: white;
     }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .lightbox-nav svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    .lightbox-prev { left: -3.25rem; }
+    .lightbox-next { right: -3.25rem; }
 
     .lightbox-info {
       padding: 1.5rem 0;
@@ -375,17 +409,28 @@
 
   <!-- Video Lightbox Modal -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <div class="lightbox-content" onclick="event.stopPropagation()">
+    <div class="lightbox-content" id="lightbox-content" onclick="event.stopPropagation()">
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous media">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next media">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
       <div class="lightbox-video">
-        <video id="lightbox-video" controls autoplay style="display: none;">
+        <video id="lightbox-video" controls style="display: none;">
           <source src="" type="video/mp4">
         </video>
         <iframe id="lightbox-youtube" style="display: none;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <img id="lightbox-image" style="display: none;" class="absolute inset-0 w-full h-full object-contain bg-black rounded-lg" alt="Gallery media">
       </div>
       <div class="lightbox-info">
         <h3 id="lightbox-title" class="font-display text-2xl font-semibold mb-2"></h3>
@@ -397,7 +442,7 @@
   <!-- Footer -->
   <footer class="py-12 bg-surface border-t border-zinc-800/50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col md:grid md:grid-cols-3 items-center gap-6">
         <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
           <div class="w-12 h-12">
@@ -406,7 +451,7 @@
         </a>
 
         <!-- Social Links -->
-        <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center gap-4">
           <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -430,7 +475,7 @@
         </div>
 
         <!-- Copyright -->
-        <p class="text-sm text-zinc-600">
+        <p class="text-sm text-zinc-600 md:justify-self-end">
           &copy; 2025 M3TV. All rights reserved.
         </p>
       </div>
@@ -460,6 +505,9 @@
 
         card.innerHTML = `
           <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute top-4 left-4 z-10">
+            <span class="show-badge ${show.badge}">${show.name}</span>
+          </div>
           <div class="play-overlay">
             <div class="play-btn${item.live ? ' live-indicator' : ''}">
               ${item.live
@@ -470,8 +518,7 @@
               }
             </div>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge ${show.badge} mb-2">${show.name}</span>
+          <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
             <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
             <p class="text-zinc-400 text-sm">${item.description}</p>
           </div>
@@ -485,10 +532,19 @@
         card.dataset.title = item.title;
         if (item.youtube) card.dataset.youtube = item.youtube;
         if (item.video) card.dataset.video = item.video;
+        if (item.image) card.dataset.image = item.image;
+        if (item.hoverPreview) card.dataset.hoverPreview = 'true';
         card.onclick = function() { openLightbox(this); };
 
+        const previewMedia = (!item.thumbnail && item.video)
+          ? `<video src="${item.video}" class="absolute inset-0 w-full h-full object-cover" muted playsinline preload="metadata"></video>`
+          : `<img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">`;
+
         card.innerHTML = `
-          <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
+          ${previewMedia}
+          <div class="absolute top-4 left-4 z-10">
+            <span class="show-badge ${show.badge}">${show.name}</span>
+          </div>
           <div class="play-overlay">
             <div class="play-btn">
               <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -496,12 +552,25 @@
               </svg>
             </div>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <span class="show-badge ${show.badge} mb-2">${show.name}</span>
+          <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
             <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
             <p class="text-zinc-400 text-sm">${item.description}</p>
           </div>
         `;
+
+        if (item.hoverPreview && item.video && !item.thumbnail) {
+          const previewVideo = card.querySelector('video');
+          if (previewVideo) {
+            previewVideo.loop = true;
+            card.addEventListener('mouseenter', () => {
+              previewVideo.play().catch(() => {});
+            });
+            card.addEventListener('mouseleave', () => {
+              previewVideo.pause();
+              previewVideo.currentTime = 0;
+            });
+          }
+        }
         return card;
       }
     }
@@ -570,34 +639,60 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxVideo = document.getElementById('lightbox-video');
     const lightboxYoutube = document.getElementById('lightbox-youtube');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxContent = document.getElementById('lightbox-content');
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDesc = document.getElementById('lightbox-desc');
+    let lightboxItems = [];
+    let currentLightboxIndex = -1;
+    let touchStartX = null;
+
+    function getVisibleCards() {
+      return Array.from(episodeGrid.querySelectorAll('.episode-card')).filter((card) => card.style.display !== 'none');
+    }
 
     function openLightbox(element) {
+      lightboxItems = getVisibleCards();
+      currentLightboxIndex = lightboxItems.indexOf(element);
+      showLightboxItem(element);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxItem(element) {
       const videoSrc = element.dataset.video;
       const youtubeId = element.dataset.youtube;
+      const imageSrc = element.dataset.image;
       const title = element.dataset.title;
 
-      // Reset both players
+      // Reset all players
       lightboxVideo.style.display = 'none';
       lightboxYoutube.style.display = 'none';
+      lightboxImage.style.display = 'none';
       lightboxVideo.pause();
+      lightboxVideo.querySelector('source').src = '';
       lightboxYoutube.src = '';
 
       if (youtubeId) {
-        lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+        lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}`;
         lightboxYoutube.style.display = 'block';
       } else if (videoSrc) {
         lightboxVideo.querySelector('source').src = videoSrc;
         lightboxVideo.load();
         lightboxVideo.style.display = 'block';
+      } else if (imageSrc) {
+        lightboxImage.src = imageSrc;
+        lightboxImage.style.display = 'block';
       }
 
       lightboxTitle.textContent = title;
       lightboxDesc.textContent = '';
+    }
 
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    function navigateLightbox(direction) {
+      if (!lightbox.classList.contains('active') || lightboxItems.length === 0) return;
+      currentLightboxIndex = (currentLightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
+      showLightboxItem(lightboxItems[currentLightboxIndex]);
     }
 
     function closeLightbox(event) {
@@ -607,15 +702,33 @@
       lightboxVideo.pause();
       lightboxVideo.querySelector('source').src = '';
       lightboxYoutube.src = '';
+      lightboxImage.src = '';
+      lightboxItems = [];
+      currentLightboxIndex = -1;
       document.body.style.overflow = '';
     }
 
-    // Close lightbox on ESC key
+    // Keyboard controls
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
-      }
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
     });
+
+    // Swipe navigation
+    lightboxContent.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    lightboxContent.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(deltaX) > 40) {
+        navigateLightbox(deltaX > 0 ? -1 : 1);
+      }
+      touchStartX = null;
+    }, { passive: true });
 
     // Load gallery data
     fetch('gallery.json')
