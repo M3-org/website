@@ -2,10 +2,10 @@
   "shows": {
     "cronjob": {
       "id": "cronjob",
-      "title": "Cronjob",
-      "tagline": "Yesterday's ElizaOS news, today",
-      "description": "A fully-automated 3D news show covering the ElizaOS ecosystem with weekly episodes rendered in PlayCanvas.",
-      "longDescription": "Cronjob is a fully-automated 3D news show covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements. Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage, a refreshed cast, and a cinematic weekly format. Sparty delivers the market report while Peepo keeps everyone honest with skeptical commentary.",
+      "title": "Cron Job",
+      "tagline": "Yesterday's open-source ecosystem news, today",
+      "description": "A fully-automated 3D news show currently covering ElizaOS, built to generate weekly episodes for any open-source ecosystem.",
+      "longDescription": "Cron Job is a fully-automated 3D news show currently covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements. The production system is designed to automate weekly coverage for any open-source ecosystem by ingesting GitHub and Discord activity, then generating scripts, voices, and final episodes end-to-end. Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage and a cinematic weekly format.",
       "category": "News",
       "schedule": "Weekly",
       "duration": "~9-12 min",
@@ -49,7 +49,7 @@
         {
           "step": 1,
           "title": "Data Collection",
-          "description": "GitHub PRs, Discord discussions, security advisories, and market data from the ElizaOS ecosystem are gathered automatically."
+          "description": "GitHub PRs, Discord discussions, security advisories, and market data are gathered automatically from the ecosystem currently being covered."
         },
         {
           "step": 2,
@@ -399,7 +399,7 @@
       "name": "Jin",
       "fullName": "Jin",
       "avatar": "assets/thumbnails/jin.jpg",
-      "description": "Co-host of Cronjob, bringing community perspective and production insights.",
+      "description": "Co-host of Cron Job, bringing community perspective and production insights.",
       "appearances": ["cronjob"]
     },
     "spartan": {

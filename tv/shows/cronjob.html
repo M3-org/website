@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- HTML Meta Tags -->
-  <title>Cronjob - M3TV</title>
-  <meta name="description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
+  <title>Cron Job - M3TV</title>
+  <meta name="description" content="Weekly AI-produced open-source ecosystem news show. Currently covering ElizaOS with a system built for any GitHub and Discord community.">
 
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://m3org.com/tv/shows/cronjob.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cronjob - M3TV">
-  <meta property="og:description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
+  <meta property="og:title" content="Cron Job - M3TV">
+  <meta property="og:description" content="Weekly AI-produced open-source ecosystem news show. Currently covering ElizaOS with a system built for any GitHub and Discord community.">
   <meta property="og:image" content="https://m3org.com/tv/assets/cronjob/s1.jpg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
-  <meta property="og:image:alt" content="Cronjob - Weekly AI News Show">
+  <meta property="og:image:alt" content="Cron Job - Weekly AI News Show">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@m3org">
   <meta property="twitter:url" content="https://m3org.com/tv/shows/cronjob.html">
-  <meta name="twitter:title" content="Cronjob - M3TV">
-  <meta name="twitter:description" content="Weekly AI-produced ElizaOS ecosystem news show. Yesterday's ElizaOS news, today.">
+  <meta name="twitter:title" content="Cron Job - M3TV">
+  <meta name="twitter:description" content="Weekly AI-produced open-source ecosystem news show. Currently covering ElizaOS with a system built for any GitHub and Discord community.">
   <meta name="twitter:image" content="https://m3org.com/tv/assets/cronjob/s1.jpg">
-  <meta name="twitter:image:alt" content="Cronjob - Weekly AI News Show">
+  <meta name="twitter:image:alt" content="Cron Job - Weekly AI News Show">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../assets/m3tv.svg">
@@ -164,32 +164,6 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
 
-    /* Character Cards */
-    .character-card {
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .character-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .character-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 1rem;
-      border: 3px solid rgba(0, 212, 255, 0.3);
-      background: var(--bg-surface);
-    }
-
-    .character-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     /* Episode Cards */
     .episode-card {
       position: relative;
@@ -235,6 +209,22 @@
 
     .episode-card:hover .play-overlay {
       opacity: 1;
+    }
+
+    .trailer-video {
+      width: 100%;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #000;
+    }
+
+    .gallery-trigger {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-trigger:hover {
+      transform: scale(1.02);
     }
 
     /* Pipeline Steps */
@@ -326,6 +316,58 @@
       height: 100%;
     }
 
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .image-lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
     /* Season 1 Archive Card */
     .archive-link {
       background: var(--bg-surface);
@@ -363,11 +405,11 @@
   <!-- Hero Section -->
   <section class="relative min-h-[70vh] flex items-end pb-16 overflow-hidden">
     <video
+      id="hero-reel"
       class="hero-video"
       src="../assets/cronjob/hero.mp4"
       muted
       autoplay
-      loop
       playsinline
       poster="../assets/cronjob/s1.jpg"
     ></video>
@@ -376,9 +418,9 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32">
       <div class="max-w-2xl">
         <span class="section-label text-cyan block mb-4">Weekly Show</span>
-        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Cronjob</h1>
-        <p class="text-xl text-zinc-300 mb-2">Yesterday's ElizaOS news, today</p>
-        <p class="text-zinc-500 mb-8">Weekly episodes ~ 9-12 min</p>
+        <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-4">Cron Job</h1>
+        <p class="text-xl text-zinc-300 mb-2">Yesterday's open-source ecosystem news, today</p>
+        <p class="text-zinc-500 mb-8">Cron fires every Monday. Human alarm optional.</p>
 
         <div class="flex flex-wrap gap-4">
           <button class="btn-primary" onclick="playLatestEpisode()">
@@ -401,116 +443,41 @@
           <span class="section-label text-cyan block mb-4">About the Show</span>
           <h2 class="headline-xl text-3xl md:text-4xl mb-6">The Weekly Briefing</h2>
           <p class="text-zinc-400 text-lg leading-relaxed mb-6">
-            Cronjob is a fully-automated 3D news show covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements.
+            Cron Job is a fully-automated 3D news show currently covering the ElizaOS ecosystem. Every week, AI hosts Eliza and Jin break down the latest GitHub PRs, community discussions, security advisories, and market movements.
           </p>
           <p class="text-zinc-400 leading-relaxed mb-6">
-            Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage, a refreshed cast, and a cinematic weekly format. Sparty delivers the market report while Peepo keeps everyone honest with skeptical commentary.
+            The system is designed to automate a weekly news show for any open-source ecosystem by ingesting GitHub and Discord activity, then generating scripts, voices, and final episodes end-to-end. Built on PlayCanvas and rendered in real-time, Season 2 brings expanded coverage, a refreshed cast, and a cinematic format.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <img src="../assets/cronjob/s1.jpg" alt="Cronjob Season 2" class="rounded-lg">
-          <img src="../assets/cronjob/s2.jpg" alt="Cronjob Season 2" class="rounded-lg mt-8">
+          <img src="../assets/cronjob/s1.jpg" alt="Cron Job Season 2" class="rounded-lg about-media">
+          <img src="../assets/cronjob/s2.jpg" alt="Cron Job Season 2" class="rounded-lg mt-8 about-media">
+          <img src="../assets/cronjob/s3.jpg" alt="Cron Job Season 2" class="rounded-lg about-media">
+          <img src="../assets/cronjob/s4.jpg" alt="Cron Job Season 2" class="rounded-lg mt-8 about-media">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cast Section -->
+  <!-- How It Works Section -->
   <section class="py-20 bg-surface">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="section-label text-cyan block mb-4">The Cast</span>
-        <h2 class="headline-xl text-3xl md:text-4xl">Meet Your Hosts</h2>
+      <div class="max-w-4xl mx-auto mb-14 text-center">
+        <span class="section-label text-cyan block mb-4">How It Works</span>
+        <h2 class="headline-xl text-3xl md:text-4xl mb-4">How It Works</h2>
+        <p class="text-zinc-400 mb-6">
+          This trailer is generated from the same automated stack that runs weekly episodes: signal ingestion, script generation, voice synthesis, and real-time 3D production.
+        </p>
+        <video class="trailer-video" controls playsinline preload="metadata" poster="../assets/cronjob/thumb.jpg">
+          <source src="../assets/cronjob/trailer.mp4" type="video/mp4">
+        </video>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../assets/thumbnails/eliza.jpg" alt="Eliza">
-          </div>
-          <h3 class="font-semibold mb-1">Eliza</h3>
-          <p class="text-zinc-500 text-sm">Anchor</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../assets/thumbnails/jin.jpg" alt="Jin" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-elevated flex items-center justify-center text-zinc-600 text-2xl font-display\'>J</div>'">
-          </div>
-          <h3 class="font-semibold mb-1">Jin</h3>
-          <p class="text-zinc-500 text-sm">Co-Host</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../assets/thumbnails/spartan.jpg" alt="Sparty">
-          </div>
-          <h3 class="font-semibold mb-1">Sparty</h3>
-          <p class="text-zinc-500 text-sm">Market Reporter</p>
-        </div>
-
-        <div class="character-card">
-          <div class="character-avatar">
-            <img src="../assets/thumbnails/peepo.jpg" alt="Peepo">
-          </div>
-          <h3 class="font-semibold mb-1">Peepo</h3>
-          <p class="text-zinc-500 text-sm">Skeptic</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Episodes Section -->
-  <section id="episodes" class="py-20 bg-deep">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-        <div>
-          <span class="section-label text-cyan block mb-4">Episodes</span>
-          <h2 class="headline-xl text-3xl md:text-4xl">Latest Episodes</h2>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="episodes-grid">
-        <!-- Episodes populated by JavaScript -->
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="../gallery.html?show=cronjob" class="btn-secondary inline-flex items-center gap-2">
-          View All Episodes
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It's Made Section -->
-  <section class="py-20 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="section-label text-cyan block mb-4">Behind the Curtain</span>
-        <h2 class="headline-xl text-3xl md:text-4xl mb-4">How It's Made</h2>
-      </div>
-
-      <!-- Behind the Scenes Video -->
-        <div class="relative w-full" style="padding-bottom: 56.25%;">
-          <iframe
-            class="absolute inset-0 w-full h-full rounded-lg"
-            src="https://www.youtube.com/embed/fIGoyaEd0Hw"
-            title="How Cronjob is Made"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-      <br>
 
       <div class="grid md:grid-cols-4 gap-6">
         <div class="pipeline-step" data-step="1">
           <h3 class="font-semibold text-lg mb-2">Data Collection</h3>
           <p class="text-zinc-400 text-sm">
-            GitHub PRs, Discord discussions, security advisories, and market data from the ElizaOS ecosystem are gathered automatically.
+            GitHub PRs, Discord discussions, security advisories, and market data are gathered automatically from the ecosystem currently being covered.
           </p>
         </div>
 
@@ -536,9 +503,30 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Episodes Section -->
+  <section id="episodes" class="py-20 bg-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+        <div>
+          <span class="section-label text-cyan block mb-4">Episodes</span>
+          <h2 class="headline-xl text-3xl md:text-4xl">Latest Episodes</h2>
+          <p class="text-zinc-500 text-sm mt-2">If you're previewing from a local file, use a localhost server for embedded playback.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="episodes-grid">
+        <!-- Episodes populated by JavaScript -->
+      </div>
+
       <div class="text-center mt-12">
-        <a href="../about.html" class="text-cyan hover:underline text-sm">
-          Learn more about our AI pipeline →
+        <a href="../gallery.html?show=cronjob" class="btn-secondary inline-flex items-center gap-2">
+          View All Episodes
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
         </a>
       </div>
     </div>
@@ -549,10 +537,10 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <a href="https://elizaos.news/unity.html" target="_blank" class="archive-link flex items-center gap-6 p-6 group">
         <div class="w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-elevated">
-          <img src="../assets/cronjob/15.jpg" alt="Season 1" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
+          <img src="../assets/stills/ainews-15.jpg" alt="Season 1" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
         </div>
         <div class="flex-1 min-w-0">
-          <h3 class="font-semibold mb-1">Season 1 (Unity Era)</h3>
+          <h3 class="font-semibold mb-1">AI News Unity Engine</h3>
           <p class="text-zinc-500 text-sm">Daily episodes from August 2025. Built in Unity with the original cast.</p>
         </div>
         <div class="flex-shrink-0 text-zinc-500 group-hover:text-cyan transition-colors">
@@ -618,11 +606,31 @@
     </div>
   </div>
 
+  <!-- Image Lightbox -->
+  <div id="image-lightbox" class="image-lightbox" onclick="closeImageLightbox()">
+    <button class="lightbox-close" onclick="closeImageLightbox()" aria-label="Close image">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateImageLightbox(-1)" aria-label="Previous image">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Cron Job gallery image" onclick="event.stopPropagation()">
+    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateImageLightbox(1)" aria-label="Next image">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
   <script>
     // Episode data - S2 episodes (add new episodes here)
     const episodes = {
       '2026-02-02': {
-        en: { id: 'placeholder', title: 'Cronjob S2E1: Workflow Revolution', thumbnail: '2026-02-02_Cron-Job_Workflow-Revolution.png' }
+        en: { id: '00v29Fv1D7Y', title: 'Cron Job S2E1: Workflow Revolution', thumbnail: 'https://i.ytimg.com/vi/00v29Fv1D7Y/hqdefault.jpg' }
       }
     };
     let currentLang = 'en';
@@ -639,10 +647,13 @@
       grid.innerHTML = dates.map(date => {
         const ep = episodes[date][currentLang];
         if (!ep) return '';
+        const thumbnailSrc = ep.thumbnail.startsWith('http')
+          ? ep.thumbnail
+          : `../assets/cronjob/thumbnails/${ep.thumbnail}`;
 
         return `
           <div class="episode-card aspect-video" onclick="openEpisode('${ep.id}', '${ep.title}', '${date}')">
-            <img src="../assets/cronjob/thumbnails/${ep.thumbnail}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
+            <img src="${thumbnailSrc}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
             <div class="play-overlay">
               <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -664,8 +675,28 @@
     const youtubePlayer = document.getElementById('youtube-player');
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDate = document.getElementById('lightbox-date');
+    const isLocalFile = window.location.protocol === 'file:';
+    const heroReel = document.getElementById('hero-reel');
+    const heroSequence = [
+      '../assets/cronjob/hero.mp4',
+      '../assets/cronjob/cronjob-stinger.mp4'
+    ];
+    let heroSequenceIndex = 0;
+
+    if (heroReel) {
+      heroReel.loop = false;
+      heroReel.addEventListener('ended', () => {
+        heroSequenceIndex = (heroSequenceIndex + 1) % heroSequence.length;
+        heroReel.src = heroSequence[heroSequenceIndex];
+        heroReel.play().catch(() => {});
+      });
+    }
 
     function openEpisode(videoId, title, date) {
+      if (isLocalFile) {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank', 'noopener,noreferrer');
+        return;
+      }
       youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
       lightboxTitle.textContent = title;
       lightboxDate.textContent = date;
@@ -688,10 +719,47 @@
       }
     }
 
+    // Image lightbox
+    const galleryImages = [];
+    let currentImageIndex = 0;
+    document.querySelectorAll('img.about-media').forEach((img) => {
+      galleryImages.push(img.src);
+      img.classList.add('gallery-trigger');
+      img.addEventListener('click', () => openImageLightbox(galleryImages.indexOf(img.src)));
+    });
+    const imageLightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openImageLightbox(index) {
+      currentImageIndex = index;
+      lightboxImg.src = galleryImages[index];
+      imageLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageLightbox() {
+      imageLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateImageLightbox(direction) {
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex];
+    }
+
     // Close on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && lightbox.classList.contains('active')) {
         closeLightbox();
+      }
+      if (e.key === 'Escape' && imageLightbox.classList.contains('active')) {
+        closeImageLightbox();
+      }
+      if (imageLightbox.classList.contains('active') && e.key === 'ArrowLeft') {
+        navigateImageLightbox(-1);
+      }
+      if (imageLightbox.classList.contains('active') && e.key === 'ArrowRight') {
+        navigateImageLightbox(1);
       }
     });
 
