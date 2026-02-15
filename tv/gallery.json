@@ -29,6 +29,14 @@
   "items": [
     {
       "show": "cronjob",
+      "youtube": "rIjfrFMWfxQ",
+      "title": "Cron Job: The AI Judging Tree",
+      "thumbnail": "https://i.ytimg.com/vi/rIjfrFMWfxQ/hqdefault.jpg",
+      "label": "2026-02-08",
+      "description": "Weekly Cron Job episode"
+    },
+    {
+      "show": "cronjob",
       "youtube": "00v29Fv1D7Y",
       "title": "Cron Job S2E1: Workflow Revolution",
       "thumbnail": "https://i.ytimg.com/vi/00v29Fv1D7Y/hqdefault.jpg",

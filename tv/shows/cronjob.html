@@ -627,13 +627,22 @@
   </div>
 
   <script>
-    // Episode data - S2 episodes (add new episodes here)
-    const episodes = {
-      '2026-02-02': {
-        en: { id: '00v29Fv1D7Y', title: 'Cron Job S2E1: Workflow Revolution', thumbnail: 'https://i.ytimg.com/vi/00v29Fv1D7Y/hqdefault.jpg' }
-      }
-    };
+    // Episode data is loaded from ../data/cronjob-episodes.json
+    let episodes = {};
     let currentLang = 'en';
+
+    async function loadEpisodes() {
+      try {
+        const response = await fetch('../data/cronjob-episodes.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        episodes = await response.json();
+      } catch (error) {
+        console.warn('Failed to load episode data:', error);
+        episodes = {};
+      } finally {
+        renderEpisodes();
+      }
+    }
 
     function renderEpisodes() {
       const grid = document.getElementById('episodes-grid');
@@ -764,7 +773,7 @@
     });
 
     // Initialize
-    renderEpisodes();
+    loadEpisodes();
   </script>
 </body>
 </html>
