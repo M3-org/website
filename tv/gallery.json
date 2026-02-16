@@ -29,6 +29,14 @@
   "items": [
     {
       "show": "cronjob",
+      "youtube": "EBpT9nLjeOE",
+      "title": "Cron Job: Building Through the Storm",
+      "thumbnail": "https://i.ytimg.com/vi/EBpT9nLjeOE/hqdefault.jpg",
+      "label": "2026-02-16",
+      "description": "Weekly Cron Job episode"
+    },
+    {
+      "show": "cronjob",
       "youtube": "rIjfrFMWfxQ",
       "title": "Cron Job: The AI Judging Tree",
       "thumbnail": "https://i.ytimg.com/vi/rIjfrFMWfxQ/hqdefault.jpg",
