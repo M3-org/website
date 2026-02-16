@@ -1,0 +1,10 @@
+{
+    "name": "PitchBot",
+    "description": "An AI-powered android designed for acting as a surrogate representative of a person doing a pitch.",
+    "pitches": [
+        {
+            "project": "Forgot Notes",
+            "pitch": "PitchBot completely forgot his notes about his pitch today. He has a funny story about what happened that none of the judges are gonna believe."
+        }
+    ]
+}
