@@ -175,47 +175,33 @@
       transform: scale(1.05);
     }
 
-    .episode-card .play-overlay {
+    .video-glyph-overlay {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transition: opacity 0.3s ease;
       z-index: 10;
+      pointer-events: none;
+      opacity: 0.72;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    .episode-card:hover .play-overlay {
-      opacity: 1;
-    }
-
-    .play-btn {
-      width: 60px;
-      height: 60px;
+    .video-glyph-badge {
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 15, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(2px);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
     }
 
-    .play-btn.live-indicator {
-      background: rgba(239, 68, 68, 0.8);
-      animation: pulse-live 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-live {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.05); }
-    }
-
-    .play-btn:hover {
-      background: var(--accent-ember);
-      transform: scale(1.1);
+    .episode-card:hover .video-glyph-overlay {
+      opacity: 0;
+      transform: scale(0.92);
     }
 
     /* Show Badge */
@@ -235,6 +221,17 @@
     .badge-jedai { background: rgba(168, 85, 247, 0.2); color: var(--accent-violet); }
     .badge-stonkwars { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
     .badge-special { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
+    .live-pill {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: rgba(239, 68, 68, 0.85);
+      border: 1px solid rgba(254, 202, 202, 0.35);
+    }
 
     .card-copy {
       background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.44) 55%, rgba(0, 0, 0, 0) 100%);
@@ -510,16 +507,7 @@
           <div class="absolute top-4 left-4 z-10">
             <span class="show-badge ${show.badge}">${show.name}</span>
           </div>
-          <div class="play-overlay">
-            <div class="play-btn${item.live ? ' live-indicator' : ''}">
-              ${item.live
-                ? '<span class="text-xs font-bold text-white">LIVE</span>'
-                : `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>`
-              }
-            </div>
-          </div>
+          ${item.live ? '<div class="absolute top-4 right-4 z-10"><span class="live-pill">LIVE</span></div>' : ''}
           <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
             <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
             <p class="text-zinc-400 text-sm">${item.description}</p>
@@ -527,7 +515,7 @@
         `;
         return card;
       } else {
-        // Playable card (YouTube or video)
+        // Playable card (YouTube, video, or image)
         const card = document.createElement('div');
         card.className = 'episode-card aspect-[4/3]';
         card.dataset.show = item.show;
@@ -538,22 +526,26 @@
         if (item.hoverPreview) card.dataset.hoverPreview = 'true';
         card.onclick = function() { openLightbox(this); };
 
+        const isVideoCard = Boolean(item.youtube || item.video);
         const previewMedia = (!item.thumbnail && item.video)
           ? `<video src="${item.video}" class="absolute inset-0 w-full h-full object-cover" muted playsinline preload="metadata"></video>`
           : `<img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">`;
+        const mediaGlyph = isVideoCard
+          ? `<div class="video-glyph-overlay" aria-hidden="true">
+              <div class="video-glyph-badge">
+                <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>`
+          : '';
 
         card.innerHTML = `
           ${previewMedia}
           <div class="absolute top-4 left-4 z-10">
             <span class="show-badge ${show.badge}">${show.name}</span>
           </div>
-          <div class="play-overlay">
-            <div class="play-btn">
-              <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
+          ${mediaGlyph}
           <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
             <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
             <p class="text-zinc-400 text-sm">${item.description}</p>
