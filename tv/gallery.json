@@ -5,6 +5,11 @@
       "badge": "badge-cronjob",
       "description": "Daily ElizaOS news summary"
     },
+    "archive": {
+      "name": "Archive",
+      "badge": "badge-archive",
+      "description": "AI News and historical archive media"
+    },
     "clanktank": {
       "name": "Clank Tank",
       "badge": "badge-clanktank",
@@ -306,7 +311,7 @@
       "description": "The Governance Dilemma"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ainews-1.jpg",
       "title": "AI News Unity Still 1",
       "thumbnail": "assets/stills/ainews-1.jpg",
@@ -314,7 +319,7 @@
       "description": "AI News Unity Engine archive still"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ainews-5.jpg",
       "title": "AI News Unity Still 2",
       "thumbnail": "assets/stills/ainews-5.jpg",
@@ -322,7 +327,7 @@
       "description": "AI News Unity Engine archive still"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ainews-10.jpg",
       "title": "AI News Unity Still 3",
       "thumbnail": "assets/stills/ainews-10.jpg",
@@ -330,7 +335,7 @@
       "description": "AI News Unity Engine archive still"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ainews-15.jpg",
       "title": "AI News Unity Still 4",
       "thumbnail": "assets/stills/ainews-15.jpg",
@@ -338,14 +343,14 @@
       "description": "AI News Unity Engine archive still"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "video": "assets/cronjob/clanktankbruh.mp4",
       "title": "Clank Tank Prototype Clip",
       "label": "Prototype",
       "description": "Early in-world promo cut"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ep08.jpg",
       "title": "AI News Archive Still 8",
       "thumbnail": "assets/stills/ep08.jpg",
@@ -353,7 +358,7 @@
       "description": "AI News archive frame"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ep10.jpg",
       "title": "AI News Archive Still 10",
       "thumbnail": "assets/stills/ep10.jpg",
@@ -361,7 +366,7 @@
       "description": "AI News archive frame"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "image": "assets/stills/ep14.jpg",
       "title": "AI News Archive Still 14",
       "thumbnail": "assets/stills/ep14.jpg",
@@ -585,7 +590,7 @@
       "description": "Stonk Wars Trading Floor Preview"
     },
     {
-      "show": "cronjob",
+      "show": "archive",
       "video": "https://cdn.elizaos.news/showcase/M3org/boom-veg.mp4",
       "title": "AI News Unity",
       "thumbnail": "https://cdn.elizaos.news/showcase/thumbs/boom-veg-92fd39a8.jpg",
