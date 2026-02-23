@@ -211,6 +211,24 @@
       opacity: 1;
     }
 
+    .episode-code-chip {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 12;
+      padding: 0.32rem 0.7rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(10, 10, 15, 0.56);
+      color: #f8fafc;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+
     .trailer-video {
       width: 100%;
       border-radius: 0.75rem;
@@ -644,6 +662,18 @@
       }
     }
 
+    function parseArchiveEpisodeTitle(rawTitle) {
+      const title = String(rawTitle || '').trim();
+      const match = title.match(/^(.*?)\s*-\s*[^|]+\|\s*(S\d+E\d+)$/i);
+      if (!match) {
+        return { displayTitle: title, episodeCode: '' };
+      }
+      return {
+        displayTitle: match[1].trim(),
+        episodeCode: match[2].toUpperCase(),
+      };
+    }
+
     function renderEpisodes() {
       const grid = document.getElementById('episodes-grid');
       const dates = Object.keys(episodes).sort().reverse();
@@ -659,10 +689,12 @@
         const thumbnailSrc = ep.thumbnail.startsWith('http')
           ? ep.thumbnail
           : `../assets/cronjob/thumbnails/${ep.thumbnail}`;
+        const parsedTitle = parseArchiveEpisodeTitle(ep.title);
 
         return `
           <div class="episode-card aspect-video" onclick="openEpisode('${ep.id}', '${ep.title}', '${date}')">
             <img src="${thumbnailSrc}" alt="${ep.title}" class="absolute inset-0 w-full h-full object-cover">
+            ${parsedTitle.episodeCode ? `<button class="episode-code-chip" type="button" tabindex="-1" aria-hidden="true">${parsedTitle.episodeCode}</button>` : ''}
             <div class="play-overlay">
               <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -672,7 +704,7 @@
             </div>
             <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
               <p class="text-cyan text-xs font-medium mb-1">${date}</p>
-              <h3 class="font-display text-lg font-semibold line-clamp-2">${ep.title}</h3>
+              <h3 class="font-display text-lg font-semibold line-clamp-2">${parsedTitle.displayTitle}</h3>
             </div>
           </div>
         `;
