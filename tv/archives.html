@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- HTML Meta Tags -->
-  <title>Gallery - M3TV</title>
-  <meta name="description" content="Browse the complete M3TV gallery. Collective memory.">
+  <title>Archives - M3TV</title>
+  <meta name="description" content="Browse the episode archives across M3TV shows.">
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://m3org.com/tv/gallery.html">
+  <meta property="og:url" content="https://m3org.com/tv/archives.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gallery - M3TV">
-  <meta property="og:description" content="Browse the complete M3TV gallery. Collective memory.">
+  <meta property="og:title" content="Archives - M3TV">
+  <meta property="og:description" content="Browse the episode archives across M3TV shows.">
   <meta property="og:image" content="https://m3org.com/tv/assets/embed.jpg">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="256">
-  <meta property="og:image:alt" content="M3TV Gallery">
+  <meta property="og:image:alt" content="M3TV Archives">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@m3org">
-  <meta property="twitter:url" content="https://m3org.com/tv/gallery.html">
-  <meta name="twitter:title" content="Gallery - M3TV">
-  <meta name="twitter:description" content="Browse the complete M3TV gallery. Collective memory.">
+  <meta property="twitter:url" content="https://m3org.com/tv/archives.html">
+  <meta name="twitter:title" content="Archives - M3TV">
+  <meta name="twitter:description" content="Browse the episode archives across M3TV shows.">
   <meta name="twitter:image" content="https://m3org.com/tv/assets/embed.jpg">
-  <meta name="twitter:image:alt" content="M3TV Gallery">
+  <meta name="twitter:image:alt" content="M3TV Archives">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/m3tv.svg">
@@ -40,16 +40,16 @@
       theme: {
         extend: {
           colors: {
-            'deep': '#0a0a0f',
-            'surface': '#141418',
-            'elevated': '#1c1c24',
-            'cyan': '#00d4ff',
-            'ember': '#ff6b35',
-            'violet': '#a855f7',
+            deep: '#0a0a0f',
+            surface: '#141418',
+            elevated: '#1c1c24',
+            cyan: '#00d4ff',
+            ember: '#ff6b35',
+            violet: '#a855f7',
           },
           fontFamily: {
-            'display': ['Cormorant Garamond', 'serif'],
-            'body': ['Outfit', 'sans-serif'],
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Outfit', 'sans-serif'],
           }
         }
       }
@@ -66,7 +66,6 @@
       --accent-violet: #a855f7;
       --text-primary: #f5f5f7;
       --text-secondary: #a1a1aa;
-      --text-muted: #52525b;
     }
 
     * {
@@ -80,7 +79,6 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    /* Navigation */
     .nav-glass {
       background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(20px);
@@ -96,11 +94,11 @@
       font-size: 0.875rem;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover,
+    .nav-link.active {
       color: var(--text-primary);
     }
 
-    /* Typography */
     .headline-xl {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
@@ -115,7 +113,6 @@
       font-weight: 500;
     }
 
-    /* Filter Pills */
     .filter-pill {
       padding: 0.5rem 1.25rem;
       border-radius: 9999px;
@@ -139,14 +136,13 @@
       color: var(--bg-deep);
     }
 
-    /* Episode Cards */
     .episode-card {
       position: relative;
       overflow: hidden;
       border-radius: 0.75rem;
       background: var(--bg-surface);
-      transition: all 0.3s ease;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .episode-card:hover {
@@ -158,86 +154,34 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(10, 10, 15, 0.95) 0%,
-        rgba(10, 10, 15, 0.4) 50%,
-        transparent 100%
-      );
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.9) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .episode-card img {
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.5s ease;
     }
 
     .episode-card:hover img {
       transform: scale(1.05);
     }
 
-    .video-glyph-overlay {
+    .episode-card .play-overlay {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 10;
-      pointer-events: none;
-      opacity: 0.72;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .video-glyph-badge {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: rgba(10, 10, 15, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(2px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .episode-card:hover .video-glyph-overlay {
+      background: rgba(0, 0, 0, 0.3);
       opacity: 0;
-      transform: scale(0.92);
+      transition: opacity 0.3s ease;
+      z-index: 10;
     }
 
-    /* Show Badge */
-    .show-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .episode-card:hover .play-overlay {
+      opacity: 1;
     }
 
-    .badge-cronjob { background: rgba(0, 212, 255, 0.2); color: var(--accent-cyan); }
-    .badge-archive { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
-    .badge-clanktank { background: rgba(255, 107, 53, 0.2); color: var(--accent-ember); }
-    .badge-jedai { background: rgba(168, 85, 247, 0.2); color: var(--accent-violet); }
-    .badge-stonkwars { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-    .badge-special { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
-    .live-pill {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      border-radius: 9999px;
-      font-size: 0.625rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #fff;
-      background: rgba(239, 68, 68, 0.85);
-      border: 1px solid rgba(254, 202, 202, 0.35);
-    }
-
-    .card-copy {
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.44) 55%, rgba(0, 0, 0, 0) 100%);
-    }
-
-    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -265,13 +209,12 @@
     .lightbox-video {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
       background: #000;
       border-radius: 0.5rem;
       overflow: hidden;
     }
 
-    .lightbox-video video,
     .lightbox-video iframe {
       position: absolute;
       top: 0;
@@ -343,21 +286,18 @@
   </style>
 </head>
 <body class="min-h-screen">
-  <!-- Navigation -->
   <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
           <div class="w-10 h-10">
             <img src="assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
         </a>
 
-        <!-- Nav Links -->
         <div class="hidden md:flex items-center gap-10">
           <a href="index.html#shows" class="nav-link">Shows</a>
-          <a href="gallery.html" class="nav-link active">Gallery</a>
+          <a href="archives.html" class="nav-link active">Archives</a>
           <a href="about.html" class="nav-link">About</a>
           <a href="https://paragraph.com/@m3org" target="_blank" class="nav-link">Blog</a>
         </div>
@@ -365,48 +305,35 @@
     </div>
   </nav>
 
-  <!-- Page Header -->
   <header class="pt-32 pb-16 bg-deep">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <span class="section-title text-xs text-cyan tracking-[0.3em] block mb-4">Collective Memory</span>
-      <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-6">Gallery</h1>
+      <span class="section-title text-xs text-cyan tracking-[0.3em] block mb-4">Episode Archives</span>
+      <h1 class="headline-xl text-5xl md:text-6xl lg:text-7xl mb-6">Archives</h1>
       <p class="text-xl text-zinc-400 max-w-2xl">
-        Browse the complete collection. Every episode, every moment, preserved as collective memory.
+        Browse all published episode archives by show.
       </p>
     </div>
   </header>
 
-  <!-- Filters -->
   <section class="py-8 bg-deep border-b border-zinc-800/50 sticky top-20 z-40">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex flex-wrap items-center gap-3">
-        <button class="filter-pill active" data-filter="all">All Episodes</button>
-        <button class="filter-pill" data-filter="cronjob">Cron Job</button>
-        <button class="filter-pill" data-filter="archive">Archive</button>
-        <button class="filter-pill" data-filter="clanktank">Clank Tank</button>
-        <button class="filter-pill" data-filter="jedai">JedAI Council</button>
-        <button class="filter-pill" data-filter="stonkwars">Stonk Wars</button>
-        <button class="filter-pill" data-filter="special">Specials</button>
-      </div>
+      <div class="flex flex-wrap items-center gap-3" id="filters"></div>
     </div>
   </section>
 
-  <!-- Episode Grid -->
   <main class="py-16 bg-deep">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="episode-grid">
-        <!-- Loading state -->
         <div id="loading-state" class="col-span-full text-center py-12">
           <div class="animate-pulse">
             <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-zinc-700"></div>
-            <p class="text-zinc-500">Loading gallery...</p>
+            <p class="text-zinc-500">Loading archives...</p>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Video Lightbox Modal -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-content" id="lightbox-content" onclick="event.stopPropagation()">
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
@@ -414,22 +341,18 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
-      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous media">
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous episode">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
       </button>
-      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next media">
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next episode">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
         </svg>
       </button>
       <div class="lightbox-video">
-        <video id="lightbox-video" controls style="display: none;">
-          <source src="" type="video/mp4">
-        </video>
-        <iframe id="lightbox-youtube" style="display: none;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <img id="lightbox-image" style="display: none;" class="absolute inset-0 w-full h-full object-contain bg-black rounded-lg" alt="Gallery media">
+        <iframe id="lightbox-youtube" src="" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="lightbox-info">
         <h3 id="lightbox-title" class="font-display text-2xl font-semibold mb-2"></h3>
@@ -438,18 +361,15 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="py-12 bg-surface border-t border-zinc-800/50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex flex-col md:grid md:grid-cols-3 items-center gap-6">
-        <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
           <div class="w-12 h-12">
             <img src="assets/m3tv.svg" alt="M3TV" class="w-full h-full">
           </div>
         </a>
 
-        <!-- Social Links -->
         <div class="flex items-center justify-center gap-4">
           <a href="https://x.com/m3org" target="_blank" class="text-zinc-500 hover:text-white transition-colors" aria-label="X">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -473,176 +393,135 @@
           </a>
         </div>
 
-        <!-- Copyright -->
-        <p class="text-sm text-zinc-600 md:justify-self-end">
-          &copy; 2025 M3TV. All rights reserved.
-        </p>
+        <p class="text-sm text-zinc-600 md:justify-self-end">&copy; 2026 M3TV. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // DOM Elements
-    const filterPills = document.querySelectorAll('.filter-pill');
     const episodeGrid = document.getElementById('episode-grid');
     const loadingState = document.getElementById('loading-state');
+    const filtersContainer = document.getElementById('filters');
 
-    // Gallery data
-    let galleryData = null;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxYoutube = document.getElementById('lightbox-youtube');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxContent = document.getElementById('lightbox-content');
 
-    // Create an episode card element
-    function createCard(item, shows) {
-      const show = shows[item.show];
+    let showsByKey = {};
+    let archiveItems = [];
+    let filterPills = [];
+    let lightboxItems = [];
+    let currentLightboxIndex = -1;
+    let touchStartX = null;
 
-      // Determine if this is a link card or a playable card
-      if (item.link) {
-        // Link card (for show pages like Stonk Wars)
-        const card = document.createElement('a');
-        card.href = item.link;
-        card.className = 'episode-card aspect-[4/3]';
-        card.dataset.show = item.show;
-
-        card.innerHTML = `
-          <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute top-4 left-4 z-10">
-            <span class="show-badge ${show.badge}">${show.name}</span>
-          </div>
-          ${item.live ? '<div class="absolute top-4 right-4 z-10"><span class="live-pill">LIVE</span></div>' : ''}
-          <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
-            <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
-            <p class="text-zinc-400 text-sm">${item.description}</p>
-          </div>
-        `;
-        return card;
-      } else {
-        // Playable card (YouTube, video, or image)
-        const card = document.createElement('div');
-        card.className = 'episode-card aspect-[4/3]';
-        card.dataset.show = item.show;
-        card.dataset.title = item.title;
-        if (item.youtube) card.dataset.youtube = item.youtube;
-        if (item.video) card.dataset.video = item.video;
-        if (item.image) card.dataset.image = item.image;
-        if (item.hoverPreview) card.dataset.hoverPreview = 'true';
-        card.onclick = function() { openLightbox(this); };
-
-        const isVideoCard = Boolean(item.youtube || item.video);
-        const previewMedia = (!item.thumbnail && item.video)
-          ? `<video src="${item.video}" class="absolute inset-0 w-full h-full object-cover" muted playsinline preload="metadata"></video>`
-          : `<img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">`;
-        const mediaGlyph = isVideoCard
-          ? `<div class="video-glyph-overlay" aria-hidden="true">
-              <div class="video-glyph-badge">
-                <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>`
-          : '';
-
-        card.innerHTML = `
-          ${previewMedia}
-          <div class="absolute top-4 left-4 z-10">
-            <span class="show-badge ${show.badge}">${show.name}</span>
-          </div>
-          ${mediaGlyph}
-          <div class="card-copy absolute bottom-0 left-0 right-0 p-5 z-10">
-            <h3 class="font-display text-xl font-semibold mb-1">${item.label}</h3>
-            <p class="text-zinc-400 text-sm">${item.description}</p>
-          </div>
-        `;
-
-        if (item.hoverPreview && item.video && !item.thumbnail) {
-          const previewVideo = card.querySelector('video');
-          if (previewVideo) {
-            previewVideo.loop = true;
-            card.addEventListener('mouseenter', () => {
-              previewVideo.play().catch(() => {});
-            });
-            card.addEventListener('mouseleave', () => {
-              previewVideo.pause();
-              previewVideo.currentTime = 0;
-            });
-          }
-        }
-        return card;
+    function sortByDateDesc(a, b) {
+      const da = Date.parse(a.label || '');
+      const db = Date.parse(b.label || '');
+      if (!Number.isNaN(da) && !Number.isNaN(db)) {
+        return db - da;
       }
+      return String(b.label || '').localeCompare(String(a.label || ''));
     }
 
-    // Render all cards
-    function renderGallery(data) {
-      // Remove loading state
-      if (loadingState) loadingState.remove();
+    function buildFilters(items) {
+      const showOrder = ['cronjob', 'clanktank', 'jedai', 'stonkwars'];
+      const available = new Set(items.map(item => item.show));
+      const ordered = showOrder.filter(show => available.has(show));
+      for (const show of Array.from(available).sort()) {
+        if (!ordered.includes(show)) ordered.push(show);
+      }
+      return ordered;
+    }
 
-      // Create and append cards
-      data.items.forEach(item => {
-        const card = createCard(item, data.shows);
-        episodeGrid.appendChild(card);
+    function renderFilterPills(showKeys) {
+      filtersContainer.innerHTML = '';
+
+      const allBtn = document.createElement('button');
+      allBtn.className = 'filter-pill active';
+      allBtn.dataset.filter = 'all';
+      allBtn.textContent = 'All Episodes';
+      filtersContainer.appendChild(allBtn);
+
+      for (const showKey of showKeys) {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill';
+        btn.dataset.filter = showKey;
+        btn.textContent = showsByKey[showKey]?.name || showKey;
+        filtersContainer.appendChild(btn);
+      }
+
+      filterPills = Array.from(document.querySelectorAll('.filter-pill'));
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => applyFilter(pill.dataset.filter));
       });
-
-      // Apply initial filter after cards are rendered
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialFilter = urlParams.get('show') || 'all';
-      applyFilter(initialFilter);
     }
 
-    // Filter functionality
+    function createEpisodeCard(item) {
+      const show = showsByKey[item.show] || { name: item.show };
+      const card = document.createElement('div');
+      card.className = 'episode-card aspect-video';
+      card.dataset.show = item.show;
+      card.dataset.youtube = item.youtube;
+      card.dataset.title = item.title;
+      card.dataset.description = `${show.name} • ${item.label}`;
+      card.onclick = function() { openLightbox(this); };
+
+      card.innerHTML = `
+        <img src="${item.thumbnail}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
+        <div class="play-overlay">
+          <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+          <p class="text-cyan text-xs font-medium mb-1">${item.label || ''}</p>
+          <h3 class="font-display text-lg font-semibold line-clamp-2">${item.title}</h3>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderArchive() {
+      if (loadingState) loadingState.remove();
+      episodeGrid.innerHTML = '';
+
+      for (const item of archiveItems) {
+        episodeGrid.appendChild(createEpisodeCard(item));
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const requested = urlParams.get('show') || 'all';
+      const knownFilters = new Set(['all', ...buildFilters(archiveItems)]);
+      applyFilter(knownFilters.has(requested) ? requested : 'all');
+    }
+
     function applyFilter(filter) {
-      // Update URL
       const url = new URL(window.location);
       if (filter === 'all') {
         url.searchParams.delete('show');
       } else {
         url.searchParams.set('show', filter);
       }
-      window.history.pushState({}, '', url);
+      window.history.replaceState({}, '', url);
 
-      // Update active pill
       filterPills.forEach(p => {
         p.classList.toggle('active', p.dataset.filter === filter);
       });
 
-      // Filter cards
       const cards = episodeGrid.querySelectorAll('.episode-card');
       cards.forEach(card => {
         const show = card.dataset.show;
-        const shouldShow = filter === 'all' || show === filter;
-
-        if (shouldShow) {
-          card.style.display = '';
-          card.style.opacity = '1';
-        } else {
-          card.style.opacity = '0';
-          setTimeout(() => {
-            if (card.style.opacity === '0') {
-              card.style.display = 'none';
-            }
-          }, 200);
-        }
+        const visible = filter === 'all' || show === filter;
+        card.style.display = visible ? '' : 'none';
       });
     }
 
-    // Add click handlers to pills
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        applyFilter(pill.dataset.filter);
-      });
-    });
-
-    // Lightbox Functions
-    const lightbox = document.getElementById('lightbox');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const lightboxYoutube = document.getElementById('lightbox-youtube');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxContent = document.getElementById('lightbox-content');
-    const lightboxTitle = document.getElementById('lightbox-title');
-    const lightboxDesc = document.getElementById('lightbox-desc');
-    let lightboxItems = [];
-    let currentLightboxIndex = -1;
-    let touchStartX = null;
-
     function getVisibleCards() {
-      return Array.from(episodeGrid.querySelectorAll('.episode-card')).filter((card) => card.style.display !== 'none');
+      return Array.from(episodeGrid.querySelectorAll('.episode-card')).filter(card => card.style.display !== 'none');
     }
 
     function openLightbox(element) {
@@ -654,33 +533,13 @@
     }
 
     function showLightboxItem(element) {
-      const videoSrc = element.dataset.video;
       const youtubeId = element.dataset.youtube;
-      const imageSrc = element.dataset.image;
       const title = element.dataset.title;
+      const desc = element.dataset.description || '';
 
-      // Reset all players
-      lightboxVideo.style.display = 'none';
-      lightboxYoutube.style.display = 'none';
-      lightboxImage.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxVideo.querySelector('source').src = '';
-      lightboxYoutube.src = '';
-
-      if (youtubeId) {
-        lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}`;
-        lightboxYoutube.style.display = 'block';
-      } else if (videoSrc) {
-        lightboxVideo.querySelector('source').src = videoSrc;
-        lightboxVideo.load();
-        lightboxVideo.style.display = 'block';
-      } else if (imageSrc) {
-        lightboxImage.src = imageSrc;
-        lightboxImage.style.display = 'block';
-      }
-
+      lightboxYoutube.src = `https://www.youtube.com/embed/${youtubeId}`;
       lightboxTitle.textContent = title;
-      lightboxDesc.textContent = '';
+      lightboxDesc.textContent = desc;
     }
 
     function navigateLightbox(direction) {
@@ -691,18 +550,13 @@
 
     function closeLightbox(event) {
       if (event && event.target !== lightbox) return;
-
       lightbox.classList.remove('active');
-      lightboxVideo.pause();
-      lightboxVideo.querySelector('source').src = '';
       lightboxYoutube.src = '';
-      lightboxImage.src = '';
       lightboxItems = [];
       currentLightboxIndex = -1;
       document.body.style.overflow = '';
     }
 
-    // Keyboard controls
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -710,7 +564,6 @@
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
 
-    // Swipe navigation
     lightboxContent.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].clientX;
     }, { passive: true });
@@ -724,22 +577,24 @@
       touchStartX = null;
     }, { passive: true });
 
-    // Load gallery data
     fetch('gallery.json')
       .then(response => response.json())
       .then(data => {
-        galleryData = data;
-        renderGallery(data);
+        showsByKey = data.shows || {};
+        archiveItems = (data.items || [])
+          .filter(item => Boolean(item.youtube))
+          .sort(sortByDateDesc);
+
+        renderFilterPills(buildFilters(archiveItems));
+        renderArchive();
       })
       .catch(error => {
-        console.error('Error loading gallery:', error);
+        console.error('Error loading archives:', error);
         if (loadingState) {
           loadingState.innerHTML = `
             <div class="text-center">
-              <p class="text-red-400 mb-2">Failed to load gallery</p>
-              <button onclick="location.reload()" class="text-cyan hover:text-white transition-colors text-sm">
-                Try Again
-              </button>
+              <p class="text-red-400 mb-2">Failed to load archives</p>
+              <button onclick="location.reload()" class="text-cyan hover:text-white transition-colors text-sm">Try Again</button>
             </div>
           `;
         }

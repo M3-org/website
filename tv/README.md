@@ -28,9 +28,9 @@ Philosophical debates where sophisticated AI agents discuss technology, economic
 
 ```
 tv/
-├── index.html          # Homepage with hero, featured shows, gallery preview
+├── index.html          # Homepage with hero, featured shows, archives preview
 ├── about.html          # About M3TV, AI pipeline, team
-├── gallery.html        # Complete episode archive (loads from gallery.json)
+├── archives.html       # Episode archives page (loads from gallery.json)
 │
 ├── shows/              # Individual show pages
 │   ├── cron-job.html
@@ -47,7 +47,7 @@ tv/
 │   ├── clank-photoshoot/ # Clank Tank promo images
 │   └── videos/         # Hero/promo videos (local copies)
 │
-├── gallery.json        # Central data source for gallery page
+├── gallery.json        # Central data source for archives + media data
 ├── shows.json          # Show metadata (currently unused, see #8)
 │
 ├── scripts/            # Dev utilities
@@ -64,10 +64,12 @@ tv/
 ## Data Architecture
 
 ### gallery.json
-Central data source for the gallery page. Contains show metadata and all episodes/specials:
+Central data source for the archives page. Contains show metadata and episode/media entries:
 - Show definitions (name, badge, description)
 - Episode entries (YouTube IDs, thumbnails, labels, descriptions)
 - Special content (CDN video URLs, thumbnails)
+
+`archives.html` currently renders episode cards only (`items` with `youtube`).
 
 Example structure:
 ```json
