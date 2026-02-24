@@ -627,83 +627,80 @@
         </a>
       </div>
 
-      <!-- Archive Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Latest Clank Tank -->
-        <a href="shows/clank-tank.html" class="archive-card aspect-video cursor-pointer group block">
-          <img src="https://i.ytimg.com/vi_webp/J0UC8JgKD4Y/maxresdefault.webp" alt="Clank Tank S1E4" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-ember mb-1">Clank Tank</p>
-            <h4 class="text-sm font-medium truncate">S1E4: Silkroad, Eido, Rita</h4>
-          </div>
-        </a>
-
-        <!-- JedAI Council -->
-        <a href="shows/jedai-council.html" class="archive-card aspect-video cursor-pointer group block">
-          <img src="assets/jedai-council/thumbnails/S1E15.jpg" alt="JedAI Council" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-violet mb-1">JedAI Council</p>
-            <h4 class="text-sm font-medium truncate">S1E15: Token Economics</h4>
-          </div>
-        </a>
-
-        <!-- Cron Job -->
-        <a href="shows/cronjob.html" class="archive-card aspect-video cursor-pointer group block">
-          <img src="https://i.ytimg.com/vi/00v29Fv1D7Y/hqdefault.jpg" alt="Cron Job" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-cyan mb-1">Cron Job</p>
-            <h4 class="text-sm font-medium truncate">S2E1: Workflow Revolution</h4>
-          </div>
-        </a>
-
-        <!-- Stonk Wars -->
-        <a href="shows/stonk-wars.html" class="archive-card aspect-video cursor-pointer group block">
-          <img src="assets/stills/stonkwars/stonkwars-8.jpg" alt="Stonk Wars" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-green-400 mb-1">Stonk Wars</p>
-            <h4 class="text-sm font-medium truncate">Trading Floor</h4>
-          </div>
-        </a>
-
-        <!-- Cron Job Archives -->
-        <a href="archives.html?show=cronjob" class="archive-card aspect-video cursor-pointer group block">
-          <img src="https://i.ytimg.com/vi/DyfpCarR1P0/hqdefault.jpg" alt="Cron Job Archives" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-cyan mb-1">Cron Job</p>
-            <h4 class="text-sm font-medium truncate">Episode Archives</h4>
-          </div>
-        </a>
-
-        <!-- Clank Tank Archives -->
-        <a href="archives.html?show=clanktank" class="archive-card aspect-video cursor-pointer group block">
-          <img src="https://i.ytimg.com/vi_webp/J0UC8JgKD4Y/maxresdefault.webp" alt="Clank Tank Archives" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-ember mb-1">Clank Tank</p>
-            <h4 class="text-sm font-medium truncate">Episode Archives</h4>
-          </div>
-        </a>
-
-        <!-- JedAI Archives -->
-        <a href="archives.html?show=jedai" class="archive-card aspect-video cursor-pointer group block">
-          <img src="assets/jedai-council/thumbnails/S1E15.jpg" alt="JedAI Archives" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">
-          <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-            <p class="text-xs text-violet mb-1">JedAI Council</p>
-            <h4 class="text-sm font-medium truncate">Episode Archives</h4>
-          </div>
-        </a>
-
-        <!-- View All -->
-        <a href="archives.html" class="archive-card aspect-video cursor-pointer group flex items-center justify-center bg-elevated hover:bg-zinc-800 transition-colors">
-          <div class="text-center z-10">
-            <div class="w-12 h-12 mx-auto mb-3 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-cyan group-hover:bg-cyan/10 transition-colors">
-              <svg class="w-5 h-5 text-zinc-500 group-hover:text-cyan transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-              </svg>
-            </div>
-            <p class="text-sm text-zinc-500 group-hover:text-white transition-colors">View All</p>
-          </div>
-        </a>
+      <!-- Archive Grid (populated from gallery.json) -->
+      <div id="archive-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Populated by script below -->
       </div>
+      <script>
+        (function() {
+          const SHOW_META = {
+            cronjob:   { name: 'Cron Job',       color: 'text-cyan',      page: 'shows/cronjob.html',        archive: 'archives.html?show=cronjob' },
+            clanktank: { name: 'Clank Tank',      color: 'text-ember',     page: 'shows/clank-tank.html',     archive: 'archives.html?show=clanktank' },
+            jedai:     { name: 'JedAI Council',   color: 'text-violet',    page: 'shows/jedai-council.html',  archive: 'archives.html?show=jedai' },
+            stonkwars: { name: 'Stonk Wars',      color: 'text-green-400', page: 'shows/stonk-wars.html',     archive: 'archives.html?show=stonkwars' },
+          };
+          var SHOW_ORDER = ['cronjob', 'clanktank', 'jedai', 'stonkwars'];
+
+          fetch('gallery.json')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+              var items = data.items || [];
+              // Pick the first (latest) YouTube item per show
+              var latest = {};
+              items.forEach(function(item) {
+                var show = item.show;
+                if (!SHOW_META[show]) return;
+                if (!item.youtube || !item.thumbnail) return;
+                if (!latest[show]) latest[show] = item;
+              });
+
+              var grid = document.getElementById('archive-grid');
+              if (!grid) return;
+              var html = '';
+
+              // Latest episode per show
+              SHOW_ORDER.forEach(function(show) {
+                var meta = SHOW_META[show];
+                var item = latest[show];
+                if (!item) return;
+                var url = item.youtube ? 'https://www.youtube.com/watch?v=' + item.youtube : meta.page;
+                html += '<a href="' + url + '" target="_blank" rel="noopener" class="archive-card aspect-video cursor-pointer group block">'
+                  + '<img src="' + item.thumbnail + '" alt="' + item.title.replace(/"/g, '&quot;') + '" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity">'
+                  + '<div class="absolute bottom-0 left-0 right-0 p-4 z-10">'
+                  + '<p class="text-xs ' + meta.color + ' mb-1">' + meta.name + '</p>'
+                  + '<h4 class="text-sm font-medium truncate">' + item.title.replace(/</g, '&lt;') + '</h4>'
+                  + '</div></a>';
+              });
+
+              // Archive links per show
+              SHOW_ORDER.forEach(function(show) {
+                var meta = SHOW_META[show];
+                var item = latest[show];
+                var thumb = item ? item.thumbnail : '';
+                if (!thumb) return;
+                html += '<a href="' + meta.archive + '" class="archive-card aspect-video cursor-pointer group block">'
+                  + '<img src="' + thumb + '" alt="' + meta.name + ' Archives" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity">'
+                  + '<div class="absolute bottom-0 left-0 right-0 p-4 z-10">'
+                  + '<p class="text-xs ' + meta.color + ' mb-1">' + meta.name + '</p>'
+                  + '<h4 class="text-sm font-medium truncate">Episode Archives</h4>'
+                  + '</div></a>';
+              });
+
+              // View All card
+              html += '<a href="archives.html" class="archive-card aspect-video cursor-pointer group flex items-center justify-center bg-elevated hover:bg-zinc-800 transition-colors">'
+                + '<div class="text-center z-10">'
+                + '<div class="w-12 h-12 mx-auto mb-3 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-cyan group-hover:bg-cyan/10 transition-colors">'
+                + '<svg class="w-5 h-5 text-zinc-500 group-hover:text-cyan transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">'
+                + '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>'
+                + '</svg></div>'
+                + '<p class="text-sm text-zinc-500 group-hover:text-white transition-colors">View All</p>'
+                + '</div></a>';
+
+              grid.innerHTML = html;
+            })
+            .catch(function() { /* leave grid empty on error */ });
+        })();
+      </script>
     </div>
   </section>
 
