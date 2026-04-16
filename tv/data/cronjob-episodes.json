@@ -70,5 +70,21 @@
       "thumbnail": "https://i.ytimg.com/vi/PGn73g404ns/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=PGn73g404ns"
     }
+  },
+  "2026-04-05": {
+    "en": {
+      "id": "pwZp5qFanPw",
+      "title": "Axios of Evil - Cron Job | S1E9",
+      "thumbnail": "https://i.ytimg.com/vi/pwZp5qFanPw/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=pwZp5qFanPw"
+    }
+  },
+  "2026-04-13": {
+    "en": {
+      "id": "OW82tHWZyhI",
+      "title": "Last Call at the Lab - Cron Job | S1E11",
+      "thumbnail": "https://i.ytimg.com/vi/OW82tHWZyhI/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=OW82tHWZyhI"
+    }
   }
 }

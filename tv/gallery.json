@@ -34,6 +34,22 @@
   "items": [
     {
       "show": "cronjob",
+      "youtube": "OW82tHWZyhI",
+      "title": "Last Call at the Lab - Cron Job | S1E11",
+      "thumbnail": "https://i.ytimg.com/vi/OW82tHWZyhI/hqdefault.jpg",
+      "label": "2026-04-13",
+      "description": "Weekly Cron Job episode"
+    },
+    {
+      "show": "cronjob",
+      "youtube": "pwZp5qFanPw",
+      "title": "Axios of Evil - Cron Job | S1E9",
+      "thumbnail": "https://i.ytimg.com/vi/pwZp5qFanPw/hqdefault.jpg",
+      "label": "2026-04-05",
+      "description": "Weekly Cron Job episode"
+    },
+    {
+      "show": "cronjob",
       "youtube": "PGn73g404ns",
       "title": "Hackathons, Holograms, and Holding On - Cron Job | S1E9",
       "thumbnail": "https://i.ytimg.com/vi/PGn73g404ns/hqdefault.jpg",
